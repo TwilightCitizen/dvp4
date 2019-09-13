@@ -13,7 +13,8 @@
 		308DFF4B2329B962001567B1 /* Scrambled_Stoplights.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF492329B962001567B1 /* Scrambled_Stoplights.xcdatamodeld */; };
 		308DFF4D2329B963001567B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF4C2329B963001567B1 /* Assets.xcassets */; };
 		308DFF502329B963001567B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF4E2329B963001567B1 /* LaunchScreen.storyboard */; };
-		308DFF582329BC07001567B1 /* GlobalStringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF572329BC07001567B1 /* GlobalStringConstants.swift */; };
+		308DFF582329BC07001567B1 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF572329BC07001567B1 /* GlobalConstants.swift */; };
+		30F80276232C482C00B90894 /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80275232C482C00B90894 /* RoundedCornerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +26,8 @@
 		308DFF4C2329B963001567B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		308DFF4F2329B963001567B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		308DFF512329B963001567B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		308DFF572329BC07001567B1 /* GlobalStringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStringConstants.swift; sourceTree = "<group>"; };
+		308DFF572329BC07001567B1 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		30F80275232C482C00B90894 /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				308DFF422329B962001567B1 /* AppDelegate.swift */,
-				308DFF572329BC07001567B1 /* GlobalStringConstants.swift */,
+				308DFF572329BC07001567B1 /* GlobalConstants.swift */,
 				308DFF442329B962001567B1 /* GameScreen.swift */,
 				308DFF462329B962001567B1 /* Main.storyboard */,
+				30F80275232C482C00B90894 /* RoundedCornerView.swift */,
 				308DFF4C2329B963001567B1 /* Assets.xcassets */,
 				308DFF4E2329B963001567B1 /* LaunchScreen.storyboard */,
 				308DFF512329B963001567B1 /* Info.plist */,
@@ -141,10 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30F80276232C482C00B90894 /* RoundedCornerView.swift in Sources */,
 				308DFF452329B962001567B1 /* GameScreen.swift in Sources */,
 				308DFF432329B962001567B1 /* AppDelegate.swift in Sources */,
 				308DFF4B2329B962001567B1 /* Scrambled_Stoplights.xcdatamodeld in Sources */,
-				308DFF582329BC07001567B1 /* GlobalStringConstants.swift in Sources */,
+				308DFF582329BC07001567B1 /* GlobalConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

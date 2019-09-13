@@ -7,6 +7,7 @@
  */
 
 import Foundation
+import UIKit
 
 enum CoreData : String, CustomStringConvertible {
     case scrambledStoplights
