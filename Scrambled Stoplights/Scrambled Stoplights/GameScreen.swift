@@ -43,6 +43,16 @@ class GameScreen : UIViewController {
     @IBAction func playPauseGameTapped(  _ sender : UIButton ) {
     }
     
+    @IBAction func pinchInWell(          _ sender : UIPinchGestureRecognizer ) {
+        guard sender.state == .ended else { return }
+        
+        if sender.scale > 1 {
+            print( "Cycle Up Tapped"   )
+        } else {
+            print( "Cycle Down Tapped" )
+        }
+    }
+    
     @IBAction func cycleUpTapped(        _ sender : UIButton ) {
         print( "Cycle Up Tapped" )
     }
@@ -59,6 +69,16 @@ class GameScreen : UIViewController {
         whileHolding( sender ) { print( "Cycle Down Tapped" ) }
     }
     
+    @IBAction func rotatedInWell(        _ sender : UIRotationGestureRecognizer  ) {
+        guard sender.state == .ended else { return }
+
+        if sender.rotation < 0 {
+            print( "Rotate Counter Tapped" )
+        } else {
+            print( "Rotate Clock Tapped" )
+        }
+    }
+    
     @IBAction func rotateCounterTapped(  _ sender : UIButton ) {
         print( "Rotate Counter Tapped" )
     }
@@ -73,6 +93,18 @@ class GameScreen : UIViewController {
     
     @IBAction func rotateClockHeld(      _ sender : UILongPressGestureRecognizer ) {
         whileHolding( sender ) { print( "Rotate Clock Tapped" ) }
+    }
+    
+    @IBAction func swipeLeftInWell(      _ sender : UISwipeGestureRecognizer     ) {
+        print( "Move Left Tapped" )
+    }
+    
+    @IBAction func swipeRightInWell(     _ sender : UISwipeGestureRecognizer     ) {
+        print( "Move Right Tapped" )
+    }
+    
+    @IBAction func swipeDownInWell(      _ sender : UISwipeGestureRecognizer     ) {
+        print( "Drop Down Tapped" )
     }
     
     @IBAction func moveLeftTapped(       _ sender : UIButton ) {

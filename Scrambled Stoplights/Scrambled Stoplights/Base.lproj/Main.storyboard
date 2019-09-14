@@ -2029,6 +2029,7 @@
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="tOL-Hy-HX2" firstAttribute="leading" secondItem="3cU-ho-UOl" secondAttribute="leading" id="1o9-tI-c89"/>
                                             <constraint firstItem="E0f-e7-eai" firstAttribute="top" secondItem="3Rs-O9-a62" secondAttribute="bottom" id="2Y4-u9-vyy"/>
@@ -2150,6 +2151,13 @@
                                             <constraint firstItem="wnV-ey-Zbi" firstAttribute="leading" secondItem="3cU-ho-UOl" secondAttribute="leading" id="zu5-oP-z6m"/>
                                             <constraint firstAttribute="trailing" secondItem="Adv-oN-tF0" secondAttribute="trailing" id="zxS-S3-RY2"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="2oR-kG-c7H" appends="YES" id="qqZ-zL-6hh"/>
+                                            <outletCollection property="gestureRecognizers" destination="6Kk-k6-6CN" appends="YES" id="Uyi-tZ-xe1"/>
+                                            <outletCollection property="gestureRecognizers" destination="LoY-2S-hXf" appends="YES" id="oZi-Uk-VCr"/>
+                                            <outletCollection property="gestureRecognizers" destination="9nT-AL-sav" appends="YES" id="8ac-I7-37m"/>
+                                            <outletCollection property="gestureRecognizers" destination="elC-2p-2tm" appends="YES" id="UgQ-Kd-jZh"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3358,6 +3366,31 @@
                         <action selector="cycleDownHeld:" destination="BYZ-38-t0r" id="HzL-N5-i4d"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="6Kk-k6-6CN" userLabel="SwipeLeftInWell">
+                    <connections>
+                        <action selector="swipeLeftInWell:" destination="BYZ-38-t0r" id="GDv-Zl-65B"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="LoY-2S-hXf" userLabel="SwipeRightInWell">
+                    <connections>
+                        <action selector="swipeRightInWell:" destination="BYZ-38-t0r" id="0WN-oM-jss"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="9nT-AL-sav" userLabel="SwipeDownInWell">
+                    <connections>
+                        <action selector="swipeDownInWell:" destination="BYZ-38-t0r" id="MPh-72-GcV"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <rotationGestureRecognizer id="2oR-kG-c7H" userLabel="RotateInWell">
+                    <connections>
+                        <action selector="rotatedInWell:" destination="BYZ-38-t0r" id="wid-rn-tQC"/>
+                    </connections>
+                </rotationGestureRecognizer>
+                <pinchGestureRecognizer id="elC-2p-2tm" userLabel="PinchInWell">
+                    <connections>
+                        <action selector="pinchInWell:" destination="BYZ-38-t0r" id="4T2-ZM-zRh"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="884" y="137"/>
         </scene>

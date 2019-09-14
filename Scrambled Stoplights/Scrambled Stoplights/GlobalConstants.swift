@@ -15,5 +15,6 @@ enum CoreData : String, CustomStringConvertible {
     var description : String { return self.rawValue }
 }
 
-let cornerRadius   : CGFloat      = 10
-let repeatInterval : TimeInterval = 0.0625
+let cornerRadius     : CGFloat      = 10
+let repeatInterval   : TimeInterval =  0.0625
+let fortyFiveDegrees : CGFloat      =  0.785
