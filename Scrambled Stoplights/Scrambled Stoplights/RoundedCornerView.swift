@@ -25,7 +25,7 @@ extension UIView {
             Corners.bottomRight
         ],
         
-        toRadius radius : CGFloat = 10
+        toRadius radius : CGFloat = cornerRadius
     ) {
         self.layer.cornerRadius  = radius
         self.layer.maskedCorners = corners
