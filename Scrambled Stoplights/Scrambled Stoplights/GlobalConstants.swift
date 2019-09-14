@@ -9,8 +9,27 @@
 import Foundation
 import UIKit
 
-enum CoreData : String, CustomStringConvertible {
+enum CoreData     : String, CustomStringConvertible {
     case scrambledStoplights
+    
+    var description : String { return self.rawValue }
+}
+
+enum Segue        : String, CustomStringConvertible {
+    case settingsToDisplayName
+    case settingsToAvatar
+    case settingsToTrack
+    case settingsToTheme
+    
+    var description : String { return self.rawValue }
+}
+
+enum ReusableCell : String, CustomStringConvertible {
+    case avatar
+    case leader
+    case track
+    case selectableSetting
+    case slideableSetting
     
     var description : String { return self.rawValue }
 }

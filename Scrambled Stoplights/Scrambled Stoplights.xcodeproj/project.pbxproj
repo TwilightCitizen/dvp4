@@ -16,6 +16,11 @@
 		308DFF582329BC07001567B1 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF572329BC07001567B1 /* GlobalConstants.swift */; };
 		30F80276232C482C00B90894 /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80275232C482C00B90894 /* RoundedCornerView.swift */; };
 		30F80278232C612800B90894 /* SimpleRepeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80277232C612800B90894 /* SimpleRepeater.swift */; };
+		30F8027A232C730C00B90894 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80279232C730C00B90894 /* SettingsScreen.swift */; };
+		30F8027C232C737A00B90894 /* LeaderboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8027B232C737A00B90894 /* LeaderboardScreen.swift */; };
+		30F8027E232C771300B90894 /* AvatarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8027D232C771300B90894 /* AvatarScreen.swift */; };
+		30F80280232C77EB00B90894 /* TrackScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8027F232C77EB00B90894 /* TrackScreen.swift */; };
+		30F80282232C7B0900B90894 /* DisplayNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80281232C7B0900B90894 /* DisplayNameScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		308DFF572329BC07001567B1 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		30F80275232C482C00B90894 /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
 		30F80277232C612800B90894 /* SimpleRepeater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRepeater.swift; sourceTree = "<group>"; };
+		30F80279232C730C00B90894 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		30F8027B232C737A00B90894 /* LeaderboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardScreen.swift; sourceTree = "<group>"; };
+		30F8027D232C771300B90894 /* AvatarScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarScreen.swift; sourceTree = "<group>"; };
+		30F8027F232C77EB00B90894 /* TrackScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackScreen.swift; sourceTree = "<group>"; };
+		30F80281232C7B0900B90894 /* DisplayNameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNameScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +75,11 @@
 				308DFF422329B962001567B1 /* AppDelegate.swift */,
 				308DFF572329BC07001567B1 /* GlobalConstants.swift */,
 				308DFF442329B962001567B1 /* GameScreen.swift */,
+				30F80279232C730C00B90894 /* SettingsScreen.swift */,
+				30F80281232C7B0900B90894 /* DisplayNameScreen.swift */,
+				30F8027D232C771300B90894 /* AvatarScreen.swift */,
+				30F8027F232C77EB00B90894 /* TrackScreen.swift */,
+				30F8027B232C737A00B90894 /* LeaderboardScreen.swift */,
 				308DFF462329B962001567B1 /* Main.storyboard */,
 				30F80275232C482C00B90894 /* RoundedCornerView.swift */,
 				30F80277232C612800B90894 /* SimpleRepeater.swift */,
@@ -147,12 +162,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30F80282232C7B0900B90894 /* DisplayNameScreen.swift in Sources */,
 				30F80276232C482C00B90894 /* RoundedCornerView.swift in Sources */,
+				30F8027E232C771300B90894 /* AvatarScreen.swift in Sources */,
+				30F8027A232C730C00B90894 /* SettingsScreen.swift in Sources */,
+				30F80280232C77EB00B90894 /* TrackScreen.swift in Sources */,
 				308DFF452329B962001567B1 /* GameScreen.swift in Sources */,
 				308DFF432329B962001567B1 /* AppDelegate.swift in Sources */,
 				308DFF4B2329B962001567B1 /* Scrambled_Stoplights.xcdatamodeld in Sources */,
 				308DFF582329BC07001567B1 /* GlobalConstants.swift in Sources */,
 				30F80278232C612800B90894 /* SimpleRepeater.swift in Sources */,
+				30F8027C232C737A00B90894 /* LeaderboardScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

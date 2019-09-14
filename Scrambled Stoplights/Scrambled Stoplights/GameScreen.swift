@@ -24,8 +24,14 @@ class GameScreen : UIViewController {
         super.viewDidLoad()
         
         roundCorners()
-        
+    }
+    
+    override func viewWillAppear( _ animated : Bool ) {
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func prepare( for segue : UIStoryboardSegue, sender : Any? ) {
+        navigationController?.navigationBar.isHidden = false
     }
     
     func roundCorners() {
