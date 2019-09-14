@@ -10,13 +10,18 @@ import UIKit
 
 class GameScreen : UIViewController {
     // Outlets
-    @IBOutlet var roundAllCorners    : [ UIView ]!
-    @IBOutlet var roundTopCorners    : [ UIView ]!
-    @IBOutlet var roundBottomCorners : [ UIView ]!
+    
+    @IBOutlet      var roundAllCorners    : [ UIView ]!
+    @IBOutlet      var roundTopCorners    : [ UIView ]!
+    @IBOutlet      var roundBottomCorners : [ UIView ]!
+    @IBOutlet      var roundOuterCorners  : [ UIImageView ]!
+    
+    @IBOutlet weak var screenWell           : UIView!
     
     // Properties
     
-    private   var repeater           : SimpleRepeater!
+    private        var repeater             : SimpleRepeater!
+    private        var gameWell             : GameWell!
     
     // Methods
     
@@ -24,6 +29,9 @@ class GameScreen : UIViewController {
         super.viewDidLoad()
         
         roundCorners()
+        
+        gameWell = GameWell( matching : screenWell )
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     override func viewWillAppear( _ animated : Bool ) {
@@ -35,9 +43,10 @@ class GameScreen : UIViewController {
     }
     
     func roundCorners() {
-        roundAllCorners.forEach    { $0.round() }
-        roundTopCorners.forEach    { $0.round( corners : [ Corners.topLeft,    Corners.topRight    ] ) }
-        roundBottomCorners.forEach { $0.round( corners : [ Corners.bottomLeft, Corners.bottomRight ] ) }
+        roundAllCorners.forEach                              { $0.round() }
+        roundTopCorners.forEach                              { $0.round( corners : [ Corners.topLeft,    Corners.topRight    ] ) }
+        roundBottomCorners.forEach                           { $0.round( corners : [ Corners.bottomLeft, Corners.bottomRight ] ) }
+        zip( roundOuterCorners, Corners.allCorners ).forEach { ( view, corner ) in view.round( corners: [ corner ] ) }
     }
     
     @IBAction func seeLeaderboardTapped( _ sender : UIButton ) {

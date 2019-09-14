@@ -10,24 +10,24 @@ import Foundation
 import UIKit
 
 struct Corners {
+    // Properties
+    
     static let topLeft     = CACornerMask.layerMinXMinYCorner
     static let topRight    = CACornerMask.layerMaxXMinYCorner
     static let bottomLeft  = CACornerMask.layerMinXMaxYCorner
     static let bottomRight = CACornerMask.layerMaxXMaxYCorner
+    
+    static let allCorners  = [ topLeft, topRight, bottomRight, bottomLeft ]
 }
 
 extension UIView {
+    // Methods
+    
     func round(
-        corners : CACornerMask = [
-            Corners.topLeft,
-            Corners.topRight,
-            Corners.bottomLeft,
-            Corners.bottomRight
-        ],
-        
-        toRadius radius : CGFloat = cornerRadius
+        corners         : CACornerMask = CACornerMask( Corners.allCorners ),
+        toRadius radius : CGFloat      = cornerRadius
     ) {
-        self.layer.cornerRadius  = radius
-        self.layer.maskedCorners = corners
+        self.layer.cornerRadius        = radius
+        self.layer.maskedCorners       = corners
     }
 }

@@ -21,6 +21,13 @@
 		30F8027E232C771300B90894 /* AvatarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8027D232C771300B90894 /* AvatarScreen.swift */; };
 		30F80280232C77EB00B90894 /* TrackScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8027F232C77EB00B90894 /* TrackScreen.swift */; };
 		30F80282232C7B0900B90894 /* DisplayNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80281232C7B0900B90894 /* DisplayNameScreen.swift */; };
+		30F80284232D5EF800B90894 /* GameWell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80283232D5EF800B90894 /* GameWell.swift */; };
+		30F80286232D5F4F00B90894 /* BulbType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80285232D5F4F00B90894 /* BulbType.swift */; };
+		30F80288232D5FA400B90894 /* TrafficLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80287232D5FA400B90894 /* TrafficLight.swift */; };
+		30F8028A232D63D200B90894 /* Bulb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80289232D63D200B90894 /* Bulb.swift */; };
+		30F8028C232D640A00B90894 /* ThemeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8028B232D640A00B90894 /* ThemeEngine.swift */; };
+		30F80290232D658100B90894 /* BulbWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8028F232D658100B90894 /* BulbWeight.swift */; };
+		30F80292232D83EA00B90894 /* BendAndRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80291232D83EA00B90894 /* BendAndRotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +47,13 @@
 		30F8027D232C771300B90894 /* AvatarScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarScreen.swift; sourceTree = "<group>"; };
 		30F8027F232C77EB00B90894 /* TrackScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackScreen.swift; sourceTree = "<group>"; };
 		30F80281232C7B0900B90894 /* DisplayNameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNameScreen.swift; sourceTree = "<group>"; };
+		30F80283232D5EF800B90894 /* GameWell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWell.swift; sourceTree = "<group>"; };
+		30F80285232D5F4F00B90894 /* BulbType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulbType.swift; sourceTree = "<group>"; };
+		30F80287232D5FA400B90894 /* TrafficLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLight.swift; sourceTree = "<group>"; };
+		30F80289232D63D200B90894 /* Bulb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulb.swift; sourceTree = "<group>"; };
+		30F8028B232D640A00B90894 /* ThemeEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEngine.swift; sourceTree = "<group>"; };
+		30F8028F232D658100B90894 /* BulbWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulbWeight.swift; sourceTree = "<group>"; };
+		30F80291232D83EA00B90894 /* BendAndRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BendAndRotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +96,13 @@
 				30F8027B232C737A00B90894 /* LeaderboardScreen.swift */,
 				308DFF462329B962001567B1 /* Main.storyboard */,
 				30F80275232C482C00B90894 /* RoundedCornerView.swift */,
+				30F80285232D5F4F00B90894 /* BulbType.swift */,
+				30F8028F232D658100B90894 /* BulbWeight.swift */,
+				30F8028B232D640A00B90894 /* ThemeEngine.swift */,
+				30F80289232D63D200B90894 /* Bulb.swift */,
+				30F80291232D83EA00B90894 /* BendAndRotation.swift */,
+				30F80287232D5FA400B90894 /* TrafficLight.swift */,
+				30F80283232D5EF800B90894 /* GameWell.swift */,
 				30F80277232C612800B90894 /* SimpleRepeater.swift */,
 				308DFF4C2329B963001567B1 /* Assets.xcassets */,
 				308DFF4E2329B963001567B1 /* LaunchScreen.storyboard */,
@@ -162,6 +183,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30F8028A232D63D200B90894 /* Bulb.swift in Sources */,
+				30F80288232D5FA400B90894 /* TrafficLight.swift in Sources */,
 				30F80282232C7B0900B90894 /* DisplayNameScreen.swift in Sources */,
 				30F80276232C482C00B90894 /* RoundedCornerView.swift in Sources */,
 				30F8027E232C771300B90894 /* AvatarScreen.swift in Sources */,
@@ -169,9 +192,14 @@
 				30F80280232C77EB00B90894 /* TrackScreen.swift in Sources */,
 				308DFF452329B962001567B1 /* GameScreen.swift in Sources */,
 				308DFF432329B962001567B1 /* AppDelegate.swift in Sources */,
+				30F80290232D658100B90894 /* BulbWeight.swift in Sources */,
+				30F8028C232D640A00B90894 /* ThemeEngine.swift in Sources */,
+				30F80284232D5EF800B90894 /* GameWell.swift in Sources */,
 				308DFF4B2329B962001567B1 /* Scrambled_Stoplights.xcdatamodeld in Sources */,
 				308DFF582329BC07001567B1 /* GlobalConstants.swift in Sources */,
+				30F80292232D83EA00B90894 /* BendAndRotation.swift in Sources */,
 				30F80278232C612800B90894 /* SimpleRepeater.swift in Sources */,
+				30F80286232D5F4F00B90894 /* BulbType.swift in Sources */,
 				30F8027C232C737A00B90894 /* LeaderboardScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
