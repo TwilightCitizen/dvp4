@@ -12,7 +12,8 @@ import UIKit
 class GameWell {
     // Properties
     
-    private var contents : [ [ Bulb ] ]
+    private( set ) var contents     : [ [ Bulb ] ]
+    private        var trafficLight : TrafficLight?
     
     // Initializers
     
@@ -39,5 +40,19 @@ class GameWell {
                 ( col.element as! UIImageView ).image = contents[ row.offset ][ col.offset ].image
             }
         }
+        
+        if let light = trafficLight {
+            trafficLight?.contents.enumerated().forEach { row in
+                row.element.enumerated().forEach { col in
+                    ( screenWell.subviews[ light.top + row.offset ].subviews[ light.left + col.offset ] as! UIImageView ).image =
+                        trafficLight?.contents[ row.offset ][ col.offset ].image
+                }
+            }
+        }
+    }
+    
+    func addTrafficLight( _ trafficLight : TrafficLight ) {
+        trafficLight.left = ( contents.first!.count - trafficLight.contents.first!.count ) / 2
+        self.trafficLight = trafficLight
     }
 }

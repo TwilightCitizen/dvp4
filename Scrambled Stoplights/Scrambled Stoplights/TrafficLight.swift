@@ -21,7 +21,10 @@ class TrafficLight {
     
     private lazy var shape = { return BendAndRotation.allCases.randomElement()! }()
     
-    private      var contents : [ [ Bulb ] ] { return shape.ofBulbs( bulbs ) }
+                 var contents : [ [ Bulb ] ] { return shape.ofBulbs( bulbs ) }
+    
+                 var top   =  0
+                 var left  = 0
     
     // Intitializers
     

@@ -31,6 +31,8 @@ class GameScreen : UIViewController {
         roundCorners()
         
         gameWell = GameWell( matching : screenWell )
+        
+        gameWell.addTrafficLight( TrafficLight() )
         gameWell.drawTo( screenWell : screenWell )
     }
     
