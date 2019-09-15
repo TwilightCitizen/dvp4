@@ -19,7 +19,7 @@ class SimpleRepeater {
     }
     
     // Start Repeater Every Interval Seconds
-    func Start( doing action : ( () -> Void )? = nil ) {
+    func start( doing action : ( () -> Void )? = nil ) {
         // Action to Repeat Every Interval
         func repeater( timer : Timer ) { if let action = action { action() } }
         

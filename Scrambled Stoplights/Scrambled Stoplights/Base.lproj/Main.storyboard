@@ -3311,7 +3311,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rpr-vW-2HN"/>
                     <connections>
-                        <outlet property="screenWell" destination="3cU-ho-UOl" id="5ey-7I-OCg"/>
+                        <outlet property="playPause" destination="aDV-lH-gXW" id="oyE-cC-G1A"/>
+                        <outlet property="well" destination="3cU-ho-UOl" id="hoM-oI-6ff"/>
                         <outletCollection property="roundAllCorners" destination="ntC-il-kVr" collectionClass="NSMutableArray" id="WFm-Uy-9y0"/>
                         <outletCollection property="roundAllCorners" destination="NW0-ND-TOr" collectionClass="NSMutableArray" id="31Z-AB-6oC"/>
                         <outletCollection property="roundTopCorners" destination="Zs7-c4-Frt" collectionClass="NSMutableArray" id="pZ2-YE-uAU"/>

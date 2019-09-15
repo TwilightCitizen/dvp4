@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameScreen : UIViewController {
+class GameScreen : UIViewController, GameDelegate {
     // Outlets
     
     @IBOutlet      var roundAllCorners    : [ UIView ]!
@@ -16,13 +16,14 @@ class GameScreen : UIViewController {
     @IBOutlet      var roundBottomCorners : [ UIView ]!
     @IBOutlet      var roundOuterCorners  : [ UIImageView ]!
     
-    @IBOutlet weak var screenWell           : UIView!
+    @IBOutlet weak var well               : UIView!
+    
+    @IBOutlet weak var playPause          : UIImageView!
     
     // Properties
     
-    private        var controlRepeater      : SimpleRepeater!
-    private        var gameRepeater         : SimpleRepeater!
-    private        var gameWell             : GameWell!
+    private( set ) lazy var game          = { return Game( delegate : self ) }()
+    private        var repeater           = SimpleRepeater( every : fastInterval )
     
     // Methods
     
@@ -30,17 +31,6 @@ class GameScreen : UIViewController {
         super.viewDidLoad()
         
         roundCorners()
-        
-        gameWell = GameWell( matching : screenWell )
-        
-        gameWell.addTrafficLight()
-        
-        gameRepeater = SimpleRepeater( every : slowRepeat )
-        
-        gameRepeater.Start {
-            self.gameWell.dropDown()
-            self.gameWell.drawTo( screenWell : self.screenWell )
-        }
     }
     
     override func viewWillAppear( _ animated : Bool ) {
@@ -58,146 +48,108 @@ class GameScreen : UIViewController {
         zip( roundOuterCorners, Corners.allCorners ).forEach { ( view, corner ) in view.round( corners: [ corner ] ) }
     }
     
-    @IBAction func seeLeaderboardTapped( _ sender : UIButton ) {
+    func scoreDidChange( fromOldScore : Int, toNewScore : Int ) {
     }
     
-    @IBAction func seeSettingsTapped(    _ sender : UIButton ) {
-    }
+    func gameDidStart() { playPause.image = UIImage( named : "Pause" ) }
+    func gameDidStop()  { playPause.image = UIImage( named : "Play" ) }
+    
+    @IBAction func seeLeaderboardTapped( _ sender : UIButton ) {}
+    
+    @IBAction func seeSettingsTapped(    _ sender : UIButton ) {}
     
     @IBAction func playPauseGameTapped(  _ sender : UIButton ) {
+        if game.running { game.stop() } else { game.start() }
     }
     
     @IBAction func pinchInWell(          _ sender : UIPinchGestureRecognizer ) {
         guard sender.state == .ended else { return }
         
-        if sender.scale > 1 {
-            gameWell.cycleUp()
-            gameWell.drawTo( screenWell : screenWell )
-        } else {
-            gameWell.cycleDown()
-            gameWell.drawTo( screenWell : screenWell )
-        }
+        if sender.scale > 1 { game.cycleUp() } else { game.cycleDown() }
     }
     
     @IBAction func cycleUpTapped(        _ sender : UIButton ) {
-        gameWell.cycleUp()
-        gameWell.drawTo( screenWell : screenWell )
+        game.cycleUp()
     }
     
     @IBAction func cycleUpHeld(          _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) {
-            self.gameWell.cycleUp()
-            self.gameWell.drawTo( screenWell : self.screenWell )
-        }
+        whileHolding( sender ) { self.game.cycleUp() }
     }
     
     @IBAction func cycleDownTapped(      _ sender : UIButton ) {
-        gameWell.cycleDown()
-        gameWell.drawTo( screenWell : screenWell )
+        game.cycleDown()
     }
     
     @IBAction func cycleDownHeld(        _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) {
-            self.gameWell.cycleDown()
-            self.gameWell.drawTo( screenWell : self.screenWell )
-        }
+        whileHolding( sender ) { self.game.cycleDown() }
     }
     
     @IBAction func rotatedInWell(        _ sender : UIRotationGestureRecognizer  ) {
         guard sender.state == .ended else { return }
 
-        if sender.rotation < 0 {
-            gameWell.rotateCounter()
-        } else {
-            gameWell.rotateClock()
-        }
-        
-        gameWell.drawTo( screenWell : screenWell )
+        if sender.rotation < 0 { game.rotateCounter() } else { game.rotateClock() }
     }
     
     @IBAction func rotateCounterTapped(  _ sender : UIButton ) {
-        gameWell.rotateCounter()
-        gameWell.drawTo( screenWell : screenWell )
+        game.rotateCounter()
     }
     
     @IBAction func rotateCounterHeld(    _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) {
-            self.gameWell.rotateCounter()
-            self.gameWell.drawTo( screenWell : self.screenWell )
-        }
+        whileHolding( sender ) { self.game.rotateCounter() }
     }
     
     @IBAction func rotateClockTapped(    _ sender : UIButton ) {
-        gameWell.rotateClock()
-        gameWell.drawTo( screenWell : screenWell )
+        game.rotateClock()
     }
     
     @IBAction func rotateClockHeld(      _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) {
-            self.gameWell.rotateClock()
-            self.gameWell.drawTo( screenWell : self.screenWell )
-        }
+        whileHolding( sender ) { self.game.rotateClock() }
     }
     
     @IBAction func swipeLeftInWell(      _ sender : UISwipeGestureRecognizer     ) {
-        gameWell.moveLeft()
-        gameWell.drawTo( screenWell : screenWell )
+        game.moveLeft()
     }
     
     @IBAction func swipeRightInWell(     _ sender : UISwipeGestureRecognizer     ) {
-        gameWell.moveRight()
-        gameWell.drawTo( screenWell : screenWell )
+        game.moveRight()
     }
     
     @IBAction func swipeDownInWell(      _ sender : UISwipeGestureRecognizer     ) {
-        gameWell.dropDown()
-        gameWell.drawTo( screenWell : screenWell )
+        game.dropDown()
     }
     
     @IBAction func moveLeftTapped(       _ sender : UIButton ) {
-        gameWell.moveLeft()
-        gameWell.drawTo( screenWell : screenWell )
+        game.moveLeft()
     }
     
     @IBAction func moveLeftHeld(         _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) {
-            self.gameWell.moveLeft()
-            self.gameWell.drawTo( screenWell : self.screenWell )
-        }
+        whileHolding( sender ) { self.game.moveLeft() }
     }
     
     @IBAction func moveRightTapped(      _ sender : UIButton ) {
-        gameWell.moveRight()
-        gameWell.drawTo( screenWell : screenWell )
+        game.moveRight()
     }
     
     @IBAction func moveRightHeld(        _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) {
-            self.gameWell.moveRight()
-            self.gameWell.drawTo( screenWell : self.screenWell )
-        }
+        whileHolding( sender ) { self.game.moveRight() }
     }
     
     @IBAction func dropDownTapped(       _ sender : UIButton ) {
-        gameWell.dropDown()
-        gameWell.drawTo( screenWell : screenWell )
+        game.dropDown()
     }
     
     @IBAction func dropDownHeld(         _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) {
-            self.gameWell.dropDown()
-            self.gameWell.drawTo( screenWell : self.screenWell )
-        }
+        whileHolding( sender ) { self.game.dropDown() }
     }
     
     func whileHolding( _ sender : UILongPressGestureRecognizer, repeatAction action : ( () -> Void )? = nil ) {
         switch sender.state {
             case .began :
-                controlRepeater = SimpleRepeater( every : fastRepeat )
+                repeater = SimpleRepeater( every : fastInterval )
                 
-                controlRepeater.Start { if let action = action { action() } }
+                repeater.start { if let action = action { action() } }
             
-            default : controlRepeater.stop()
+            default : repeater.stop()
         }
     }
 }

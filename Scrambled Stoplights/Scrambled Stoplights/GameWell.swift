@@ -13,7 +13,7 @@ class GameWell {
     // Properties
     
     private( set ) var contents     : [ [ Bulb ] ]
-    private        var trafficLight : TrafficLight?
+    private( set ) var trafficLight : TrafficLight?
     
     // Initializers
     
@@ -34,8 +34,8 @@ class GameWell {
     
     // Methods
     
-    func drawTo( screenWell : UIView ) {
-        screenWell.subviews.enumerated().forEach { row in
+    func drawTo( well : UIView ) {
+        well.subviews.enumerated().forEach { row in
             row.element.subviews.enumerated().forEach { col in
                 ( col.element as! UIImageView ).image = contents[ row.offset ][ col.offset ].image
             }
@@ -47,13 +47,10 @@ class GameWell {
             row.element.enumerated().forEach { col in
                 let bulb = light.contents[ row.offset ][ col.offset ]
                 
-                guard
-                    bulb.bulbType != .empty,
-                    row.offset + light.top >= 0
-                else { return }
+                guard bulb.bulbType != .empty, row.offset + light.top >= 0 else { return }
                 
-                ( screenWell.subviews[ light.top  + row.offset ]
-                            .subviews[ light.left + col.offset ] as! UIImageView ).image = bulb.image
+                ( well.subviews[ light.top  + row.offset ]
+                    .subviews[ light.left + col.offset ] as! UIImageView ).image = bulb.image
             }
         }
     }
