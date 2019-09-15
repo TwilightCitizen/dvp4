@@ -41,12 +41,17 @@ class GameWell {
             }
         }
         
-        if let light = trafficLight {
-            trafficLight?.contents.enumerated().forEach { row in
-                row.element.enumerated().forEach { col in
-                    ( screenWell.subviews[ light.top + row.offset ].subviews[ light.left + col.offset ] as! UIImageView ).image =
-                        trafficLight?.contents[ row.offset ][ col.offset ].image
-                }
+        guard let light = trafficLight else { return }
+        
+        trafficLight?.contents.enumerated().forEach { row in
+            row.element.enumerated().forEach { col in
+                guard
+                    let bulb = trafficLight?.contents[ row.offset ][ col.offset ],
+                    bulb.bulbType != .empty
+                else { return }
+                
+                ( screenWell.subviews[ light.top + row.offset ]
+                            .subviews[ light.left + col.offset ] as! UIImageView ).image = bulb.image
             }
         }
     }

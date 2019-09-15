@@ -69,25 +69,35 @@ class GameScreen : UIViewController {
         
         if sender.scale > 1 {
             gameWell.cycleUp()
+            gameWell.drawTo( screenWell : screenWell )
         } else {
             gameWell.cycleDown()
+            gameWell.drawTo( screenWell : screenWell )
         }
     }
     
     @IBAction func cycleUpTapped(        _ sender : UIButton ) {
         gameWell.cycleUp()
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     @IBAction func cycleUpHeld(          _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { self.gameWell.cycleUp() }
+        whileHolding( sender ) {
+            self.gameWell.cycleUp()
+            self.gameWell.drawTo( screenWell : self.screenWell )
+        }
     }
     
     @IBAction func cycleDownTapped(      _ sender : UIButton ) {
         gameWell.cycleDown()
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     @IBAction func cycleDownHeld(        _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { self.gameWell.cycleDown() }
+        whileHolding( sender ) {
+            self.gameWell.cycleDown()
+            self.gameWell.drawTo( screenWell : self.screenWell )
+        }
     }
     
     @IBAction func rotatedInWell(        _ sender : UIRotationGestureRecognizer  ) {
@@ -98,58 +108,83 @@ class GameScreen : UIViewController {
         } else {
             gameWell.rotateClock()
         }
+        
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     @IBAction func rotateCounterTapped(  _ sender : UIButton ) {
         gameWell.rotateCounter()
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     @IBAction func rotateCounterHeld(    _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { self.gameWell.rotateCounter() }
+        whileHolding( sender ) {
+            self.gameWell.rotateCounter()
+            self.gameWell.drawTo( screenWell : self.screenWell )
+        }
     }
     
     @IBAction func rotateClockTapped(    _ sender : UIButton ) {
         gameWell.rotateClock()
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     @IBAction func rotateClockHeld(      _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { self.gameWell.rotateClock() }
+        whileHolding( sender ) {
+            self.gameWell.rotateClock()
+            self.gameWell.drawTo( screenWell : self.screenWell )
+        }
     }
     
     @IBAction func swipeLeftInWell(      _ sender : UISwipeGestureRecognizer     ) {
         gameWell.moveLeft()
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     @IBAction func swipeRightInWell(     _ sender : UISwipeGestureRecognizer     ) {
         gameWell.moveRight()
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     @IBAction func swipeDownInWell(      _ sender : UISwipeGestureRecognizer     ) {
         gameWell.dropDown()
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     @IBAction func moveLeftTapped(       _ sender : UIButton ) {
         gameWell.moveLeft()
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     @IBAction func moveLeftHeld(         _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { self.gameWell.moveLeft() }
+        whileHolding( sender ) {
+            self.gameWell.moveLeft()
+            self.gameWell.drawTo( screenWell : self.screenWell )
+        }
     }
     
     @IBAction func moveRightTapped(      _ sender : UIButton ) {
         gameWell.moveRight()
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     @IBAction func moveRightHeld(        _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { self.gameWell.moveRight() }
+        whileHolding( sender ) {
+            self.gameWell.moveRight()
+            self.gameWell.drawTo( screenWell : self.screenWell )
+        }
     }
     
     @IBAction func dropDownTapped(       _ sender : UIButton ) {
         gameWell.dropDown()
+        gameWell.drawTo( screenWell : screenWell )
     }
     
     @IBAction func dropDownHeld(         _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { self.gameWell.dropDown() }
+        whileHolding( sender ) {
+            self.gameWell.dropDown()
+            self.gameWell.drawTo( screenWell : self.screenWell )
+        }
     }
     
     func whileHolding( _ sender : UILongPressGestureRecognizer, repeatAction action : ( () -> Void )? = nil ) {
