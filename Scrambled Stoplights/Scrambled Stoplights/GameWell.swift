@@ -58,8 +58,157 @@ class GameWell {
         }
     }
     
+    func willCollide( trafficLight : TrafficLight, fromAction : ( TrafficLight ) -> () -> () ) -> Bool {
+        let tested = TrafficLight( top : trafficLight.top, left : trafficLight.left, shape : trafficLight.shape )
+        let action = fromAction( tested )
+        
+        action()
+        
+        for row in tested.contents.enumerated() { for col in row.element.enumerated() {
+            // Ignore Empty Bulbs
+            guard col.element.bulbType != .empty else { continue }
+            
+            // Beyond Well Bounds
+            if row.offset + tested.top  >= contents.count        ||
+               col.offset + tested.left >= contents.first!.count ||
+               col.offset + tested.left <  0 { return true }
+            
+            // Ignore Yet to Drop In Bulbs
+            guard row.offset + tested.top >= 0 else { continue }
+            
+            // Overlapping Another Bulb
+            if contents[ row.offset + tested.top ][ col.offset + tested.left ].bulbType != .empty { return true }
+        } }
+        
+        return false
+    }
+    
+    func landTrafficLight() {
+        guard let light = trafficLight else { return }
+        
+        for row in light.contents.enumerated() { for col in row.element.enumerated() {
+            // Ignore Empty Bulbs
+            guard col.element.bulbType != .empty else { continue }
+            
+            // Landing Outside of Well Bounds is Game Over
+            guard row.offset + light.top > 0 else {
+                print( "Game Over" )
+                trafficLight = nil
+                return
+            }
+            
+            contents[ row.offset + light.top ][ col.offset + light.left ] = col.element
+        } }
+    }
+    
+    func settleLandedBulbs() {
+        for _ in contents { for row in contents.enumerated() { for col in row.element.enumerated() {
+            if col.element.bulbType != .empty && row.offset + 1 < contents.count &&
+               contents[ row.offset + 1 ][ col.offset ].bulbType == .empty {
+                
+                contents[ row.offset + 1 ][ col.offset ] = col.element
+                contents[ row.offset     ][ col.offset ] = Bulb( ofType : .empty )
+            }
+        } } }
+    }
+    
+    func clearLandedBulbs() {
+        var clearOccured = false
+        
+        for row in contents.enumerated() { for col in row.element.enumerated() {
+            guard col.element.bulbType != .empty && col.element.bulbType != .clear else { continue }
+            
+            let adjacent = getAdjacentBulbs( row : row.offset, col : col.offset  )
+            let matching = adjacent.filter { $0.bulbType == col.element.bulbType }
+            
+            if matching.count >= col.element.bulbWeight!.rawValue + 1 {
+                contents[ row.offset ][ col.offset ].clearable = true
+            }
+        } }
+        
+        for row in contents.enumerated() { for col in row.element.enumerated() {
+            if col.element.clearable {
+                contents[ row.offset ][ col.offset ] = Bulb( ofType : .clear )
+                clearOccured = true
+            }
+        } }
+        
+        if clearOccured {
+            for row in contents.enumerated() { for col in row.element.enumerated() {
+                if col.element.bulbType == .clear {
+                    contents[ row.offset ][ col.offset ] = Bulb( ofType : .empty )
+                }
+            } }
+
+            settleLandedBulbs()
+            clearLandedBulbs()
+        }
+    }
+    
+    func getAdjacentBulbs( row : Int, col : Int ) -> [ Bulb ] {
+        let firstRow = 0
+        let lastRow  = contents.count        - 1
+        
+        let firstCol = 0
+        let lastCol  = contents.first!.count - 1
+        
+        switch ( row, col ) {
+            case ( firstRow, firstCol ) : return [
+                contents[ row     ][ col + 1 ],
+                contents[ row + 1 ][ col     ]
+            ]
+            
+            case ( firstRow, lastCol  ) : return [
+                contents[ row     ][ col - 1 ],
+                contents[ row + 1 ][ col     ]
+            ]
+            
+            case ( firstRow, _        ) : return [
+                contents[ row     ][ col - 1 ],
+                contents[ row     ][ col + 1 ],
+                contents[ row + 1 ][ col     ]
+            ]
+            
+            case ( lastRow,  firstCol ) : return [
+                contents[ row - 1 ][ col     ],
+                contents[ row     ][ col + 1 ]
+            ]
+            
+            case ( lastRow,  lastCol  ) : return [
+                contents[ row - 1 ][ col     ],
+                contents[ row     ][ col - 1 ]
+            ]
+            
+            case ( lastRow,  _        ) : return [
+                contents[ row - 1 ][ col     ],
+                contents[ row     ][ col - 1 ],
+                contents[ row     ][ col + 1 ]
+            ]
+            
+            case ( _,        firstCol ) : return [
+                contents[ row - 1 ][ col     ],
+                contents[ row     ][ col + 1 ],
+                contents[ row + 1 ][ col     ],
+            ]
+            
+            case ( _,        lastCol ) : return [
+                contents[ row - 1 ][ col     ],
+                contents[ row     ][ col - 1 ],
+                contents[ row + 1 ][ col     ]
+            ]
+                
+            default                     : return [
+                contents[ row - 1 ][ col     ],
+                contents[ row     ][ col - 1 ],
+                contents[ row     ][ col + 1 ],
+                contents[ row + 1 ][ col     ]
+            ]
+            
+        }
+    }
+    
     func addTrafficLight( ) {
-        self.trafficLight = TrafficLight( top  : -3, left : ( contents.first!.count - 3 ) / 2 )
+        trafficLight = TrafficLight( top  : -3, left : ( contents.first!.count - 3 ) / 2 )
     }
     
     func cycleUp() {
@@ -109,33 +258,13 @@ class GameWell {
     func dropDown() {
         guard let light = trafficLight else { return }
         
-        if !willCollide( trafficLight: light, fromAction: TrafficLight.dropDown ) {
+        if willCollide( trafficLight: light, fromAction: TrafficLight.dropDown ) {
+            landTrafficLight()
+            settleLandedBulbs()
+            clearLandedBulbs()
+            addTrafficLight()
+        } else {
             light.dropDown()
         }
-    }
-    
-    func willCollide( trafficLight : TrafficLight, fromAction : ( TrafficLight ) -> () -> () ) -> Bool {
-        let tested = TrafficLight( top : trafficLight.top, left : trafficLight.left, shape : trafficLight.shape )
-        let action = fromAction( tested )
-        
-        action()
-        
-        for row in tested.contents.enumerated() {
-            for col in row.element.enumerated() {
-                if col.element.bulbType != .empty {
-                    if row.offset + tested.top  >= contents.count        ||
-                       col.offset + tested.left >= contents.first!.count ||
-                       col.offset + tested.left <  0 {
-                        // Beyond Well Bounds
-                        return true
-                    } else if contents[ row.offset ][ col.offset ].bulbType != .empty {
-                        // Overlapping Another Bulb
-                        return true
-                    }
-                }
-            }
-        }
-        
-        return false
     }
 }

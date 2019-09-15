@@ -48,5 +48,5 @@ enum ReusableCell : String, CustomStringConvertible {
 
 let cornerRadius     : CGFloat      = 10
 let slowRepeat       : TimeInterval =  1.0
-let fastRepeat       : TimeInterval =  0.05
+let fastRepeat       : TimeInterval =  0.025
 let fortyFiveDegrees : CGFloat      =  0.785

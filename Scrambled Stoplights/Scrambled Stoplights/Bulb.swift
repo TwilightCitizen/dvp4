@@ -14,6 +14,7 @@ class Bulb {
     
     let bulbType   : BulbType
     let bulbWeight : BulbWeight?
+    var clearable  = false
     
     var image      : UIImage { return UIImage( named :
         Theme.current.description + bulbType.description + ( bulbWeight?.description ?? "" )

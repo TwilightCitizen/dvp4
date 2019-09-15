@@ -34,14 +34,13 @@ class GameScreen : UIViewController {
         gameWell = GameWell( matching : screenWell )
         
         gameWell.addTrafficLight()
-        gameWell.drawTo( screenWell : screenWell )
         
-        gameRepeater = SimpleRepeater( every : fastRepeat )
+        gameRepeater = SimpleRepeater( every : slowRepeat )
         
-        /* gameRepeater.Start {
+        gameRepeater.Start {
             self.gameWell.dropDown()
             self.gameWell.drawTo( screenWell : self.screenWell )
-        } */
+        }
     }
     
     override func viewWillAppear( _ animated : Bool ) {
