@@ -29,4 +29,12 @@ class TrafficLight {
     // Intitializers
     
     // Methods
+    
+    func cycleUp()       { bulbs = Array( bulbs.dropFirst() ) + [ bulbs.first! ] }
+    func cycleDown()     { bulbs = [ bulbs.last! ] + Array( bulbs.dropLast() ) }
+    func rotateCounter() { shape = shape.next }
+    func rotateClock()   { shape = shape.previous }
+    func moveLeft()      { left  = left - 1 }
+    func moveRight()     { left  = left + 1 }
+    func dropDown()      { top = top + 1 }
 }

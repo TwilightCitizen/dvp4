@@ -52,7 +52,35 @@ class GameWell {
     }
     
     func addTrafficLight( _ trafficLight : TrafficLight ) {
-        trafficLight.left = ( contents.first!.count - trafficLight.contents.first!.count ) / 2
+        trafficLight.left = ( contents.first!.count - trafficLight.contents.first!.count / 2 ) / 2
         self.trafficLight = trafficLight
+    }
+    
+    func cycleUp() {
+        trafficLight?.cycleUp()
+    }
+    
+    func cycleDown() {
+        trafficLight?.cycleDown()
+    }
+    
+    func rotateCounter() {
+        trafficLight?.rotateCounter()
+    }
+    
+    func rotateClock() {
+        trafficLight?.rotateClock()
+    }
+    
+    func moveLeft() {
+        trafficLight?.moveLeft()
+    }
+    
+    func moveRight() {
+        trafficLight?.moveRight()
+    }
+    
+    func dropDown() {
+        trafficLight?.dropDown()
     }
 }

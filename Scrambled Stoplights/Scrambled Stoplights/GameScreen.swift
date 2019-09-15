@@ -20,7 +20,8 @@ class GameScreen : UIViewController {
     
     // Properties
     
-    private        var repeater             : SimpleRepeater!
+    private        var controlRepeater      : SimpleRepeater!
+    private        var gameRepeater         : SimpleRepeater!
     private        var gameWell             : GameWell!
     
     // Methods
@@ -33,7 +34,10 @@ class GameScreen : UIViewController {
         gameWell = GameWell( matching : screenWell )
         
         gameWell.addTrafficLight( TrafficLight() )
-        gameWell.drawTo( screenWell : screenWell )
+        
+        gameRepeater = SimpleRepeater( every : slowRepeat )
+        
+        gameRepeater.Start { self.gameWell.drawTo( screenWell : self.screenWell ) }
     }
     
     override func viewWillAppear( _ animated : Bool ) {
@@ -64,98 +68,98 @@ class GameScreen : UIViewController {
         guard sender.state == .ended else { return }
         
         if sender.scale > 1 {
-            print( "Cycle Up Tapped"   )
+            gameWell.cycleUp()
         } else {
-            print( "Cycle Down Tapped" )
+            gameWell.cycleDown()
         }
     }
     
     @IBAction func cycleUpTapped(        _ sender : UIButton ) {
-        print( "Cycle Up Tapped" )
+        gameWell.cycleUp()
     }
     
     @IBAction func cycleUpHeld(          _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { print( "Cycle Up Tapped" ) }
+        whileHolding( sender ) { self.gameWell.cycleUp() }
     }
     
     @IBAction func cycleDownTapped(      _ sender : UIButton ) {
-        print( "Cycle Down Tapped" )
+        gameWell.cycleDown()
     }
     
     @IBAction func cycleDownHeld(        _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { print( "Cycle Down Tapped" ) }
+        whileHolding( sender ) { self.gameWell.cycleDown() }
     }
     
     @IBAction func rotatedInWell(        _ sender : UIRotationGestureRecognizer  ) {
         guard sender.state == .ended else { return }
 
         if sender.rotation < 0 {
-            print( "Rotate Counter Tapped" )
+            gameWell.rotateCounter()
         } else {
-            print( "Rotate Clock Tapped" )
+            gameWell.rotateClock()
         }
     }
     
     @IBAction func rotateCounterTapped(  _ sender : UIButton ) {
-        print( "Rotate Counter Tapped" )
+        gameWell.rotateCounter()
     }
     
     @IBAction func rotateCounterHeld(    _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { print( "Rotate Counter Tapped" ) }
+        whileHolding( sender ) { self.gameWell.rotateCounter() }
     }
     
     @IBAction func rotateClockTapped(    _ sender : UIButton ) {
-        print( "Rotate Clock Tapped" )
+        gameWell.rotateClock()
     }
     
     @IBAction func rotateClockHeld(      _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { print( "Rotate Clock Tapped" ) }
+        whileHolding( sender ) { self.gameWell.rotateClock() }
     }
     
     @IBAction func swipeLeftInWell(      _ sender : UISwipeGestureRecognizer     ) {
-        print( "Move Left Tapped" )
+        gameWell.moveLeft()
     }
     
     @IBAction func swipeRightInWell(     _ sender : UISwipeGestureRecognizer     ) {
-        print( "Move Right Tapped" )
+        gameWell.moveRight()
     }
     
     @IBAction func swipeDownInWell(      _ sender : UISwipeGestureRecognizer     ) {
-        print( "Drop Down Tapped" )
+        gameWell.dropDown()
     }
     
     @IBAction func moveLeftTapped(       _ sender : UIButton ) {
-        print( "Move Left Tapped" )
+        gameWell.moveLeft()
     }
     
     @IBAction func moveLeftHeld(         _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { print( "Move Left Tapped" ) }
+        whileHolding( sender ) { self.gameWell.moveLeft() }
     }
     
     @IBAction func moveRightTapped(      _ sender : UIButton ) {
-        print( "Move Right Tapped" )
+        gameWell.moveRight()
     }
     
     @IBAction func moveRightHeld(        _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { print( "Move Right Tapped" ) }
+        whileHolding( sender ) { self.gameWell.moveRight() }
     }
     
     @IBAction func dropDownTapped(       _ sender : UIButton ) {
-        print( "Drop Down Tapped" )
+        gameWell.dropDown()
     }
     
     @IBAction func dropDownHeld(         _ sender : UILongPressGestureRecognizer ) {
-        whileHolding( sender ) { print( "Drop Down Tapped" ) }
+        whileHolding( sender ) { self.gameWell.dropDown() }
     }
     
     func whileHolding( _ sender : UILongPressGestureRecognizer, repeatAction action : ( () -> Void )? = nil ) {
         switch sender.state {
             case .began :
-                repeater = SimpleRepeater( every : repeatInterval )
+                controlRepeater = SimpleRepeater( every : fastRepeat )
                 
-                repeater.Start { if let action = action { action() } }
+                controlRepeater.Start { if let action = action { action() } }
             
-            default : repeater.stop()
+            default : controlRepeater.stop()
         }
     }
 }
