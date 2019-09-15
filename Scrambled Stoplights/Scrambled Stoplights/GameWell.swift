@@ -58,36 +58,84 @@ class GameWell {
         }
     }
     
-    func addTrafficLight( _ trafficLight : TrafficLight ) {
-        trafficLight.left = ( contents.first!.count - trafficLight.contents.first!.count / 2 ) / 2
-        self.trafficLight = trafficLight
+    func addTrafficLight( ) {
+        self.trafficLight = TrafficLight( top  : -3, left : ( contents.first!.count - 3 ) / 2 )
     }
     
     func cycleUp() {
-        trafficLight?.cycleUp()
+        guard let light = trafficLight else { return }
+        
+        light.cycleUp()
     }
     
     func cycleDown() {
-        trafficLight?.cycleDown()
+        guard let light = trafficLight else { return }
+        
+        light.cycleDown()
     }
     
     func rotateCounter() {
-        trafficLight?.rotateCounter()
+        guard let light = trafficLight else { return }
+        
+        if !willCollide( trafficLight: light, fromAction: TrafficLight.rotateCounter ) {
+            light.rotateCounter()
+        }
     }
     
     func rotateClock() {
-        trafficLight?.rotateClock()
+        guard let light = trafficLight else { return }
+        
+        if !willCollide( trafficLight: light, fromAction: TrafficLight.rotateClock ) {
+            light.rotateClock()
+        }
     }
     
     func moveLeft() {
-        trafficLight?.moveLeft()
+        guard let light = trafficLight else { return }
+        
+        if !willCollide( trafficLight: light, fromAction: TrafficLight.moveLeft ) {
+            light.moveLeft()
+        }
     }
     
     func moveRight() {
-        trafficLight?.moveRight()
+        guard let light = trafficLight else { return }
+        
+        if !willCollide( trafficLight: light, fromAction: TrafficLight.moveRight ) {
+            light.moveRight()
+        }
     }
     
     func dropDown() {
-        trafficLight?.dropDown()
+        guard let light = trafficLight else { return }
+        
+        if !willCollide( trafficLight: light, fromAction: TrafficLight.dropDown ) {
+            light.dropDown()
+        }
+    }
+    
+    func willCollide( trafficLight : TrafficLight, fromAction : ( TrafficLight ) -> () -> () ) -> Bool {
+        let tested = TrafficLight( top : trafficLight.top, left : trafficLight.left, shape : trafficLight.shape )
+        let action = fromAction( tested )
+        
+        action()
+        
+        for row in tested.contents.enumerated() {
+            for col in row.element.enumerated() {
+                if col.element.bulbType != .empty {
+                    if row.offset + tested.top  >= contents.count        ||
+                       col.offset + tested.left >= contents.first!.count ||
+                       col.offset + tested.left <  0 {
+                        // Beyond Well Bounds
+                        return true
+                    } else if contents[ row.offset ][ col.offset ].bulbType != .empty {
+                        // Overlapping Another Bulb
+                        return true
+                    }
+                }
+            }
+        }
+        
+        return false
     }
 }

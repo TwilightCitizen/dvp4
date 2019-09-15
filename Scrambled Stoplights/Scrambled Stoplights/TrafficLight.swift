@@ -11,7 +11,7 @@ import Foundation
 class TrafficLight {
     // Properties
     
-    private lazy var bulbs = {
+    private( set ) lazy var bulbs = {
         return [
             Bulb( ofType : .stop, withWeight : BulbWeight.random ),
             Bulb( ofType : .slow, withWeight : BulbWeight.random ),
@@ -19,14 +19,18 @@ class TrafficLight {
         ].shuffled()
     }()
     
-    private lazy var shape = { return BendAndRotation.allCases.randomElement()! }()
-    
-                 var contents : [ [ Bulb ] ] { return shape.ofBulbs( bulbs ) }
-    
-                 var top   = -3
-                 var left  = 0
+    private( set )      var shape    : BendAndRotation
+                        var contents : [ [ Bulb ] ] { return shape.ofBulbs( bulbs ) }
+    private( set )      var top  : Int
+    private( set )      var left : Int
     
     // Intitializers
+    
+    init( top : Int, left : Int, shape : BendAndRotation? = nil ) {
+        self.top   = top
+        self.left  = left
+        self.shape = shape ?? BendAndRotation.allCases.randomElement()!
+    }
     
     // Methods
     
