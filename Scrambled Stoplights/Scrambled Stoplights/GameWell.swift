@@ -47,12 +47,13 @@ class GameWell {
             row.element.enumerated().forEach { col in
                 let bulb = light.contents[ row.offset ][ col.offset ]
                 
-                guard bulb.bulbType != .empty else { return }
+                guard
+                    bulb.bulbType != .empty,
+                    row.offset + light.top >= 0
+                else { return }
                 
-                if row.offset + light.top >= 0 {
-                    ( screenWell.subviews[ light.top  + row.offset ]
-                                .subviews[ light.left + col.offset ] as! UIImageView ).image = bulb.image
-                }
+                ( screenWell.subviews[ light.top  + row.offset ]
+                            .subviews[ light.left + col.offset ] as! UIImageView ).image = bulb.image
             }
         }
     }
