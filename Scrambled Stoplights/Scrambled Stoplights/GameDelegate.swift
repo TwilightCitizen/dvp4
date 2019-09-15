@@ -16,7 +16,8 @@ protocol GameDelegate {
     
     // Required Methods
     
-    func scoreDidChange( fromOldScore : Int, toNewScore : Int )
+    func scoreDidChange( from oldScore : Int, to newScore : Int )
     func gameDidStart()
     func gameDidStop()
+    func gameDidEnd( withFinalScore score : Int )
 }

@@ -20,6 +20,8 @@ class GameScreen : UIViewController, GameDelegate {
     
     @IBOutlet weak var playPause          : UIImageView!
     
+    @IBOutlet weak var scoreBoard         : UILabel!
+    
     // Properties
     
     private( set ) lazy var game          = { return Game( delegate : self ) }()
@@ -48,11 +50,22 @@ class GameScreen : UIViewController, GameDelegate {
         zip( roundOuterCorners, Corners.allCorners ).forEach { ( view, corner ) in view.round( corners: [ corner ] ) }
     }
     
-    func scoreDidChange( fromOldScore : Int, toNewScore : Int ) {
+    func scoreDidChange( from oldScore : Int, to newScore : Int ) {
+        scoreBoard.text = newScore.description
     }
     
     func gameDidStart() { playPause.image = UIImage( named : "Pause" ) }
     func gameDidStop()  { playPause.image = UIImage( named : "Play" ) }
+    
+    func gameDidEnd( withFinalScore score : Int ) {
+        repeater.stop()
+        
+        let alert = UIAlertController( title : "Game Over", message : "Nice job!  You scored \( score ) points!", preferredStyle : .alert )
+        
+        alert.addAction( UIAlertAction( title : "OK", style : .default, handler : nil ) )
+        
+        present( alert, animated : true )
+    }
     
     @IBAction func seeLeaderboardTapped( _ sender : UIButton ) {}
     

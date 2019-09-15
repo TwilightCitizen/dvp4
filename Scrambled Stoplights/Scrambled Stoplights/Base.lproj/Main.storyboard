@@ -3312,6 +3312,7 @@
                     <navigationItem key="navigationItem" id="Rpr-vW-2HN"/>
                     <connections>
                         <outlet property="playPause" destination="aDV-lH-gXW" id="oyE-cC-G1A"/>
+                        <outlet property="scoreBoard" destination="ogZ-8W-4Z7" id="8sY-co-k5o"/>
                         <outlet property="well" destination="3cU-ho-UOl" id="hoM-oI-6ff"/>
                         <outletCollection property="roundAllCorners" destination="ntC-il-kVr" collectionClass="NSMutableArray" id="WFm-Uy-9y0"/>
                         <outletCollection property="roundAllCorners" destination="NW0-ND-TOr" collectionClass="NSMutableArray" id="31Z-AB-6oC"/>

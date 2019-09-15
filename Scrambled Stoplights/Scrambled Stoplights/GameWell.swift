@@ -12,24 +12,29 @@ import UIKit
 class GameWell {
     // Properties
     
+    private( set ) var delegate     : GameWellDelegate
     private( set ) var contents     : [ [ Bulb ] ]
     private( set ) var trafficLight : TrafficLight?
     
     // Initializers
     
-    init( rows : Int, cols : Int ) {
+    init( rows : Int, cols : Int, delegate : GameWellDelegate ) {
         contents = ( 0...( rows - 1) ).map { row in
             return ( 0...( cols - 1 ) ).map { col in
                 return Bulb( ofType : .empty )
             }
         }
+        
+        self.delegate = delegate
+        
+        drawTo( well: delegate.delegate.well )
     }
     
-    convenience init( matching screenWell : UIView ) {
-        let rows = screenWell.subviews.count
-        let cols = screenWell.subviews.first!.subviews.count
+    convenience init( delegate : GameWellDelegate ) {
+        let rows = delegate.delegate.well.subviews.count
+        let cols = delegate.delegate.well.subviews.first!.subviews.count
         
-        self.init( rows : rows, cols : cols )
+        self.init( rows : rows, cols : cols, delegate : delegate )
     }
     
     // Methods
@@ -88,11 +93,7 @@ class GameWell {
             guard col.element.bulbType != .empty else { continue }
             
             // Landing Outside of Well Bounds is Game Over
-            guard row.offset + light.top > 0 else {
-                print( "Game Over" )
-                trafficLight = nil
-                return
-            }
+            guard row.offset + light.top > 0 else { delegate.wellDidOverflow();  return }
             
             contents[ row.offset + light.top ][ col.offset + light.left ] = col.element
         } }
@@ -134,6 +135,8 @@ class GameWell {
             for row in contents.enumerated() { for col in row.element.enumerated() {
                 if col.element.bulbType == .clear {
                     contents[ row.offset ][ col.offset ] = Bulb( ofType : .empty )
+                    
+                    delegate.clearDidOccur( forBulbs : 1 )
                 }
             } }
 
