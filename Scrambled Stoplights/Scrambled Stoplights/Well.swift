@@ -208,7 +208,7 @@ class Well {
     }
     
     func addTrafficLight( ) {
-        trafficLight = TrafficLight( top  : -3, left : ( contents.first!.count - 3 ) / 2 )
+        trafficLight = delegate.forecast.manifest()
     }
     
     func cycleUp() {

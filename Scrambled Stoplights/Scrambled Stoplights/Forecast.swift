@@ -11,15 +11,16 @@ import Foundation
 class Forecast< T > {
     // Properties
     
+    private( set ) var delegate  : ForecastDelegate
     private( set ) var contents  : [ T ]
     private        var generator : () -> T
     
     // Initializers
     
-    init( length : Int, generator : @escaping () -> T ) {
+    init( delegate : ForecastDelegate, length : Int, generator : @escaping () -> T ) {
+        self.delegate  = delegate
         self.generator = generator
-        
-        self.contents = ( 0..<length ).map { _ in return generator() }
+        self.contents  = ( 0..<length ).map { _ in return generator() }
     }
     
     // Methods

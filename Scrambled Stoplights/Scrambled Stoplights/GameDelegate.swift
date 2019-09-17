@@ -14,6 +14,8 @@ protocol GameDelegate {
     
     var well : UIView! { get set }
     
+    // TODO: Require a forecast of type [ UIView ]! where forecasted pieces can be drawn.
+    
     // Required Methods
     
     func scoreDidChange( from oldScore : Int, to newScore : Int )

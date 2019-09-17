@@ -9,11 +9,15 @@
 import Foundation
 import UIKit
 
-class Game : WellDelegate {
+class Game : WellDelegate, ForecastDelegate {
     // Properties
     
                    var delegate : GameDelegate
     private   lazy var well     = { return Well( delegate : self ) }()
+    
+              lazy var forecast = { return Forecast< TrafficLight >( delegate : self, length : 7 ) {
+        return TrafficLight( top  : -3, left : ( self.well.contents.first!.count - 3 ) / 2 )
+    } }()
     
     private( set ) var repeater = SimpleRepeater( every : slowInterval )
     private( set ) var running  = false
@@ -62,6 +66,10 @@ class Game : WellDelegate {
         delegate.gameDidEnd( withFinalScore : score )
         
         well = Well( delegate : self )
+    }
+    
+    func forecastDidChange() {
+        // TODO: Draw the forecasted TrafficLights to the delegate's to-be-required forecast.
     }
     
     func reset() {} // TODO: Figure Out Game Resetting

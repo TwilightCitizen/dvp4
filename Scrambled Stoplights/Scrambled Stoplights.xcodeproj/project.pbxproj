@@ -32,6 +32,7 @@
 		30F80296232EE7E600B90894 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80295232EE7E600B90894 /* GameDelegate.swift */; };
 		30F80298232EF6C000B90894 /* WellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80297232EF6C000B90894 /* WellDelegate.swift */; };
 		30F8029A2330637100B90894 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F802992330637100B90894 /* Forecast.swift */; };
+		30F8029C23306F8C00B90894 /* ForecastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8029B23306F8C00B90894 /* ForecastDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		30F80295232EE7E600B90894 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
 		30F80297232EF6C000B90894 /* WellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellDelegate.swift; sourceTree = "<group>"; };
 		30F802992330637100B90894 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		30F8029B23306F8C00B90894 /* ForecastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				30F802992330637100B90894 /* Forecast.swift */,
 				30F80295232EE7E600B90894 /* GameDelegate.swift */,
 				30F80297232EF6C000B90894 /* WellDelegate.swift */,
+				30F8029B23306F8C00B90894 /* ForecastDelegate.swift */,
 				30F80277232C612800B90894 /* SimpleRepeater.swift */,
 				308DFF4C2329B963001567B1 /* Assets.xcassets */,
 				308DFF4E2329B963001567B1 /* LaunchScreen.storyboard */,
@@ -199,6 +202,7 @@
 				30F80298232EF6C000B90894 /* WellDelegate.swift in Sources */,
 				30F80288232D5FA400B90894 /* TrafficLight.swift in Sources */,
 				30F80296232EE7E600B90894 /* GameDelegate.swift in Sources */,
+				30F8029C23306F8C00B90894 /* ForecastDelegate.swift in Sources */,
 				30F80282232C7B0900B90894 /* DisplayNameScreen.swift in Sources */,
 				30F80276232C482C00B90894 /* RoundedCornerView.swift in Sources */,
 				30F8027E232C771300B90894 /* AvatarScreen.swift in Sources */,
