@@ -8,28 +8,32 @@
 
 import Foundation
 
-class TrafficLight {
+class StopLight {
     // Properties
     
-    private( set ) lazy var bulbs = {
-        return [
-            Bulb( ofType : .stop, withWeight : BulbWeight.random ),
-            Bulb( ofType : .slow, withWeight : BulbWeight.random ),
-            Bulb( ofType : .go,   withWeight : BulbWeight.random )
-        ].shuffled()
-    }()
-    
+    private( set )      var bulbs    : [ Bulb ]
     private( set )      var shape    : BendAndRotation
                         var contents : [ [ Bulb ] ] { return shape.ofBulbs( bulbs ) }
-    private( set )      var top  : Int
-    private( set )      var left : Int
+                        var ghost    : StopLight    { return StopLight( top : top, left : left, shape : shape, asGhost : true ) }
+    private( set )      var top      : Int
+    private( set )      var left     : Int
     
     // Intitializers
     
-    init( top : Int, left : Int, shape : BendAndRotation? = nil ) {
+    init( top : Int, left : Int, shape : BendAndRotation? = nil, asGhost : Bool = false ) {
         self.top   = top
         self.left  = left
         self.shape = shape ?? BendAndRotation.allCases.randomElement()!
+        
+        if asGhost {
+            self.bulbs = [ Bulb( ofType : .ghost ), Bulb( ofType : .ghost ), Bulb( ofType : .ghost ) ]
+        } else {
+            self.bulbs = [
+                Bulb( ofType : .stop, withWeight : BulbWeight.random ),
+                Bulb( ofType : .slow, withWeight : BulbWeight.random ),
+                Bulb( ofType : .go,   withWeight : BulbWeight.random )
+            ].shuffled()
+        }
     }
     
     // Methods

@@ -12,7 +12,7 @@ import UIKit
 protocol WellDelegate {
     // Required Properties
     var delegate : GameDelegate             { get set }
-    var forecast : Forecast< TrafficLight > { get set }
+    var forecast : Forecast< StopLight > { get set }
     
     // Required Methods
     

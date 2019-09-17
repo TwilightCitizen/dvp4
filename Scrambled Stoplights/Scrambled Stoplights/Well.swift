@@ -12,9 +12,9 @@ import UIKit
 class Well {
     // Properties
     
-    private( set ) var delegate     : WellDelegate
-    private( set ) var contents     : [ [ Bulb ] ]
-    private( set ) var trafficLight : TrafficLight?
+    private( set ) var delegate  : WellDelegate
+    private( set ) var contents  : [ [ Bulb ] ]
+    private( set ) var stopLight : StopLight?
     
     // Initializers
     
@@ -40,28 +40,37 @@ class Well {
     // Methods
     
     func drawTo( well : UIView ) {
+        func draw( light : StopLight ) {
+            light.contents.enumerated().forEach { row in
+                row.element.enumerated().forEach { col in
+                    let bulb = light.contents[ row.offset ][ col.offset ]
+                    
+                    guard bulb.bulbType != .empty, row.offset + light.top >= 0 else { return }
+                    
+                    ( well.subviews[ light.top  + row.offset ]
+                        .subviews[ light.left + col.offset ] as! UIImageView ).image = bulb.image
+                }
+            }
+        }
+        
         well.subviews.enumerated().forEach { row in
             row.element.subviews.enumerated().forEach { col in
                 ( col.element as! UIImageView ).image = contents[ row.offset ][ col.offset ].image
             }
         }
         
-        guard let light = trafficLight else { return }
+        guard let light = stopLight else { return }
+        let       ghost = light.ghost
         
-        light.contents.enumerated().forEach { row in
-            row.element.enumerated().forEach { col in
-                let bulb = light.contents[ row.offset ][ col.offset ]
-                
-                guard bulb.bulbType != .empty, row.offset + light.top >= 0 else { return }
-                
-                ( well.subviews[ light.top  + row.offset ]
-                    .subviews[ light.left + col.offset ] as! UIImageView ).image = bulb.image
-            }
-        }
+        draw( light : light )
+        
+        while !willCollide( stopLight : ghost, fromAction : StopLight.dropDown ) { ghost.dropDown() }
+        
+        draw( light : ghost )
     }
     
-    func willCollide( trafficLight : TrafficLight, fromAction : ( TrafficLight ) -> () -> () ) -> Bool {
-        let tested = TrafficLight( top : trafficLight.top, left : trafficLight.left, shape : trafficLight.shape )
+    func willCollide( stopLight : StopLight, fromAction : ( StopLight ) -> () -> () ) -> Bool {
+        let tested = StopLight( top : stopLight.top, left : stopLight.left, shape : stopLight.shape )
         let action = fromAction( tested )
         
         action()
@@ -85,8 +94,8 @@ class Well {
         return false
     }
     
-    func landTrafficLight() {
-        guard let light = trafficLight else { return }
+    func landStopLight() {
+        guard let light = stopLight else { return }
         
         for row in light.contents.enumerated() { for col in row.element.enumerated() {
             // Ignore Empty Bulbs
@@ -111,38 +120,42 @@ class Well {
     }
     
     func clearLandedBulbs() {
-        var clearOccured = false
-        
-        for row in contents.enumerated() { for col in row.element.enumerated() {
-            guard col.element.bulbType != .empty && col.element.bulbType != .clear else { continue }
+        func bulbsCleared() -> Int? {
+            var cleared = 0
             
-            let adjacent = getAdjacentBulbs( row : row.offset, col : col.offset  )
-            let matching = adjacent.filter { $0.bulbType == col.element.bulbType }
-            
-            if matching.count >= col.element.bulbWeight!.rawValue + 1 {
-                contents[ row.offset ][ col.offset ].clearable = true
-            }
-        } }
-        
-        for row in contents.enumerated() { for col in row.element.enumerated() {
-            if col.element.clearable {
-                contents[ row.offset ][ col.offset ] = Bulb( ofType : .clear )
-                clearOccured = true
-            }
-        } }
-        
-        if clearOccured {
             for row in contents.enumerated() { for col in row.element.enumerated() {
-                if col.element.bulbType == .clear {
-                    contents[ row.offset ][ col.offset ] = Bulb( ofType : .empty )
-                    
-                    delegate.clearDidOccur( forBulbs : 1 )
+                guard col.element.bulbType != .empty && col.element.bulbType != .clear else { continue }
+                
+                let adjacent = getAdjacentBulbs( row : row.offset, col : col.offset  )
+                let matching = adjacent.filter { $0.bulbType == col.element.bulbType }
+                
+                if matching.count >= col.element.bulbWeight!.rawValue + 1 {
+                    contents[ row.offset ][ col.offset ].clearable = true
                 }
             } }
-
-            settleLandedBulbs()
-            clearLandedBulbs()
+            
+            for row in contents.enumerated() { for col in row.element.enumerated() {
+                if col.element.clearable {
+                    contents[ row.offset ][ col.offset ] = Bulb( ofType : .clear )
+                    cleared += 1
+                }
+            } }
+            
+            if cleared > 0 {
+                for row in contents.enumerated() { for col in row.element.enumerated() {
+                    if col.element.bulbType == .clear {
+                        contents[ row.offset ][ col.offset ] = Bulb( ofType : .empty )
+                    }
+                } }
+                
+                settleLandedBulbs()
+                return cleared + ( bulbsCleared() ?? 0 )
+            }
+            
+            return nil
         }
+        
+        if let cleared = bulbsCleared() { delegate.clearDidOccur( forBulbs : cleared ) }
     }
     
     func getAdjacentBulbs( row : Int, col : Int ) -> [ Bulb ] {
@@ -207,62 +220,62 @@ class Well {
         }
     }
     
-    func addTrafficLight( ) {
-        trafficLight = delegate.forecast.manifest()
+    func addStopLight( ) {
+        stopLight = delegate.forecast.manifest()
     }
     
     func cycleUp() {
-        guard let light = trafficLight else { return }
+        guard let light = stopLight else { return }
         
         light.cycleUp()
     }
     
     func cycleDown() {
-        guard let light = trafficLight else { return }
+        guard let light = stopLight else { return }
         
         light.cycleDown()
     }
     
     func rotateCounter() {
-        guard let light = trafficLight else { return }
+        guard let light = stopLight else { return }
         
-        if !willCollide( trafficLight: light, fromAction: TrafficLight.rotateCounter ) {
+        if !willCollide( stopLight: light, fromAction: StopLight.rotateCounter ) {
             light.rotateCounter()
         }
     }
     
     func rotateClock() {
-        guard let light = trafficLight else { return }
+        guard let light = stopLight else { return }
         
-        if !willCollide( trafficLight: light, fromAction: TrafficLight.rotateClock ) {
+        if !willCollide( stopLight: light, fromAction: StopLight.rotateClock ) {
             light.rotateClock()
         }
     }
     
     func moveLeft() {
-        guard let light = trafficLight else { return }
+        guard let light = stopLight else { return }
         
-        if !willCollide( trafficLight: light, fromAction: TrafficLight.moveLeft ) {
+        if !willCollide( stopLight: light, fromAction: StopLight.moveLeft ) {
             light.moveLeft()
         }
     }
     
     func moveRight() {
-        guard let light = trafficLight else { return }
+        guard let light = stopLight else { return }
         
-        if !willCollide( trafficLight: light, fromAction: TrafficLight.moveRight ) {
+        if !willCollide( stopLight: light, fromAction: StopLight.moveRight ) {
             light.moveRight()
         }
     }
     
     func dropDown() {
-        guard let light = trafficLight else { return }
+        guard let light = stopLight else { return }
         
-        if willCollide( trafficLight: light, fromAction: TrafficLight.dropDown ) {
-            landTrafficLight()
+        if willCollide( stopLight: light, fromAction: StopLight.dropDown ) {
+            landStopLight()
             settleLandedBulbs()
             clearLandedBulbs()
-            addTrafficLight()
+            addStopLight()
         } else {
             light.dropDown()
         }

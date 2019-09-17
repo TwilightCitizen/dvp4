@@ -15,13 +15,15 @@ class Game : WellDelegate, ForecastDelegate {
                    var delegate : GameDelegate
     private   lazy var well     = { return Well( delegate : self ) }()
     
-              lazy var forecast = { return Forecast< TrafficLight >( delegate : self, length : 7 ) {
-        return TrafficLight( top  : -3, left : ( self.well.contents.first!.count - 3 ) / 2 )
+              lazy var forecast = { return Forecast< StopLight >( delegate : self, length : 7 ) {
+        return StopLight( top  : -3, left : ( self.well.contents.first!.count - 3 ) / 2 )
     } }()
     
     private( set ) var repeater = SimpleRepeater( every : slowInterval )
     private( set ) var running  = false
     private( set ) var score    = 0
+    private( set ) var clears   = 0
+    private( set ) var bestRun  = 0
     
     // Initializers
     
@@ -29,9 +31,12 @@ class Game : WellDelegate, ForecastDelegate {
     
     // Methods
     func start() {
-        if well.trafficLight == nil {
-            well.addTrafficLight()
-            delegate.scoreDidChange( from : 123_456, to : 0 )
+        if well.stopLight == nil {
+            well.addStopLight()
+            
+            delegate.score.text   = 0.withCommas
+            delegate.clears.text  = 0.withCommas
+            delegate.bestRun.text = 0.withCommas
         }
         
         repeater.start() {
@@ -53,11 +58,12 @@ class Game : WellDelegate, ForecastDelegate {
     }
     
     func clearDidOccur( forBulbs : Int ) {
-        let newScore = score + ( 100 * forBulbs )
-        
-        delegate.scoreDidChange( from : score, to : newScore )
-        
-        score = newScore
+        score                += 100 * forBulbs
+        clears               += forBulbs
+        delegate.score.text   = score.withCommas
+        delegate.clears.text  = clears.withCommas
+        bestRun               = forBulbs > bestRun ? forBulbs : bestRun
+        delegate.bestRun.text = bestRun.withCommas
     }
     
     func wellDidOverflow() {
@@ -69,16 +75,17 @@ class Game : WellDelegate, ForecastDelegate {
     }
     
     func forecastDidChange() {
-        // TODO: Draw the forecasted TrafficLights to the delegate's to-be-required forecast.
+        // TODO: Draw the forecasted StopLights to the delegate's to-be-required forecast.
     }
     
     func reset() {} // TODO: Figure Out Game Resetting
     
-    func cycleUp()       { well.cycleUp();       well.drawTo( well: delegate.well ) }
-    func cycleDown()     { well.cycleDown();     well.drawTo( well: delegate.well ) }
-    func rotateCounter() { well.rotateCounter(); well.drawTo( well: delegate.well ) }
-    func rotateClock()   { well.rotateClock();   well.drawTo( well: delegate.well ) }
-    func moveLeft()      { well.moveLeft();      well.drawTo( well: delegate.well ) }
-    func moveRight()     { well.moveRight();     well.drawTo( well: delegate.well ) }
-    func dropDown()      { well.dropDown();      well.drawTo( well: delegate.well ) }
+    func cycleUp()       { well.cycleUp();       score -= 10; well.drawTo( well: delegate.well ) }
+    func cycleDown()     { well.cycleDown();     score -= 10; well.drawTo( well: delegate.well ) }
+    func rotateCounter() { well.rotateCounter(); score -= 10; well.drawTo( well: delegate.well ) }
+    func rotateClock()   { well.rotateClock();   score -= 10; well.drawTo( well: delegate.well ) }
+    func moveLeft()      { well.moveLeft();      score -= 10; well.drawTo( well: delegate.well ) }
+    func moveRight()     { well.moveRight();     score -= 10; well.drawTo( well: delegate.well ) }
+    
+    func dropDown()      { well.dropDown();                   well.drawTo( well: delegate.well ) }
 }

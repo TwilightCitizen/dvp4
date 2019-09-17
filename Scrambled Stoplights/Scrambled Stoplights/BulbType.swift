@@ -14,6 +14,7 @@ enum BulbType : String, CustomStringConvertible {
     case go
     case empty
     case clear
+    case ghost
     
     var description : String  { return self.rawValue }
 }

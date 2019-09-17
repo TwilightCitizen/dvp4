@@ -12,13 +12,16 @@ import UIKit
 protocol GameDelegate {
     // Required Properties
     
-    var well : UIView! { get set }
+    var well    : UIView!  { get set }
+    var score   : UILabel! { get set }
+    var clears  : UILabel! { get set }
+    var bestRun : UILabel! { get set }
     
     // TODO: Require a forecast of type [ UIView ]! where forecasted pieces can be drawn.
     
     // Required Methods
     
-    func scoreDidChange( from oldScore : Int, to newScore : Int )
+    //func scoreDidChange( from oldScore : Int, to newScore : Int )
     func gameDidStart()
     func gameDidStop()
     func gameDidEnd( withFinalScore score : Int )

@@ -20,7 +20,9 @@ class GameScreen : UIViewController, GameDelegate {
     
     @IBOutlet weak var playPause          : UIImageView!
     
-    @IBOutlet weak var scoreBoard         : UILabel!
+    @IBOutlet weak var score              : UILabel!
+    @IBOutlet weak var clears             : UILabel!
+    @IBOutlet weak var bestRun            : UILabel!
     
     // Properties
     
@@ -57,10 +59,6 @@ class GameScreen : UIViewController, GameDelegate {
         roundTopCorners.forEach                              { $0.round( corners : [ Corners.topLeft,    Corners.topRight    ] ) }
         roundBottomCorners.forEach                           { $0.round( corners : [ Corners.bottomLeft, Corners.bottomRight ] ) }
         zip( roundOuterCorners, Corners.allCorners ).forEach { ( view, corner ) in view.round( corners: [ corner ] ) }
-    }
-    
-    func scoreDidChange( from oldScore : Int, to newScore : Int ) {
-        scoreBoard.text = newScore.description
     }
     
     func gameDidStart() { playPause.image = UIImage( named : "Pause" ) }
