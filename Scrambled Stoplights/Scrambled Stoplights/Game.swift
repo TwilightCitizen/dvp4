@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class Game : GameWellDelegate {
+class Game : WellDelegate {
     // Properties
     
                    var delegate : GameDelegate
-    private   lazy var well     = { return GameWell( delegate : self ) }()
+    private   lazy var well     = { return Well( delegate : self ) }()
     
     private( set ) var repeater = SimpleRepeater( every : slowInterval )
     private( set ) var running  = false
@@ -43,6 +43,7 @@ class Game : GameWellDelegate {
     func stop()  {
         repeater.stop()
         delegate.gameDidStop()
+        Well( delegate : self ).drawTo( well : delegate.well )
         
         running = false
     }
@@ -60,7 +61,7 @@ class Game : GameWellDelegate {
         delegate.gameDidStop()
         delegate.gameDidEnd( withFinalScore : score )
         
-        well = GameWell( delegate : self )
+        well = Well( delegate : self )
     }
     
     func reset() {} // TODO: Figure Out Game Resetting

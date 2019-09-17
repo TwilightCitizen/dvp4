@@ -11,10 +11,13 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
+    var window : UIWindow?
+    var game   : Game!
 
-    func application( _ application : UIApplication, supportedInterfaceOrientationsFor window : UIWindow? ) -> UIInterfaceOrientationMask
-    {
+    func application(
+        _                                 application : UIApplication,
+        supportedInterfaceOrientationsFor window      : UIWindow?
+    ) -> UIInterfaceOrientationMask {
         return .portrait
     }
     
@@ -28,15 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillResignActive( _ application : UIApplication ) {
         // Pause Game
+        game.stop()
     }
 
     func applicationDidEnterBackground( _ application : UIApplication ) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         // Pause Game
         // Save Game State
         // Invalidate Timers
         // Release Resources
+        game.stop()
     }
 
     func applicationWillEnterForeground( _ application : UIApplication ) {
@@ -50,8 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate( _ application : UIApplication ) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
+        game.stop()
         self.saveContext()
     }
 

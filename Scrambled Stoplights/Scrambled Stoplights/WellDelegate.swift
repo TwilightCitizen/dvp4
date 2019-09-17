@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol GameWellDelegate {
+protocol WellDelegate {
     // Required Properties
     var delegate : GameDelegate  { get set }
     

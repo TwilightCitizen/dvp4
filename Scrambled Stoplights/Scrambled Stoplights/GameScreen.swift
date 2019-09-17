@@ -24,7 +24,14 @@ class GameScreen : UIViewController, GameDelegate {
     
     // Properties
     
-    private( set ) lazy var game          = { return Game( delegate : self ) }()
+    private( set ) lazy var game          : Game = {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        delegate.game = Game( delegate : self )
+        
+        return delegate.game
+    }()
+    
     private        var repeater           = SimpleRepeater( every : fastInterval )
     
     // Methods
@@ -41,6 +48,8 @@ class GameScreen : UIViewController, GameDelegate {
     
     override func prepare( for segue : UIStoryboardSegue, sender : Any? ) {
         navigationController?.navigationBar.isHidden = false
+        
+        game.stop()
     }
     
     func roundCorners() {

@@ -9,16 +9,16 @@
 import Foundation
 import UIKit
 
-class GameWell {
+class Well {
     // Properties
     
-    private( set ) var delegate     : GameWellDelegate
+    private( set ) var delegate     : WellDelegate
     private( set ) var contents     : [ [ Bulb ] ]
     private( set ) var trafficLight : TrafficLight?
     
     // Initializers
     
-    init( rows : Int, cols : Int, delegate : GameWellDelegate ) {
+    init( rows : Int, cols : Int, delegate : WellDelegate ) {
         contents = ( 0...( rows - 1) ).map { row in
             return ( 0...( cols - 1 ) ).map { col in
                 return Bulb( ofType : .empty )
@@ -30,7 +30,7 @@ class GameWell {
         drawTo( well: delegate.delegate.well )
     }
     
-    convenience init( delegate : GameWellDelegate ) {
+    convenience init( delegate : WellDelegate ) {
         let rows = delegate.delegate.well.subviews.count
         let cols = delegate.delegate.well.subviews.first!.subviews.count
         
