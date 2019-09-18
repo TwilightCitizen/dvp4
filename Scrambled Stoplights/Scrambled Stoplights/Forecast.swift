@@ -27,6 +27,11 @@ class Forecast< T > {
     
     func manifest() -> T {
         contents.append( generator() )
-        return contents.removeFirst()
+        
+        let manifest = contents.removeFirst()
+        
+        delegate.forecastDidChange()
+        
+        return manifest
     }
 }

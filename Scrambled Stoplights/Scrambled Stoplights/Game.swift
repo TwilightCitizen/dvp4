@@ -75,7 +75,19 @@ class Game : WellDelegate, ForecastDelegate {
     }
     
     func forecastDidChange() {
-        // TODO: Draw the forecasted StopLights to the delegate's to-be-required forecast.
+        func draw( light : StopLight, to view : UIView ) {
+            light.contents.enumerated().forEach { row in
+                row.element.enumerated().forEach { col in
+                    let bulb = light.contents[ row.offset ][ col.offset ]
+                    
+                    ( view.subviews[ row.offset ] .subviews[ col.offset ] as! UIImageView ).image = bulb.image
+                }
+            }
+        }
+        
+        for light in forecast.contents.enumerated() {
+            draw( light: light.element, to: delegate.forecast[ light.offset ] )
+        }
     }
     
     func reset() {} // TODO: Figure Out Game Resetting

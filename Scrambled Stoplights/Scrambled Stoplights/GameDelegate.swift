@@ -12,12 +12,12 @@ import UIKit
 protocol GameDelegate {
     // Required Properties
     
-    var well    : UIView!  { get set }
-    var score   : UILabel! { get set }
-    var clears  : UILabel! { get set }
-    var bestRun : UILabel! { get set }
+    var well     : UIView!     { get set }
+    var forecast : [ UIView ]! { get set }
     
-    // TODO: Require a forecast of type [ UIView ]! where forecasted pieces can be drawn.
+    var score    : UILabel!    { get set }
+    var clears   : UILabel!    { get set }
+    var bestRun  : UILabel!    { get set }
     
     // Required Methods
     

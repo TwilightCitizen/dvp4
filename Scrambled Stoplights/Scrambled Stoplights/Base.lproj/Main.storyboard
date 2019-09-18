@@ -3338,6 +3338,13 @@
                         <outletCollection property="roundOuterCorners" destination="ry5-as-Bwn" collectionClass="NSMutableArray" id="wsx-Qd-6Q6"/>
                         <outletCollection property="roundOuterCorners" destination="4rW-Ko-rss" collectionClass="NSMutableArray" id="8ic-hJ-sGg"/>
                         <outletCollection property="roundOuterCorners" destination="EBT-1V-6Gi" collectionClass="NSMutableArray" id="oR5-dX-5Js"/>
+                        <outletCollection property="forecast" destination="aRg-70-4hy" collectionClass="NSMutableArray" id="LNO-8R-Gam"/>
+                        <outletCollection property="forecast" destination="7bN-gu-dYv" collectionClass="NSMutableArray" id="zur-zD-nOe"/>
+                        <outletCollection property="forecast" destination="Ll9-El-eA5" collectionClass="NSMutableArray" id="PZk-Vj-Wix"/>
+                        <outletCollection property="forecast" destination="yis-N1-Vra" collectionClass="NSMutableArray" id="O2j-aJ-ok4"/>
+                        <outletCollection property="forecast" destination="rh1-0b-mtT" collectionClass="NSMutableArray" id="AIN-CJ-ELX"/>
+                        <outletCollection property="forecast" destination="QF2-06-QnN" collectionClass="NSMutableArray" id="gTS-E9-rka"/>
+                        <outletCollection property="forecast" destination="RUa-N1-2L2" collectionClass="NSMutableArray" id="izW-ct-0W2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
