@@ -64,6 +64,25 @@ class Game : WellDelegate, ForecastDelegate {
         delegate.clears.text  = clears.withCommas
         bestRun               = forBulbs > bestRun ? forBulbs : bestRun
         delegate.bestRun.text = bestRun.withCommas
+        
+        increaseSpeed()
+    }
+    
+    func increaseSpeed() {
+        repeater.stop()
+        
+        let tenClears = clears / 10
+        let interval  = slowInterval - ( Double( tenClears ) * fastInterval )
+        let capped    = interval < fastInterval ? fastInterval : interval
+        
+        repeater = SimpleRepeater( every : capped )
+        
+        repeater.start() {
+            self.well.dropDown()
+            self.well.drawTo( well : self.delegate.well )
+        }
+        
+        print( interval )
     }
     
     func wellDidOverflow() {

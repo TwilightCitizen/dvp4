@@ -10,8 +10,8 @@ import Foundation
 
 class SimpleRepeater {
     // Timer Properties
-    private var _timer   : Timer!
-    private var interval : TimeInterval // Interval in Seconds to Repeat
+    private        var _timer   : Timer!
+    private( set ) var interval : TimeInterval // Interval in Seconds to Repeat
     
     // Initialization -
     init( every interval : TimeInterval ) {
