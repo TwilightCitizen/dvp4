@@ -40,18 +40,19 @@ class Well {
     // Methods
     
     func drawTo( well : UIView ) {
-        func draw( light : StopLight ) {
-            light.contents.enumerated().forEach { row in
-                row.element.enumerated().forEach { col in
-                    let bulb = light.contents[ row.offset ][ col.offset ]
-                    
-                    guard bulb.bulbType != .empty, row.offset + light.top >= 0 else { return }
-                    
-                    ( well.subviews[ light.top  + row.offset ]
-                        .subviews[ light.left + col.offset ] as! UIImageView ).image = bulb.image
-                }
+        for row in contents.enumerated() { for col in row.element.enumerated() {
+            if col.element.bulbType == .ghost {
+                contents[ row.offset ][ col.offset ] = Bulb ( ofType : .empty )
             }
-        }
+        } }
+        
+        guard let light = stopLight else { return }
+        let       ghost = light.ghost
+        
+        while !willCollide( stopLight : ghost, fromAction : StopLight.dropDown ) { ghost.dropDown() }
+        
+        land( ghost )
+        settle()
         
         well.subviews.enumerated().forEach { row in
             row.element.subviews.enumerated().forEach { col in
@@ -59,14 +60,16 @@ class Well {
             }
         }
         
-        guard let light = stopLight else { return }
-        let       ghost = light.ghost
-        
-        draw( light : light )
-        
-        while !willCollide( stopLight : ghost, fromAction : StopLight.dropDown ) { ghost.dropDown() }
-        
-        draw( light : ghost )
+        light.contents.enumerated().forEach { row in
+            row.element.enumerated().forEach { col in
+                let bulb = light.contents[ row.offset ][ col.offset ]
+                
+                guard bulb.bulbType != .empty, row.offset + light.top >= 0 else { return }
+                
+                ( well.subviews[ light.top  + row.offset ]
+                    .subviews[ light.left + col.offset ] as! UIImageView ).image = bulb.image
+            }
+        }
     }
     
     func willCollide( stopLight : StopLight, fromAction : ( StopLight ) -> () -> () ) -> Bool {
@@ -94,21 +97,19 @@ class Well {
         return false
     }
     
-    func landStopLight() {
-        guard let light = stopLight else { return }
-        
-        for row in light.contents.enumerated() { for col in row.element.enumerated() {
+    func land( _ stopLight : StopLight ) {
+        for row in stopLight.contents.enumerated() { for col in row.element.enumerated() {
             // Ignore Empty Bulbs
             guard col.element.bulbType != .empty else { continue }
             
             // Landing Outside of Well Bounds is Game Over
-            guard row.offset + light.top > 0 else { delegate.wellDidOverflow();  return }
+            guard row.offset + stopLight.top > 0 else { delegate.wellDidOverflow();  return }
             
-            contents[ row.offset + light.top ][ col.offset + light.left ] = col.element
+            contents[ row.offset + stopLight.top ][ col.offset + stopLight.left ] = col.element
         } }
     }
     
-    func settleLandedBulbs() {
+    func settle() {
         for _ in contents { for row in contents.enumerated() { for col in row.element.enumerated() {
             if col.element.bulbType != .empty && row.offset + 1 < contents.count &&
                contents[ row.offset + 1 ][ col.offset ].bulbType == .empty {
@@ -119,15 +120,16 @@ class Well {
         } } }
     }
     
-    func clearLandedBulbs() {
-        func bulbsCleared() -> Int? {
+    func clear() {
+        func numCleared() -> Int? {
             var cleared = 0
+            let ignored : [ BulbType ] = [ .empty, .clear, .ghost ]
             
             for row in contents.enumerated() { for col in row.element.enumerated() {
-                guard col.element.bulbType != .empty && col.element.bulbType != .clear else { continue }
+                guard ignored.allSatisfy( { col.element.bulbType != $0 } ) else { continue }
                 
-                let adjacent = getAdjacentBulbs( row : row.offset, col : col.offset  )
-                let matching = adjacent.filter { $0.bulbType == col.element.bulbType }
+                let neighbors = neighborsOf( row : row.offset, col : col.offset  )
+                let matching  = neighbors.filter { $0.bulbType == col.element.bulbType }
                 
                 if matching.count >= col.element.bulbWeight!.rawValue + 1 {
                     contents[ row.offset ][ col.offset ].clearable = true
@@ -148,17 +150,17 @@ class Well {
                     }
                 } }
                 
-                settleLandedBulbs()
-                return cleared + ( bulbsCleared() ?? 0 )
+                settle()
+                return cleared + ( numCleared() ?? 0 )
             }
             
             return nil
         }
         
-        if let cleared = bulbsCleared() { delegate.clearDidOccur( forBulbs : cleared ) }
+        if let cleared = numCleared() { delegate.clearDidOccur( forBulbs : cleared ) }
     }
     
-    func getAdjacentBulbs( row : Int, col : Int ) -> [ Bulb ] {
+    func neighborsOf( row : Int, col : Int ) -> [ Bulb ] {
         let firstRow = 0
         let lastRow  = contents.count        - 1
         
@@ -269,15 +271,15 @@ class Well {
     }
     
     func dropDown() {
-        guard let light = stopLight else { return }
+        guard let stopLight = stopLight else { return }
         
-        if willCollide( stopLight: light, fromAction: StopLight.dropDown ) {
-            landStopLight()
-            settleLandedBulbs()
-            clearLandedBulbs()
+        if willCollide( stopLight: stopLight, fromAction: StopLight.dropDown ) {
+            land( stopLight )
+            settle()
+            clear()
             addStopLight()
         } else {
-            light.dropDown()
+            stopLight.dropDown()
         }
     }
 }
