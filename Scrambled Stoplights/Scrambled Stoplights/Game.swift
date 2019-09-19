@@ -13,11 +13,12 @@ class Game : WellDelegate, ForecastDelegate {
     // Properties
     
                    var delegate : GameDelegate
+    
     private   lazy var well     = { return Well( delegate : self ) }()
     
-              lazy var forecast = { return Forecast< StopLight >( delegate : self, length : 7 ) {
-        return StopLight( top  : -3, left : ( self.well.contents.first!.count - 3 ) / 2 )
-    } }()
+              lazy var forecast = { return StopLightForecast( delegate : self, length : 7 ) {
+                      return StopLight( top  : -3, left : ( self.well.contents.first!.count - 3 ) / 2 )
+                  } }()
     
     private( set ) var repeater = SimpleRepeater( every : slowInterval )
     private( set ) var running  = false
@@ -100,7 +101,7 @@ class Game : WellDelegate, ForecastDelegate {
         self.well = Well( delegate : self )
     }
     
-    func forecastDidChange() {
+    func forecastDidChange( forecast : StopLightForecast ) {
         func draw( light : StopLight, to view : UIView ) {
             light.contents.enumerated().forEach { row in
                 row.element.enumerated().forEach { col in

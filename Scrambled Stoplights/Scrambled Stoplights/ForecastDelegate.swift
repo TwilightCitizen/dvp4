@@ -9,9 +9,13 @@
 import Foundation
 
 protocol ForecastDelegate {
+    // Associated Types
+    
+    associatedtype T where T : Forecast
+    
     // Required Properties
-
+    
     // Required Methods
     
-    func forecastDidChange()
+    func forecastDidChange( forecast : T )
 }

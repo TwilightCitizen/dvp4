@@ -34,6 +34,7 @@
 		30F8029A2330637100B90894 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F802992330637100B90894 /* Forecast.swift */; };
 		30F8029C23306F8C00B90894 /* ForecastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8029B23306F8C00B90894 /* ForecastDelegate.swift */; };
 		30F8029E233192A000B90894 /* IntExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8029D233192A000B90894 /* IntExt.swift */; };
+		30F802A6233447FA00B90894 /* StopLightForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F802A5233447FA00B90894 /* StopLightForecast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		30F802992330637100B90894 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		30F8029B23306F8C00B90894 /* ForecastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDelegate.swift; sourceTree = "<group>"; };
 		30F8029D233192A000B90894 /* IntExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExt.swift; sourceTree = "<group>"; };
+		30F802A5233447FA00B90894 /* StopLightForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopLightForecast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				30F80295232EE7E600B90894 /* GameDelegate.swift */,
 				30F80297232EF6C000B90894 /* WellDelegate.swift */,
 				30F8029B23306F8C00B90894 /* ForecastDelegate.swift */,
+				30F802A5233447FA00B90894 /* StopLightForecast.swift */,
 				30F80277232C612800B90894 /* SimpleRepeater.swift */,
 				30F8029D233192A000B90894 /* IntExt.swift */,
 				308DFF4C2329B963001567B1 /* Assets.xcassets */,
@@ -215,6 +218,7 @@
 				30F8029E233192A000B90894 /* IntExt.swift in Sources */,
 				308DFF432329B962001567B1 /* AppDelegate.swift in Sources */,
 				30F80290232D658100B90894 /* BulbWeight.swift in Sources */,
+				30F802A6233447FA00B90894 /* StopLightForecast.swift in Sources */,
 				30F8028C232D640A00B90894 /* ThemeEngine.swift in Sources */,
 				30F80284232D5EF800B90894 /* Well.swift in Sources */,
 				308DFF4B2329B962001567B1 /* Scrambled_Stoplights.xcdatamodeld in Sources */,

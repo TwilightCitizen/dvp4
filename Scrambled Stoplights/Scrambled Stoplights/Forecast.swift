@@ -8,30 +8,23 @@
 
 import Foundation
 
-class Forecast< T > {
-    // Properties
+protocol Forecast {
+    // Associated Types
     
-    private( set ) var delegate  : ForecastDelegate
-    private( set ) var contents  : [ T ]
-    private        var generator : () -> T
+    associatedtype T
+    associatedtype U where U : ForecastDelegate
     
-    // Initializers
+    // Required Properties
     
-    init( delegate : ForecastDelegate, length : Int, generator : @escaping () -> T ) {
-        self.delegate  = delegate
-        self.generator = generator
-        self.contents  = ( 0..<length ).map { _ in return generator() }
-    }
+    var delegate  : U       { get set }
+    var contents  : [ T ]   { get set }
+    var generator : () -> T { get set }
     
-    // Methods
+    // Required Initializers
     
-    func manifest() -> T {
-        contents.append( generator() )
-        
-        let manifest = contents.removeFirst()
-        
-        delegate.forecastDidChange()
-        
-        return manifest
-    }
+    init( delegate : U, length : Int, generator : @escaping () -> T )
+    
+    // Required Methods
+    
+    func manifest() -> T
 }
