@@ -50,12 +50,12 @@ class Game : WellDelegate, ForecastDelegate {
         
         delegate.forecast.forEach { $0.isHidden  = false }
         delegate.controls.forEach { $0.isEnabled = true }
-        delegate.gameDidStart()
+        delegate.gameDidStart( self )
     }
     
     func stop()  {
         repeater.stop()
-        delegate.gameDidStop()
+        delegate.gameDidStop( self )
         delegate.controls.forEach { $0.isEnabled = false }
         delegate.forecast.forEach { $0.isHidden  = true }
         
@@ -94,8 +94,8 @@ class Game : WellDelegate, ForecastDelegate {
     
     func wellDidOverflow() {
         repeater.stop()
-        delegate.gameDidStop()
-        delegate.gameDidEnd( withFinalScore : score )
+        delegate.gameDidStop( self )
+        delegate.game( self, didEndWithScore : score )
         
         well = Well( delegate : self )
     }

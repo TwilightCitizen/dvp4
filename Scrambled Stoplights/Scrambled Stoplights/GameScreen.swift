@@ -66,10 +66,10 @@ class GameScreen : UIViewController, GameDelegate {
         zip( roundOuterCorners, Corners.allCorners ).forEach { ( view, corner ) in view.round( corners: [ corner ] ) }
     }
     
-    func gameDidStart() { playPause.image = UIImage( named : "Pause" ) }
-    func gameDidStop()  { playPause.image = UIImage( named : "Play" ) }
+    func gameDidStart( _ game : Game ) { playPause.image = UIImage( named : "Pause" ) }
+    func gameDidStop(  _ game : Game ) { playPause.image = UIImage( named : "Play" ) }
     
-    func gameDidEnd( withFinalScore score : Int ) {
+    func game( _ game : Game, didEndWithScore score : Int ) {
         repeater.stop()
         
         let alert = UIAlertController( title : "Game Over", message : "Nice job!  You scored \( score ) points!", preferredStyle : .alert )

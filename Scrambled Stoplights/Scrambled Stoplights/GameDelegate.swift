@@ -23,8 +23,19 @@ protocol GameDelegate {
     
     // Required Methods
     
-    //func scoreDidChange( from oldScore : Int, to newScore : Int )
-    func gameDidStart()
-    func gameDidStop()
-    func gameDidEnd( withFinalScore score : Int )
+    // Optional Methods
+    
+    func gameDidStart( _ game : Game )
+    func gameDidStop(  _ game : Game )
+    
+    func game( _ game : Game, scoreDidChangeFrom oldScore : Int, to newScore : Int )
+    func game( _ game : Game, didEndWithScore    score    : Int                    )
+}
+
+extension GameDelegate {
+    func gameDidStart( _ game : Game ) {}
+    func gameDidStop(  _ game : Game ) {}
+    
+    func game( _ game : Game, scoreDidChangeFrom oldScore : Int, to newScore : Int ) {}
+    func game( _ game : Game, didEndWithScore    score    : Int                    ) {}
 }
