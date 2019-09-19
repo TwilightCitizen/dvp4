@@ -64,12 +64,12 @@ class Game : WellDelegate, ForecastDelegate {
         running                  = false
     }
     
-    func clearDidOccur( forBulbs : Int ) {
-        score                += 100 * forBulbs
-        clears               += forBulbs
+    func well(_ well: Well, didClearBulbs bulbs: Int) {
+        score                += 100 * bulbs
+        clears               += bulbs
         delegate.score.text   = score.withCommas
         delegate.clears.text  = clears.withCommas
-        bestRun               = forBulbs > bestRun ? forBulbs : bestRun
+        bestRun               = bulbs > bestRun ? bulbs : bestRun
         delegate.bestRun.text = bestRun.withCommas
         
         increaseSpeed()
@@ -92,12 +92,12 @@ class Game : WellDelegate, ForecastDelegate {
         print( interval )
     }
     
-    func wellDidOverflow() {
+    func wellDidOverflow( _ well : Well ) {
         repeater.stop()
         delegate.gameDidStop( self )
         delegate.game( self, didEndWithScore : score )
         
-        well = Well( delegate : self )
+        self.well = Well( delegate : self )
     }
     
     func forecastDidChange() {

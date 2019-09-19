@@ -16,6 +16,15 @@ protocol WellDelegate {
     
     // Required Methods
     
-    func clearDidOccur( forBulbs : Int )
-    func wellDidOverflow()
+    // Optional Methods
+    
+    func well( _ well : Well, didClearBulbs bulbs : Int )
+    
+    func wellDidOverflow( _ well : Well )
+}
+
+extension WellDelegate {
+    func well( _ well : Well, didClearBulbs bulbs : Int ) {}
+    
+    func wellDidOverflow( _ well : Well ) {}
 }

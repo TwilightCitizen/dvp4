@@ -101,7 +101,7 @@ class Well {
             guard col.element.bulbType != .empty else { continue }
             
             // Landing Outside of Well Bounds is Game Over
-            guard row.offset + stopLight.top > 0 else { delegate.wellDidOverflow();  return }
+            guard row.offset + stopLight.top > 0 else { delegate.wellDidOverflow( self );  return }
             
             contents[ row.offset + stopLight.top ][ col.offset + stopLight.left ] = col.element
         } }
@@ -155,7 +155,7 @@ class Well {
             return nil
         }
         
-        if let cleared = numCleared() { delegate.clearDidOccur( forBulbs : cleared ) }
+        if let cleared = numCleared() { delegate.well( self, didClearBulbs : cleared ) }
     }
     
     func neighborsOf( row : Int, col : Int ) -> [ Bulb ] {
