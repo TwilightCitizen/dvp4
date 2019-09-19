@@ -44,8 +44,9 @@ class Game : WellDelegate, ForecastDelegate {
             self.well.drawTo( well : self.delegate.well )
         }
         
-        running                = true
-        delegate.well.isHidden = false
+        running                  = true
+        delegate.paused.isHidden = true
+        delegate.well.isHidden   = false
         
         delegate.forecast.forEach { $0.isHidden  = false }
         delegate.controls.forEach { $0.isEnabled = true }
@@ -58,8 +59,9 @@ class Game : WellDelegate, ForecastDelegate {
         delegate.controls.forEach { $0.isEnabled = false }
         delegate.forecast.forEach { $0.isHidden  = true }
         
-        delegate.well.isHidden = true
-        running                = false
+        delegate.well.isHidden   = true
+        delegate.paused.isHidden = false
+        running                  = false
     }
     
     func clearDidOccur( forBulbs : Int ) {

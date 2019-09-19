@@ -13,6 +13,7 @@ protocol GameDelegate {
     // Required Properties
     
     var well     : UIView!       { get set }
+    var paused   : UIView!       { get set }
     var forecast : [ UIView ]!   { get set }
     var controls : [ UIButton ]! { get set }
     

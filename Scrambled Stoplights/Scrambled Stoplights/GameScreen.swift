@@ -17,11 +17,11 @@ class GameScreen : UIViewController, GameDelegate {
     @IBOutlet      var roundOuterCorners  : [ UIImageView ]!
     
     @IBOutlet weak var well               : UIView!
+    @IBOutlet weak var paused             : UIView!
     
     @IBOutlet var forecast                : [ UIView ]!
     
     @IBOutlet var controls                : [ UIButton ]!
-    
     
     @IBOutlet weak var playPause          : UIImageView!
     

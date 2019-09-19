@@ -98,6 +98,7 @@
 		308DFF412329B962001567B1 /* Scrambled Stoplights */ = {
 			isa = PBXGroup;
 			children = (
+				308DFF462329B962001567B1 /* Main.storyboard */,
 				308DFF422329B962001567B1 /* AppDelegate.swift */,
 				308DFF572329BC07001567B1 /* GlobalConstants.swift */,
 				308DFF442329B962001567B1 /* GameScreen.swift */,
@@ -106,7 +107,6 @@
 				30F8027D232C771300B90894 /* AvatarScreen.swift */,
 				30F8027F232C77EB00B90894 /* TrackScreen.swift */,
 				30F8027B232C737A00B90894 /* LeaderboardScreen.swift */,
-				308DFF462329B962001567B1 /* Main.storyboard */,
 				30F80275232C482C00B90894 /* RoundedCornerView.swift */,
 				30F80285232D5F4F00B90894 /* BulbType.swift */,
 				30F8028F232D658100B90894 /* BulbWeight.swift */,
