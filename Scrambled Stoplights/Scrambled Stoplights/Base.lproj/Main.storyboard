@@ -2171,7 +2171,7 @@
                                     <constraint firstItem="mbd-V2-ytT" firstAttribute="height" relation="lessThanOrEqual" secondItem="WXX-nm-D92" secondAttribute="height" multiplier="0.045" id="k8X-Pt-3ZY"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULb-FW-uQC" userLabel="ProjectionPanel">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULb-FW-uQC" userLabel="ForecastPanel">
                                 <rect key="frame" x="346.5" y="247.5" width="67.5" height="547"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zs7-c4-Frt" userLabel="Next">
@@ -3334,10 +3334,6 @@
                         <outletCollection property="roundAllCorners" destination="yJp-LK-P0j" collectionClass="NSMutableArray" id="hsW-iV-y6j"/>
                         <outletCollection property="roundTopCorners" destination="dgc-9D-UlF" collectionClass="NSMutableArray" id="gPf-P9-zoO"/>
                         <outletCollection property="roundBottomCorners" destination="PiZ-Uq-e9A" collectionClass="NSMutableArray" id="uVt-7S-QDl"/>
-                        <outletCollection property="roundOuterCorners" destination="mbd-V2-ytT" collectionClass="NSMutableArray" id="Ren-VO-6ua"/>
-                        <outletCollection property="roundOuterCorners" destination="ry5-as-Bwn" collectionClass="NSMutableArray" id="wsx-Qd-6Q6"/>
-                        <outletCollection property="roundOuterCorners" destination="4rW-Ko-rss" collectionClass="NSMutableArray" id="8ic-hJ-sGg"/>
-                        <outletCollection property="roundOuterCorners" destination="EBT-1V-6Gi" collectionClass="NSMutableArray" id="oR5-dX-5Js"/>
                         <outletCollection property="forecast" destination="aRg-70-4hy" collectionClass="NSMutableArray" id="LNO-8R-Gam"/>
                         <outletCollection property="forecast" destination="7bN-gu-dYv" collectionClass="NSMutableArray" id="zur-zD-nOe"/>
                         <outletCollection property="forecast" destination="Ll9-El-eA5" collectionClass="NSMutableArray" id="PZk-Vj-Wix"/>
@@ -3345,6 +3341,17 @@
                         <outletCollection property="forecast" destination="rh1-0b-mtT" collectionClass="NSMutableArray" id="AIN-CJ-ELX"/>
                         <outletCollection property="forecast" destination="QF2-06-QnN" collectionClass="NSMutableArray" id="gTS-E9-rka"/>
                         <outletCollection property="forecast" destination="RUa-N1-2L2" collectionClass="NSMutableArray" id="izW-ct-0W2"/>
+                        <outletCollection property="controls" destination="Hbp-wh-CBq" collectionClass="NSMutableArray" id="JFr-fY-p7R"/>
+                        <outletCollection property="controls" destination="dvc-cs-c4f" collectionClass="NSMutableArray" id="82f-5X-Y0k"/>
+                        <outletCollection property="controls" destination="mml-p2-Ad9" collectionClass="NSMutableArray" id="ftq-8w-KEy"/>
+                        <outletCollection property="controls" destination="Xtm-Km-DlI" collectionClass="NSMutableArray" id="bsS-j1-FJ0"/>
+                        <outletCollection property="controls" destination="NFX-O3-pfX" collectionClass="NSMutableArray" id="Zmj-VF-HvF"/>
+                        <outletCollection property="controls" destination="Cg9-Ub-JTH" collectionClass="NSMutableArray" id="0mB-40-RSK"/>
+                        <outletCollection property="controls" destination="cpz-5S-nj9" collectionClass="NSMutableArray" id="Y4b-b7-NGC"/>
+                        <outletCollection property="roundOuterCorners" destination="mbd-V2-ytT" collectionClass="NSMutableArray" id="h72-Cu-aIZ"/>
+                        <outletCollection property="roundOuterCorners" destination="ry5-as-Bwn" collectionClass="NSMutableArray" id="eWQ-p1-tH7"/>
+                        <outletCollection property="roundOuterCorners" destination="4rW-Ko-rss" collectionClass="NSMutableArray" id="4Fo-Hy-D1c"/>
+                        <outletCollection property="roundOuterCorners" destination="EBT-1V-6Gi" collectionClass="NSMutableArray" id="bVt-Xu-dix"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

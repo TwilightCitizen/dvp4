@@ -20,6 +20,9 @@ class GameScreen : UIViewController, GameDelegate {
     
     @IBOutlet var forecast                : [ UIView ]!
     
+    @IBOutlet var controls                : [ UIButton ]!
+    
+    
     @IBOutlet weak var playPause          : UIImageView!
     
     @IBOutlet weak var score              : UILabel!

@@ -44,17 +44,22 @@ class Game : WellDelegate, ForecastDelegate {
             self.well.drawTo( well : self.delegate.well )
         }
         
-        running = true
+        running                = true
+        delegate.well.isHidden = false
         
+        delegate.forecast.forEach { $0.isHidden  = false }
+        delegate.controls.forEach { $0.isEnabled = true }
         delegate.gameDidStart()
     }
     
     func stop()  {
         repeater.stop()
         delegate.gameDidStop()
-        Well( delegate : self ).drawTo( well : delegate.well )
+        delegate.controls.forEach { $0.isEnabled = false }
+        delegate.forecast.forEach { $0.isHidden  = true }
         
-        running = false
+        delegate.well.isHidden = true
+        running                = false
     }
     
     func clearDidOccur( forBulbs : Int ) {

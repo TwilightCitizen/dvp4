@@ -12,12 +12,13 @@ import UIKit
 protocol GameDelegate {
     // Required Properties
     
-    var well     : UIView!     { get set }
-    var forecast : [ UIView ]! { get set }
+    var well     : UIView!       { get set }
+    var forecast : [ UIView ]!   { get set }
+    var controls : [ UIButton ]! { get set }
     
-    var score    : UILabel!    { get set }
-    var clears   : UILabel!    { get set }
-    var bestRun  : UILabel!    { get set }
+    var score    : UILabel!      { get set }
+    var clears   : UILabel!      { get set }
+    var bestRun  : UILabel!      { get set }
     
     // Required Methods
     
