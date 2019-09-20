@@ -89,7 +89,11 @@ class Well {
             guard row.offset + tested.top >= 0 else { continue }
             
             // Overlapping Another Bulb
-            if contents[ row.offset + tested.top ][ col.offset + tested.left ].bulbType != .empty { return true }
+            let ignored : [ BulbType ] = [ .empty, .ghost ]
+            
+            if ignored.allSatisfy(
+                { contents[ row.offset + tested.top ][ col.offset + tested.left ].bulbType != $0 }
+            ) { return true }
         } }
         
         return false
@@ -101,7 +105,11 @@ class Well {
             guard col.element.bulbType != .empty else { continue }
             
             // Landing Outside of Well Bounds is Game Over
-            guard row.offset + stopLight.top > 0 else { delegate.wellDidOverflow( self );  return }
+            guard row.offset + stopLight.top >= 0 else {
+                guard col.element.bulbType == .ghost else { delegate.wellDidOverflow( self ); return }
+                
+                continue
+            }
             
             contents[ row.offset + stopLight.top ][ col.offset + stopLight.left ] = col.element
         } }

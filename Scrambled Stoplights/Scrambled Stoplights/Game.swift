@@ -89,8 +89,6 @@ class Game : WellDelegate, ForecastDelegate {
             self.well.dropDown()
             self.well.drawTo( well : self.delegate.well )
         }
-        
-        print( interval )
     }
     
     func wellDidOverflow( _ well : Well ) {
@@ -98,6 +96,7 @@ class Game : WellDelegate, ForecastDelegate {
         delegate.gameDidStop( self )
         delegate.game( self, didEndWithScore : score )
         
+        running   = false
         self.well = Well( delegate : self )
     }
     
