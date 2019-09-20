@@ -11,12 +11,12 @@ import Foundation
 class StopLight {
     // Properties
     
-    private( set )      var bulbs    : [ Bulb ]
-    private( set )      var shape    : BendAndRotation
-                        var contents : [ [ Bulb ] ] { return shape.ofBulbs( bulbs ) }
-                        var ghost    : StopLight    { return StopLight( top : top, left : left, shape : shape, asGhost : true ) }
-    private( set )      var top      : Int
-    private( set )      var left     : Int
+    private( set ) var bulbs    : [ Bulb ]
+    private( set ) var shape    : BendAndRotation
+    internal       var contents : [ [ Bulb ] ] { return shape.ofBulbs( bulbs ) }
+    internal       var ghost    : StopLight    { return StopLight( top : top, left : left, shape : shape, asGhost : true ) }
+    private( set ) var top      : Int
+    private( set ) var left     : Int
     
     // Intitializers
     

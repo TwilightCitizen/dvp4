@@ -12,9 +12,9 @@ class StopLightForecast : Forecast {
     typealias T = StopLight
     typealias U = Game
     
-    var delegate  : U
-    var contents  : [ T ]
-    var generator : () -> T
+    internal var delegate  : U
+    internal var contents  : [ T ]
+    internal var generator : () -> T
     
     required init( delegate : U, length : Int, generator : @escaping () -> T ) {
         self.delegate  = delegate

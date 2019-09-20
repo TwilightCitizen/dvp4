@@ -12,15 +12,15 @@ import UIKit
 class Game : WellDelegate, ForecastDelegate {
     // Properties
     
-                   var delegate : GameDelegate
+    internal       var delegate : GameDelegate
     
-    private   lazy var well     = { return Well( delegate : self ) }()
+    private        var well     : Well! = nil
     
-              lazy var forecast = { return StopLightForecast( delegate : self, length : 7 ) {
-                      return StopLight( top  : -3, left : ( self.well.contents.first!.count - 3 ) / 2 )
-                  } }()
+    internal  lazy var forecast = { return StopLightForecast( delegate : self, length : 7 ) {
+        return StopLight( top  : -3, left : ( self.well.contents.first!.count - 3 ) / 2 )
+    } }()
     
-    private( set ) var repeater = SimpleRepeater( every : slowInterval )
+    private( set ) var repeater : SimpleRepeater!
     private( set ) var running  = false
     private( set ) var score    = 0
     private( set ) var clears   = 0
@@ -28,22 +28,27 @@ class Game : WellDelegate, ForecastDelegate {
     
     // Initializers
     
-    init( delegate : GameDelegate ) { self.delegate = delegate }
+    init( delegate : GameDelegate ) {
+        self.delegate = delegate
+        self.well     = Well( delegate : self )
+    }
     
     // Methods
     func start() {
         if well.stopLight == nil {
             well.addStopLight()
             
+            repeater              = SimpleRepeater( every : slowInterval ) {
+                self.well.dropDown()
+                self.well.drawTo( well : self.delegate.well )
+            }
+            
             delegate.score.text   = 0.withCommas
             delegate.clears.text  = 0.withCommas
             delegate.bestRun.text = 0.withCommas
         }
         
-        repeater.start() {
-            self.well.dropDown()
-            self.well.drawTo( well : self.delegate.well )
-        }
+        repeater.start()
         
         running                  = true
         delegate.paused.isHidden = true
@@ -65,7 +70,22 @@ class Game : WellDelegate, ForecastDelegate {
         running                  = false
     }
     
-    func reset() {} // TODO: Figure Out Game Resetting
+    func reset() {
+        delegate.gameDidStop( self )
+        delegate.game( self, didEndWithScore : score )
+        
+        score                    = 0
+        clears                   = 0
+        bestRun                  = 0
+        delegate.score.text      = score.withCommas
+        delegate.clears.text     = clears.withCommas
+        delegate.bestRun.text    = bestRun.withCommas
+        running                  = false
+        self.well                = Well( delegate : self )
+
+        delegate.well.isHidden   = true
+        delegate.paused.isHidden = true
+    }
     
     func well(_ well: Well, didClearBulbs bulbs: Int) {
         score                += 100 * bulbs
@@ -79,30 +99,20 @@ class Game : WellDelegate, ForecastDelegate {
     }
     
     func increaseSpeed() {
-        repeater.stop()
-        
         let tenClears = clears / 10
         let interval  = slowInterval - ( Double( tenClears ) * fastInterval )
         let capped    = interval < fastInterval ? fastInterval : interval
         
-        repeater = SimpleRepeater( every : capped )
-        
-        repeater.start() {
+        repeater      = SimpleRepeater( every : capped ) {
             self.well.dropDown()
             self.well.drawTo( well : self.delegate.well )
         }
+        
+        repeater.start()
     }
     
     func wellDidOverflow( _ well : Well ) {
-        repeater.stop()
-        delegate.gameDidStop( self )
-        delegate.game( self, didEndWithScore : score )
-        
-        // TODO: Show Game Over Panel
-        
-        running   = false
-        self.well = Well( delegate : self )
-        repeater  = SimpleRepeater( every : slowInterval )
+        reset()
     }
     
     func forecastDidChange( forecast : StopLightForecast ) {

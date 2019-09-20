@@ -31,15 +31,9 @@ class GameScreen : UIViewController, GameDelegate {
     
     // Properties
     
-    private( set ) lazy var game          : Game = {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        
-        delegate.game = Game( delegate : self )
-        
-        return delegate.game
-    }()
+    private( set ) var game               : Game!
     
-    private        var repeater           = SimpleRepeater( every : fastInterval )
+    private        var repeater           : SimpleRepeater!
     
     // Methods
     
@@ -47,6 +41,7 @@ class GameScreen : UIViewController, GameDelegate {
         super.viewDidLoad()
         
         roundCorners()
+        setupGame()
     }
     
     override func viewWillAppear( _ animated : Bool ) {
@@ -66,12 +61,17 @@ class GameScreen : UIViewController, GameDelegate {
         zip( roundOuterCorners, Corners.allCorners ).forEach { ( view, corner ) in view.round( corners: [ corner ] ) }
     }
     
+    func setupGame() {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        delegate.game = Game( delegate : self )
+        game          = delegate.game
+    }
+    
     func gameDidStart( _ game : Game ) { playPause.image = UIImage( named : "Pause" ) }
     func gameDidStop(  _ game : Game ) { playPause.image = UIImage( named : "Play" ) }
     
     func game( _ game : Game, didEndWithScore score : Int ) {
-        repeater.stop()
-        
         let alert = UIAlertController( title : "Game Over", message : "Nice job!  You scored \( score ) points!", preferredStyle : .alert )
         
         alert.addAction( UIAlertAction( title : "OK", style : .default, handler : nil ) )
@@ -83,11 +83,9 @@ class GameScreen : UIViewController, GameDelegate {
     
     @IBAction func seeSettingsTapped(    _ sender : UIButton ) {}
     
-    @IBAction func playPauseGameTapped(  _ sender : UIButton ) {
-        if game.running { game.stop() } else { game.start() }
-    }
+    @IBAction func playPauseGameTapped(  _ sender : UIButton ) { if game.running { game.stop() } else { game.start() } }
     
-    // TODO: resetGameTapped
+    @IBAction func resetGameTapped(      _ sender : UIButton ) { game.reset() }
     
     @IBAction func pinchInWell(          _ sender : UIPinchGestureRecognizer ) {
         guard sender.state == .ended else { return }
@@ -172,9 +170,9 @@ class GameScreen : UIViewController, GameDelegate {
     func whileHolding( _ sender : UILongPressGestureRecognizer, repeatAction action : ( () -> Void )? = nil ) {
         switch sender.state {
             case .began :
-                repeater = SimpleRepeater( every : fastInterval )
+                repeater = SimpleRepeater( every : fastInterval ) { if let action = action { action() } }
                 
-                repeater.start { if let action = action { action() } }
+                repeater.start()
             
             default : repeater.stop()
         }

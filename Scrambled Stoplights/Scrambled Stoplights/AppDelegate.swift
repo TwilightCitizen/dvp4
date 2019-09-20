@@ -11,8 +11,8 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window : UIWindow?
-    var game   : Game!
+    internal var window : UIWindow?
+    internal var game   : Game!
 
     func application(
         _                                 application : UIApplication,

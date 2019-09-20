@@ -26,7 +26,7 @@ class Well {
         }
         
         self.delegate = delegate
-        self.drawTo(well: self.delegate.delegate.well )
+        self.drawTo( well : self.delegate.delegate.well )
         
     }
     
