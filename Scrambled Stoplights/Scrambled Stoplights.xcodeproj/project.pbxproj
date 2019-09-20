@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3035CFED233579DC003EFA46 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3035CFEC233579DC003EFA46 /* CloudKit.framework */; };
 		308DFF432329B962001567B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF422329B962001567B1 /* AppDelegate.swift */; };
 		308DFF452329B962001567B1 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF442329B962001567B1 /* GameScreen.swift */; };
 		308DFF482329B962001567B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF462329B962001567B1 /* Main.storyboard */; };
-		308DFF4B2329B962001567B1 /* Scrambled_Stoplights.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF492329B962001567B1 /* Scrambled_Stoplights.xcdatamodeld */; };
 		308DFF4D2329B963001567B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF4C2329B963001567B1 /* Assets.xcassets */; };
 		308DFF502329B963001567B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF4E2329B963001567B1 /* LaunchScreen.storyboard */; };
 		308DFF582329BC07001567B1 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF572329BC07001567B1 /* GlobalConstants.swift */; };
@@ -39,11 +39,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3035CFEC233579DC003EFA46 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		308DFF3F2329B962001567B1 /* Scrambled Stoplights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrambled Stoplights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		308DFF422329B962001567B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		308DFF442329B962001567B1 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		308DFF472329B962001567B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		308DFF4A2329B962001567B1 /* Scrambled_Stoplights.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Scrambled_Stoplights.xcdatamodel; sourceTree = "<group>"; };
 		308DFF4C2329B963001567B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		308DFF4F2329B963001567B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		308DFF512329B963001567B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +70,7 @@
 		30F8029D233192A000B90894 /* IntExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExt.swift; sourceTree = "<group>"; };
 		30F802A5233447FA00B90894 /* StopLightForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopLightForecast.swift; sourceTree = "<group>"; };
 		30F802A7233549D500B90894 /* GameOverScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScreen.swift; sourceTree = "<group>"; };
+		30F802A92335781B00B90894 /* Scrambled Stoplights.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Scrambled Stoplights.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,17 +78,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3035CFED233579DC003EFA46 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3035CFEB233579DC003EFA46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3035CFEC233579DC003EFA46 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		308DFF362329B962001567B1 = {
 			isa = PBXGroup;
 			children = (
 				308DFF412329B962001567B1 /* Scrambled Stoplights */,
 				308DFF402329B962001567B1 /* Products */,
+				3035CFEB233579DC003EFA46 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +113,7 @@
 		308DFF412329B962001567B1 /* Scrambled Stoplights */ = {
 			isa = PBXGroup;
 			children = (
+				30F802A92335781B00B90894 /* Scrambled Stoplights.entitlements */,
 				308DFF462329B962001567B1 /* Main.storyboard */,
 				308DFF572329BC07001567B1 /* GlobalConstants.swift */,
 				308DFF422329B962001567B1 /* AppDelegate.swift */,
@@ -131,7 +143,6 @@
 				308DFF4C2329B963001567B1 /* Assets.xcassets */,
 				308DFF4E2329B963001567B1 /* LaunchScreen.storyboard */,
 				308DFF512329B963001567B1 /* Info.plist */,
-				308DFF492329B962001567B1 /* Scrambled_Stoplights.xcdatamodeld */,
 			);
 			path = "Scrambled Stoplights";
 			sourceTree = "<group>";
@@ -168,6 +179,14 @@
 				TargetAttributes = {
 					308DFF3E2329B962001567B1 = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -225,7 +244,6 @@
 				30F802A6233447FA00B90894 /* StopLightForecast.swift in Sources */,
 				30F8028C232D640A00B90894 /* ThemeEngine.swift in Sources */,
 				30F80284232D5EF800B90894 /* Well.swift in Sources */,
-				308DFF4B2329B962001567B1 /* Scrambled_Stoplights.xcdatamodeld in Sources */,
 				308DFF582329BC07001567B1 /* GlobalConstants.swift in Sources */,
 				30F80294232EE79B00B90894 /* Game.swift in Sources */,
 				30F80292232D83EA00B90894 /* BendAndRotation.swift in Sources */,
@@ -378,7 +396,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Scrambled Stoplights/Scrambled Stoplights.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 53HD9WR7C3;
 				INFOPLIST_FILE = "Scrambled Stoplights/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -395,7 +415,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Scrambled Stoplights/Scrambled Stoplights.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 53HD9WR7C3;
 				INFOPLIST_FILE = "Scrambled Stoplights/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -430,19 +452,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		308DFF492329B962001567B1 /* Scrambled_Stoplights.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				308DFF4A2329B962001567B1 /* Scrambled_Stoplights.xcdatamodel */,
-			);
-			currentVersion = 308DFF4A2329B962001567B1 /* Scrambled_Stoplights.xcdatamodel */;
-			path = Scrambled_Stoplights.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 308DFF372329B962001567B1 /* Project object */;
 }

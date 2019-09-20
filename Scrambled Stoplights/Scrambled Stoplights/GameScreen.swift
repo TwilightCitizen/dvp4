@@ -7,6 +7,7 @@
  */
 
 import UIKit
+import CloudKit
 
 class GameScreen : UIViewController, GameDelegate {
     // Outlets
@@ -36,6 +37,8 @@ class GameScreen : UIViewController, GameDelegate {
     
     private        var repeater           : SimpleRepeater!
     
+    private        var container          = CKContainer.default()
+    
     // Methods
     
     override func viewDidLoad() {
@@ -43,6 +46,25 @@ class GameScreen : UIViewController, GameDelegate {
         
         roundCorners()
         setupGame()
+        
+        
+        /* CKContainer.default().fetchUserRecordID { recordID, error in
+            guard let recordID = recordID, error == nil else {
+                print( error?.localizedDescription )
+                return
+            }
+            
+            print("Got user record ID \(recordID.recordName).")
+        }
+        
+        let record = CKRecord( recordType : "Test" )
+        
+        record[ "Test" ] = "Test" as CKRecordValue
+        
+        container.publicCloudDatabase.save( record ) { _, error in
+           print( error?.localizedDescription )
+        } */
+        
     }
     
     override func viewWillAppear( _ animated : Bool ) {

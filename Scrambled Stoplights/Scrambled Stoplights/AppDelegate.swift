@@ -7,12 +7,11 @@
  */
 
 import UIKit
-import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    internal var window : UIWindow?
-    internal var game   : Game!
+    internal var window    : UIWindow?
+    internal var game      : Game!
 
     func application(
         _                                 application : UIApplication,
@@ -31,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillResignActive( _ application : UIApplication ) {
         // Pause Game
-        game.stop()
+        if game.running { game.stop() }
     }
 
     func applicationDidEnterBackground( _ application : UIApplication ) {
@@ -39,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Save Game State
         // Invalidate Timers
         // Release Resources
-        game.stop()
+        if game.running { game.stop() }
     }
 
     func applicationWillEnterForeground( _ application : UIApplication ) {
@@ -54,35 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate( _ application : UIApplication ) {
         game.stop()
-        self.saveContext()
-    }
-
-    // MARK: - Core Data stack
-
-    lazy var persistentContainer: NSPersistentContainer = {
-        // Scrambled Stoplights Persistent Container
-        let container = NSPersistentContainer( name : CoreData.scrambledStoplights.description )
-        container.loadPersistentStores( completionHandler : { ( storeDescription, error ) in
-            if let error = error as NSError? { fatalError("Unresolved error \(error), \(error.userInfo)") }
-        } )
-        
-        return container
-    }()
-
-    // MARK: - Core Data Saving support
-
-    func saveContext () {
-        // Scrambled Stoplights Context
-        let context = persistentContainer.viewContext
-        
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
     }
 }
 
