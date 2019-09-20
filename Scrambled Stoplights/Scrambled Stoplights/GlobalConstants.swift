@@ -22,6 +22,9 @@ enum CoreData     : String, CustomStringConvertible {
 enum Segue        : String, CustomStringConvertible {
     // Cases
     
+    case gameToSettings
+    case gameToLeaderboard
+    case gameToGameOver
     case settingsToDisplayName
     case settingsToAvatar
     case settingsToTrack

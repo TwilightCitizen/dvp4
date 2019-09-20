@@ -35,6 +35,7 @@
 		30F8029C23306F8C00B90894 /* ForecastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8029B23306F8C00B90894 /* ForecastDelegate.swift */; };
 		30F8029E233192A000B90894 /* IntExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8029D233192A000B90894 /* IntExt.swift */; };
 		30F802A6233447FA00B90894 /* StopLightForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F802A5233447FA00B90894 /* StopLightForecast.swift */; };
+		30F802A8233549D500B90894 /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F802A7233549D500B90894 /* GameOverScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		30F8029B23306F8C00B90894 /* ForecastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDelegate.swift; sourceTree = "<group>"; };
 		30F8029D233192A000B90894 /* IntExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExt.swift; sourceTree = "<group>"; };
 		30F802A5233447FA00B90894 /* StopLightForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopLightForecast.swift; sourceTree = "<group>"; };
+		30F802A7233549D500B90894 /* GameOverScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				308DFF572329BC07001567B1 /* GlobalConstants.swift */,
 				308DFF422329B962001567B1 /* AppDelegate.swift */,
 				308DFF442329B962001567B1 /* GameScreen.swift */,
+				30F802A7233549D500B90894 /* GameOverScreen.swift */,
 				30F80279232C730C00B90894 /* SettingsScreen.swift */,
 				30F80281232C7B0900B90894 /* DisplayNameScreen.swift */,
 				30F8027D232C771300B90894 /* AvatarScreen.swift */,
@@ -207,6 +210,7 @@
 				30F8028A232D63D200B90894 /* Bulb.swift in Sources */,
 				30F80298232EF6C000B90894 /* WellDelegate.swift in Sources */,
 				30F80288232D5FA400B90894 /* StopLight.swift in Sources */,
+				30F802A8233549D500B90894 /* GameOverScreen.swift in Sources */,
 				30F80296232EE7E600B90894 /* GameDelegate.swift in Sources */,
 				30F8029C23306F8C00B90894 /* ForecastDelegate.swift in Sources */,
 				30F80282232C7B0900B90894 /* DisplayNameScreen.swift in Sources */,

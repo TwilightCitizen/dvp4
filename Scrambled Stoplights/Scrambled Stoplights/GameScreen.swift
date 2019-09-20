@@ -50,9 +50,19 @@ class GameScreen : UIViewController, GameDelegate {
     }
     
     override func prepare( for segue : UIStoryboardSegue, sender : Any? ) {
-        navigationController?.navigationBar.isHidden = false
-        
-        game.stop()
+        switch segue.identifier {
+            case Segue.gameToGameOver.description :
+                if let dest = segue.destination as? GameOverScreen {
+                    dest.score   = game.score
+                    dest.clears  = game.clears
+                    dest.bestRun = game.bestRun
+                }
+            
+            default :
+                navigationController?.navigationBar.isHidden = false
+                
+                game.stop()
+        }
     }
     
     func roundCorners() {
@@ -73,11 +83,7 @@ class GameScreen : UIViewController, GameDelegate {
     func gameDidStop(  _ game : Game ) { playPause.image = UIImage( named : "Play" ) }
     
     func game( _ game : Game, didEndWithScore score : Int, clears : Int, andBestRun best : Int ) {
-        let alert = UIAlertController( title : "Game Over", message : "Nice job!  You scored \( score ) points!", preferredStyle : .alert )
-        
-        alert.addAction( UIAlertAction( title : "OK", style : .default, handler : nil ) )
-        
-        present( alert, animated : true )
+        performSegue( withIdentifier : Segue.gameToGameOver.description, sender : self )
     }
     
     @IBAction func seeLeaderboardTapped( _ sender : UIButton ) {}
