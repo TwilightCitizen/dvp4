@@ -26,6 +26,8 @@ class Well {
         }
         
         self.delegate = delegate
+        self.drawTo(well: self.delegate.delegate.well )
+        
     }
     
     convenience init( delegate : WellDelegate ) {

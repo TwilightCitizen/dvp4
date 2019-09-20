@@ -87,6 +87,8 @@ class GameScreen : UIViewController, GameDelegate {
         if game.running { game.stop() } else { game.start() }
     }
     
+    // TODO: resetGameTapped
+    
     @IBAction func pinchInWell(          _ sender : UIPinchGestureRecognizer ) {
         guard sender.state == .ended else { return }
         

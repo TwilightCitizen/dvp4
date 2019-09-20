@@ -65,6 +65,8 @@ class Game : WellDelegate, ForecastDelegate {
         running                  = false
     }
     
+    func reset() {} // TODO: Figure Out Game Resetting
+    
     func well(_ well: Well, didClearBulbs bulbs: Int) {
         score                += 100 * bulbs
         clears               += bulbs
@@ -96,8 +98,11 @@ class Game : WellDelegate, ForecastDelegate {
         delegate.gameDidStop( self )
         delegate.game( self, didEndWithScore : score )
         
+        // TODO: Show Game Over Panel
+        
         running   = false
         self.well = Well( delegate : self )
+        repeater  = SimpleRepeater( every : slowInterval )
     }
     
     func forecastDidChange( forecast : StopLightForecast ) {
@@ -115,8 +120,6 @@ class Game : WellDelegate, ForecastDelegate {
             draw( light: light.element, to: delegate.forecast[ light.offset ] )
         }
     }
-    
-    func reset() {} // TODO: Figure Out Game Resetting
     
     func cycleUp()       { well.cycleUp();       score -= 10; well.drawTo( well: delegate.well ) }
     func cycleDown()     { well.cycleDown();     score -= 10; well.drawTo( well: delegate.well ) }
