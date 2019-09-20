@@ -3621,10 +3621,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9s5-o0-hcd" userLabel="Modal">
-                                <rect key="frame" x="52" y="298" width="310.5" height="310.5"/>
+                                <rect key="frame" x="52" y="246" width="310.5" height="414"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tbp-Ih-DqP" userLabel="Score">
-                                        <rect key="frame" x="53" y="103" width="204" height="28"/>
+                                        <rect key="frame" x="53" y="155" width="204" height="28"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDw-1V-ISS" userLabel="Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="102" height="28"/>
@@ -3651,7 +3651,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59H-He-edD" userLabel="Clears">
-                                        <rect key="frame" x="75.5" y="141" width="159" height="28"/>
+                                        <rect key="frame" x="75.5" y="193" width="159" height="28"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clears: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uw1-yz-hjI" userLabel="Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="116" height="28"/>
@@ -3678,7 +3678,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogw-aI-Lz2" userLabel="BestRun">
-                                        <rect key="frame" x="61" y="179" width="188" height="28"/>
+                                        <rect key="frame" x="61" y="231" width="188" height="28"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Run: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxo-gT-BVh" userLabel="Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="144.5" height="28"/>
@@ -3704,40 +3704,53 @@
                                             <constraint firstItem="Cxo-gT-BVh" firstAttribute="top" secondItem="ogw-aI-Lz2" secondAttribute="top" id="ufP-wL-t8K"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeH-Zn-3Fe">
+                                        <rect key="frame" x="10" y="364" width="290.5" height="40"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="24"/>
+                                        <state key="normal" title="Leaderboard">
+                                            <color key="titleColor" red="1" green="1" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="leaderboardTapped:" destination="CZ6-yA-fiB" eventType="touchUpInside" id="Fpt-dE-bK3"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="eDr-nJ-Ytv" userLabel="GameOver">
+                                        <rect key="frame" x="0.0" y="10" width="310.5" height="56"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="48"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstItem="eDr-nJ-Ytv" firstAttribute="centerX" secondItem="9s5-o0-hcd" secondAttribute="centerX" id="4GT-7k-bmE"/>
                                     <constraint firstItem="59H-He-edD" firstAttribute="top" secondItem="Tbp-Ih-DqP" secondAttribute="bottom" constant="10" id="B7x-OT-Z01"/>
                                     <constraint firstItem="ogw-aI-Lz2" firstAttribute="width" relation="lessThanOrEqual" secondItem="9s5-o0-hcd" secondAttribute="width" id="DTa-aN-Bem"/>
                                     <constraint firstItem="59H-He-edD" firstAttribute="centerX" secondItem="9s5-o0-hcd" secondAttribute="centerX" id="DbG-OC-foO"/>
                                     <constraint firstItem="ogw-aI-Lz2" firstAttribute="centerX" secondItem="Tbp-Ih-DqP" secondAttribute="centerX" id="JfR-k7-xoX"/>
                                     <constraint firstItem="Tbp-Ih-DqP" firstAttribute="centerX" secondItem="59H-He-edD" secondAttribute="centerX" id="LcD-Xp-2M7"/>
                                     <constraint firstItem="59H-He-edD" firstAttribute="centerY" secondItem="9s5-o0-hcd" secondAttribute="centerY" id="O25-vu-UOk"/>
-                                    <constraint firstAttribute="width" secondItem="9s5-o0-hcd" secondAttribute="height" id="UpF-Fr-hon"/>
+                                    <constraint firstAttribute="bottom" secondItem="oeH-Zn-3Fe" secondAttribute="bottom" constant="10" id="UFy-SQ-BYN"/>
+                                    <constraint firstAttribute="width" secondItem="9s5-o0-hcd" secondAttribute="height" multiplier="0.75" id="UpF-Fr-hon"/>
                                     <constraint firstItem="Tbp-Ih-DqP" firstAttribute="width" relation="lessThanOrEqual" secondItem="9s5-o0-hcd" secondAttribute="width" id="aBh-5w-hNK"/>
                                     <constraint firstItem="ogw-aI-Lz2" firstAttribute="top" secondItem="59H-He-edD" secondAttribute="bottom" constant="10" id="chH-0Z-lXO"/>
+                                    <constraint firstItem="eDr-nJ-Ytv" firstAttribute="top" secondItem="9s5-o0-hcd" secondAttribute="top" constant="10" id="eEE-xu-WHD"/>
                                     <constraint firstItem="59H-He-edD" firstAttribute="width" relation="lessThanOrEqual" secondItem="9s5-o0-hcd" secondAttribute="width" id="eV8-5q-M9W"/>
+                                    <constraint firstItem="oeH-Zn-3Fe" firstAttribute="leading" secondItem="9s5-o0-hcd" secondAttribute="leading" constant="10" id="pl8-eq-onx"/>
+                                    <constraint firstAttribute="trailing" secondItem="oeH-Zn-3Fe" secondAttribute="trailing" constant="10" id="vld-Sg-LmA"/>
+                                    <constraint firstItem="eDr-nJ-Ytv" firstAttribute="width" secondItem="9s5-o0-hcd" secondAttribute="width" id="zCd-ec-i0s"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Uf5-Ri-mcC" appends="YES" id="ELs-sp-w61"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="eDr-nJ-Ytv" userLabel="GameOver">
-                                <rect key="frame" x="0.0" y="232" width="414" height="56"/>
-                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="48"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="eDr-nJ-Ytv" firstAttribute="width" secondItem="OOR-2Q-wwq" secondAttribute="width" id="7XK-7D-6QI"/>
-                            <constraint firstItem="9s5-o0-hcd" firstAttribute="top" secondItem="eDr-nJ-Ytv" secondAttribute="bottom" constant="10" id="CXy-VS-oZa"/>
                             <constraint firstItem="9s5-o0-hcd" firstAttribute="centerY" secondItem="5aN-Id-nsh" secondAttribute="centerY" id="Kbe-jU-9eF"/>
                             <constraint firstItem="9s5-o0-hcd" firstAttribute="width" secondItem="OOR-2Q-wwq" secondAttribute="width" multiplier="0.75" id="SSs-ib-u3q"/>
-                            <constraint firstItem="eDr-nJ-Ytv" firstAttribute="centerX" secondItem="5aN-Id-nsh" secondAttribute="centerX" id="aMH-Gp-w0e"/>
-                            <constraint firstItem="eDr-nJ-Ytv" firstAttribute="centerX" secondItem="OOR-2Q-wwq" secondAttribute="centerX" id="lhm-Fx-lPg"/>
                             <constraint firstItem="9s5-o0-hcd" firstAttribute="centerX" secondItem="5aN-Id-nsh" secondAttribute="centerX" id="ztu-pb-HVS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5aN-Id-nsh"/>

@@ -61,7 +61,7 @@ class GameScreen : UIViewController, GameDelegate {
             default :
                 navigationController?.navigationBar.isHidden = false
                 
-                game.stop()
+                if game.running { game.stop() }
         }
     }
     

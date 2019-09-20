@@ -40,5 +40,11 @@ class GameOverScreen : UIViewController {
     @IBAction func tappedOutsideOfModal( _ sender : UITapGestureRecognizer ) {
         dismiss( animated : true, completion : nil )
     }
+    
+    @IBAction func leaderboardTapped( _ sender : UIButton ) {
+        let vc = presentingViewController!.children.last! as! GameScreen
+        
+        dismiss( animated : true ) { vc.performSegue( withIdentifier : Segue.gameToLeaderboard.description, sender : vc ) }
+    }
 }
 
