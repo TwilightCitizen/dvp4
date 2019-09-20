@@ -18,10 +18,11 @@ class GameScreen : UIViewController, GameDelegate {
     
     @IBOutlet weak var well               : UIView!
     @IBOutlet weak var paused             : UIView!
+    @IBOutlet weak var nogame             : UIView!
     
-    @IBOutlet var forecast                : [ UIView ]!
-    
-    @IBOutlet var controls                : [ UIButton ]!
+    @IBOutlet      var forecast           : [ UIView ]!
+         
+    @IBOutlet      var controls           : [ UIButton ]!
     
     @IBOutlet weak var playPause          : UIImageView!
     
@@ -71,7 +72,7 @@ class GameScreen : UIViewController, GameDelegate {
     func gameDidStart( _ game : Game ) { playPause.image = UIImage( named : "Pause" ) }
     func gameDidStop(  _ game : Game ) { playPause.image = UIImage( named : "Play" ) }
     
-    func game( _ game : Game, didEndWithScore score : Int ) {
+    func game( _ game : Game, didEndWithScore score : Int, clears : Int, andBestRun best : Int ) {
         let alert = UIAlertController( title : "Game Over", message : "Nice job!  You scored \( score ) points!", preferredStyle : .alert )
         
         alert.addAction( UIAlertAction( title : "OK", style : .default, handler : nil ) )

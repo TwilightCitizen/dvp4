@@ -2223,6 +2223,38 @@
                                             <constraint firstItem="dIR-xq-RjZ" firstAttribute="centerX" secondItem="qtR-L7-tft" secondAttribute="centerX" id="vOY-j1-OdG"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAr-6C-e9C" userLabel="PlayPanel">
+                                        <rect key="frame" x="37.5" y="7" width="271.5" height="532.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start a Game" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="aqh-LN-RDc" userLabel="Start">
+                                                <rect key="frame" x="0.0" y="210.5" width="271.5" height="112"/>
+                                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="48"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tz-OE-FHB" userLabel="Play">
+                                                <rect key="frame" x="88" y="332.5" width="95.5" height="95"/>
+                                                <connections>
+                                                    <action selector="playPauseGameTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6WP-Lt-D3A"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Play" translatesAutoresizingMaskIntoConstraints="NO" id="ZIw-Hh-5hX">
+                                                <rect key="frame" x="88" y="332.5" width="95.5" height="95"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="3Tz-OE-FHB" firstAttribute="height" secondItem="ZIw-Hh-5hX" secondAttribute="height" id="3CK-5g-Sro"/>
+                                            <constraint firstItem="ZIw-Hh-5hX" firstAttribute="centerX" secondItem="mAr-6C-e9C" secondAttribute="centerX" id="ScY-jM-fp4"/>
+                                            <constraint firstItem="aqh-LN-RDc" firstAttribute="centerX" secondItem="mAr-6C-e9C" secondAttribute="centerX" id="eMo-Vs-Unc"/>
+                                            <constraint firstItem="3Tz-OE-FHB" firstAttribute="centerX" secondItem="ZIw-Hh-5hX" secondAttribute="centerX" id="eOt-oe-M2c"/>
+                                            <constraint firstItem="3Tz-OE-FHB" firstAttribute="centerY" secondItem="ZIw-Hh-5hX" secondAttribute="centerY" id="enP-2d-gYV"/>
+                                            <constraint firstItem="3Tz-OE-FHB" firstAttribute="width" secondItem="ZIw-Hh-5hX" secondAttribute="width" id="hQI-x7-XQt"/>
+                                            <constraint firstItem="aqh-LN-RDc" firstAttribute="width" secondItem="mAr-6C-e9C" secondAttribute="width" id="jGx-6w-lFF"/>
+                                            <constraint firstItem="aqh-LN-RDc" firstAttribute="centerY" secondItem="mAr-6C-e9C" secondAttribute="centerY" id="nbI-A0-WqG"/>
+                                            <constraint firstItem="ZIw-Hh-5hX" firstAttribute="top" secondItem="aqh-LN-RDc" secondAttribute="bottom" constant="10" id="uni-H8-Lcl"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2231,8 +2263,12 @@
                                     <constraint firstItem="mbd-V2-ytT" firstAttribute="width" relation="lessThanOrEqual" secondItem="WXX-nm-D92" secondAttribute="width" multiplier="0.09" id="BSU-Y7-5c4"/>
                                     <constraint firstItem="3cU-ho-UOl" firstAttribute="centerX" secondItem="WXX-nm-D92" secondAttribute="centerX" id="IZ6-Zz-JzP"/>
                                     <constraint firstItem="qtR-L7-tft" firstAttribute="centerX" secondItem="3cU-ho-UOl" secondAttribute="centerX" id="IyK-pg-Ss1"/>
+                                    <constraint firstItem="mAr-6C-e9C" firstAttribute="centerX" secondItem="3cU-ho-UOl" secondAttribute="centerX" id="JWW-bD-SDU"/>
                                     <constraint firstItem="mbd-V2-ytT" firstAttribute="width" secondItem="WXX-nm-D92" secondAttribute="width" priority="500" id="RoA-pv-Ri4"/>
                                     <constraint firstItem="qtR-L7-tft" firstAttribute="height" secondItem="3cU-ho-UOl" secondAttribute="height" id="WAk-Ug-j76"/>
+                                    <constraint firstItem="mAr-6C-e9C" firstAttribute="height" secondItem="3cU-ho-UOl" secondAttribute="height" id="WZg-18-msj"/>
+                                    <constraint firstItem="mAr-6C-e9C" firstAttribute="centerY" secondItem="3cU-ho-UOl" secondAttribute="centerY" id="YOw-lz-Vs9"/>
+                                    <constraint firstItem="mAr-6C-e9C" firstAttribute="width" secondItem="3cU-ho-UOl" secondAttribute="width" id="b9K-9c-GYp"/>
                                     <constraint firstItem="mbd-V2-ytT" firstAttribute="height" relation="lessThanOrEqual" secondItem="WXX-nm-D92" secondAttribute="height" multiplier="0.045" id="k8X-Pt-3ZY"/>
                                     <constraint firstItem="qtR-L7-tft" firstAttribute="centerY" secondItem="3cU-ho-UOl" secondAttribute="centerY" id="tJA-mQ-3Cr"/>
                                     <constraint firstItem="qtR-L7-tft" firstAttribute="width" secondItem="3cU-ho-UOl" secondAttribute="width" id="v4W-dp-eD2"/>
@@ -3363,8 +3399,10 @@
                             <constraint firstItem="OAf-M9-juO" firstAttribute="height" secondItem="LGZ-bG-2h6" secondAttribute="height" multiplier="1.5" id="WQy-y0-7FC"/>
                             <constraint firstItem="aDV-lH-gXW" firstAttribute="width" secondItem="LGZ-bG-2h6" secondAttribute="width" id="XtV-fC-1tK"/>
                             <constraint firstItem="2vo-Bu-ESC" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Z1h-bI-a0d"/>
+                            <constraint firstItem="ZIw-Hh-5hX" firstAttribute="width" secondItem="LGZ-bG-2h6" secondAttribute="width" multiplier="2" id="Z4O-gR-eUr"/>
                             <constraint firstItem="WXX-nm-D92" firstAttribute="top" secondItem="job-ra-e4s" secondAttribute="bottom" id="ahx-Sx-Dpu"/>
                             <constraint firstItem="ULb-FW-uQC" firstAttribute="leading" secondItem="WXX-nm-D92" secondAttribute="trailing" id="bDV-hi-kuS"/>
+                            <constraint firstItem="ZIw-Hh-5hX" firstAttribute="height" secondItem="LGZ-bG-2h6" secondAttribute="height" multiplier="2" id="bG1-X0-sDR"/>
                             <constraint firstItem="2vo-Bu-ESC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bs1-eQ-wPo"/>
                             <constraint firstItem="wXg-6V-UjU" firstAttribute="height" secondItem="9ew-7d-EB9" secondAttribute="height" id="cVY-lp-Jrd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ULb-FW-uQC" secondAttribute="trailing" id="dez-pm-pnk"/>
@@ -3382,6 +3420,7 @@
                     <connections>
                         <outlet property="bestRun" destination="goX-Tf-4mH" id="StP-kC-lNa"/>
                         <outlet property="clears" destination="eGi-Ql-Aup" id="85A-Iy-P4a"/>
+                        <outlet property="nogame" destination="mAr-6C-e9C" id="HK8-aM-HWv"/>
                         <outlet property="paused" destination="qtR-L7-tft" id="nGl-SB-Oga"/>
                         <outlet property="playPause" destination="aDV-lH-gXW" id="oyE-cC-G1A"/>
                         <outlet property="score" destination="ogZ-8W-4Z7" id="42G-gx-xTT"/>
@@ -3423,6 +3462,7 @@
                         <outletCollection property="roundOuterCorners" destination="4rW-Ko-rss" collectionClass="NSMutableArray" id="4Fo-Hy-D1c"/>
                         <outletCollection property="roundOuterCorners" destination="EBT-1V-6Gi" collectionClass="NSMutableArray" id="bVt-Xu-dix"/>
                         <outletCollection property="roundAllCorners" destination="qtR-L7-tft" collectionClass="NSMutableArray" id="2DM-bt-7di"/>
+                        <outletCollection property="roundAllCorners" destination="mAr-6C-e9C" collectionClass="NSMutableArray" id="MiI-8r-aEs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

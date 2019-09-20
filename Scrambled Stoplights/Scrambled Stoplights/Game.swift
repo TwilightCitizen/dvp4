@@ -43,20 +43,26 @@ class Game : WellDelegate, ForecastDelegate {
                 self.well.drawTo( well : self.delegate.well )
             }
             
+            score                 = 0
+            clears                = 0
+            bestRun               = 0
             delegate.score.text   = 0.withCommas
             delegate.clears.text  = 0.withCommas
             delegate.bestRun.text = 0.withCommas
+            
+            repeater.start()
+        } else {
+            increaseSpeed()
         }
         
-        repeater.start()
+        delegate.gameDidStart( self )
+        delegate.forecast.forEach { $0.isHidden  = false }
+        delegate.controls.forEach { $0.isEnabled = true }
         
         running                  = true
         delegate.paused.isHidden = true
+        delegate.nogame.isHidden = true
         delegate.well.isHidden   = false
-        
-        delegate.forecast.forEach { $0.isHidden  = false }
-        delegate.controls.forEach { $0.isEnabled = true }
-        delegate.gameDidStart( self )
     }
     
     func stop()  {
@@ -67,24 +73,26 @@ class Game : WellDelegate, ForecastDelegate {
         
         delegate.well.isHidden   = true
         delegate.paused.isHidden = false
+        delegate.nogame.isHidden = true
         running                  = false
     }
     
     func reset() {
         delegate.gameDidStop( self )
-        delegate.game( self, didEndWithScore : score )
+        delegate.game( self, didEndWithScore : score, clears : clears, andBestRun : bestRun )
+        delegate.forecast.forEach { $0.isHidden  = true }
         
-        score                    = 0
-        clears                   = 0
-        bestRun                  = 0
+        score                    = 123_456
+        clears                   = 123
+        bestRun                  = 123
         delegate.score.text      = score.withCommas
         delegate.clears.text     = clears.withCommas
         delegate.bestRun.text    = bestRun.withCommas
         running                  = false
         self.well                = Well( delegate : self )
-
         delegate.well.isHidden   = true
         delegate.paused.isHidden = true
+        delegate.nogame.isHidden = false
     }
     
     func well(_ well: Well, didClearBulbs bulbs: Int) {

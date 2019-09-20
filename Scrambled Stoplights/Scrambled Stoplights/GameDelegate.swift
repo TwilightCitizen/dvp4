@@ -14,6 +14,7 @@ protocol GameDelegate {
     
     var well     : UIView!       { get set }
     var paused   : UIView!       { get set }
+    var nogame   : UIView!       { get set }
     var forecast : [ UIView ]!   { get set }
     var controls : [ UIButton ]! { get set }
     
@@ -28,14 +29,18 @@ protocol GameDelegate {
     func gameDidStart( _ game : Game )
     func gameDidStop(  _ game : Game )
     
-    func game( _ game : Game, scoreDidChangeFrom oldScore : Int, to newScore : Int )
-    func game( _ game : Game, didEndWithScore    score    : Int                    )
+    func game( _ game : Game, scoreDidChangeFrom   oldScore  : Int, to newScore  : Int                        )
+    func game( _ game : Game, clearsDidChangeFrom  oldClears : Int, to newClears : Int                        )
+    func game( _ game : Game, bestRunDidChangeFrom oldBest   : Int, to newBest   : Int                        )
+    func game( _ game : Game, didEndWithScore      score     : Int, clears       : Int, andBestRun best : Int )
 }
 
 extension GameDelegate {
     func gameDidStart( _ game : Game ) {}
     func gameDidStop(  _ game : Game ) {}
     
-    func game( _ game : Game, scoreDidChangeFrom oldScore : Int, to newScore : Int ) {}
-    func game( _ game : Game, didEndWithScore    score    : Int                    ) {}
+    func game( _ game : Game, scoreDidChangeFrom   oldScore  : Int, to newScore  : Int                        ) {}
+    func game( _ game : Game, clearsDidChangeFrom  oldClears : Int, to newClears : Int                        ) {}
+    func game( _ game : Game, bestRunDidChangeFrom oldBest   : Int, to newBest   : Int                        ) {}
+    func game( _ game : Game, didEndWithScore      score     : Int, clears       : Int, andBestRun best : Int ) {}
 }
