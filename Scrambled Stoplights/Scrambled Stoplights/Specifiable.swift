@@ -9,8 +9,13 @@
 import Foundation
 
 protocol Specifiable {
+    // Required Properties
+    
     static var specified : Self? { get set }
     static var fallback  : Self  { get     }
+    
+    // Optional Properties
+    
     static var current   : Self  { get     }
 }
 

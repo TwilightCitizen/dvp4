@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3035CFED233579DC003EFA46 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3035CFEC233579DC003EFA46 /* CloudKit.framework */; };
 		3035CFEF2336A749003EFA46 /* Specifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035CFEE2336A749003EFA46 /* Specifiable.swift */; };
+		3035CFF12336AAB1003EFA46 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035CFF02336AAB1003EFA46 /* Avatar.swift */; };
+		3035CFF32336AC0E003EFA46 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035CFF22336AC0E003EFA46 /* Codable.swift */; };
 		308DFF432329B962001567B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF422329B962001567B1 /* AppDelegate.swift */; };
 		308DFF452329B962001567B1 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF442329B962001567B1 /* GameScreen.swift */; };
 		308DFF482329B962001567B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF462329B962001567B1 /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 /* Begin PBXFileReference section */
 		3035CFEC233579DC003EFA46 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		3035CFEE2336A749003EFA46 /* Specifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specifiable.swift; sourceTree = "<group>"; };
+		3035CFF02336AAB1003EFA46 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		3035CFF22336AC0E003EFA46 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		308DFF3F2329B962001567B1 /* Scrambled Stoplights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrambled Stoplights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		308DFF422329B962001567B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		308DFF442329B962001567B1 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
@@ -129,7 +133,9 @@
 				30F80285232D5F4F00B90894 /* BulbType.swift */,
 				30F8028F232D658100B90894 /* BulbWeight.swift */,
 				3035CFEE2336A749003EFA46 /* Specifiable.swift */,
+				3035CFF22336AC0E003EFA46 /* Codable.swift */,
 				30F8028B232D640A00B90894 /* Theme.swift */,
+				3035CFF02336AAB1003EFA46 /* Avatar.swift */,
 				30F80289232D63D200B90894 /* Bulb.swift */,
 				30F80287232D5FA400B90894 /* StopLight.swift */,
 				30F80291232D83EA00B90894 /* BendAndRotation.swift */,
@@ -232,6 +238,7 @@
 				30F8028A232D63D200B90894 /* Bulb.swift in Sources */,
 				30F80298232EF6C000B90894 /* WellDelegate.swift in Sources */,
 				30F80288232D5FA400B90894 /* StopLight.swift in Sources */,
+				3035CFF12336AAB1003EFA46 /* Avatar.swift in Sources */,
 				30F802A8233549D500B90894 /* GameOverScreen.swift in Sources */,
 				30F80296232EE7E600B90894 /* GameDelegate.swift in Sources */,
 				30F8029C23306F8C00B90894 /* ForecastDelegate.swift in Sources */,
@@ -246,6 +253,7 @@
 				308DFF432329B962001567B1 /* AppDelegate.swift in Sources */,
 				30F80290232D658100B90894 /* BulbWeight.swift in Sources */,
 				30F802A6233447FA00B90894 /* StopLightForecast.swift in Sources */,
+				3035CFF32336AC0E003EFA46 /* Codable.swift in Sources */,
 				30F8028C232D640A00B90894 /* Theme.swift in Sources */,
 				30F80284232D5EF800B90894 /* Well.swift in Sources */,
 				308DFF582329BC07001567B1 /* GlobalConstants.swift in Sources */,

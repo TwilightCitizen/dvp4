@@ -12,7 +12,7 @@ import UIKit
 // Themes used throughout the game.  Themes concatenated with
 // bulb type and bulb weight correspond to a specific bulb image
 // for drawing to the game screen.
-enum Theme : String, CustomStringConvertible, CaseIterable, Specifiable {
+enum Theme : String, CaseIterable, Specifiable, Codeable {
     // Cases
     
     case classic
@@ -23,6 +23,8 @@ enum Theme : String, CustomStringConvertible, CaseIterable, Specifiable {
     case ps4controller
     
     // Properties
+    
+    static let key       =  CodeableKey.theme
     
     // Specified theme is provided externally
     static var specified : Theme? = nil
