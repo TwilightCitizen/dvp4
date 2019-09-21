@@ -30,8 +30,5 @@ enum Theme : String, CustomStringConvertible, CaseIterable, Specifiable {
     // Fallback theme is first one, or classic
     static var fallback  : Theme { return self.allCases.first! }
     
-    // Current theme is specified or fallback
-    static var current   : Theme { return specified ?? fallback }
-    
     var description      : String  { return self.rawValue }
 }

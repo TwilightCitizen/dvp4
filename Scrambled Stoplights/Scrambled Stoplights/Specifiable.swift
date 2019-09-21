@@ -13,3 +13,7 @@ protocol Specifiable {
     static var fallback  : Self  { get     }
     static var current   : Self  { get     }
 }
+
+extension Specifiable {
+    static var current   : Self  { return specified ?? fallback }
+}
