@@ -58,7 +58,7 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
     // Player of the game
     private        var player             : Player!
     
-    private        var container          = CKContainer.default()
+    internal       var container          = CKContainer.default()
     
     // Methods
     
@@ -68,6 +68,13 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
         roundCorners()
         setupGame()
         setupPlayer()
+        
+        /*DispatchQueue.main.asyncAfter( deadline : .now() + 1 ) {
+            if let signedIn = self.player as? SignedInPlayer {
+                signedIn.displayName = "David"
+                signedIn.avatar      = .shades
+            }
+        }*/
     }
     
     override func viewWillAppear( _ animated : Bool ) {
@@ -118,26 +125,16 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
     }
     
     func setupPlayer() {
-        CKContainer.default().fetchUserRecordID { recordID, error in
+        container.fetchUserRecordID { recordID, error in
             guard let recordID = recordID, error == nil else {
-                DispatchQueue.main.async { self.player = GuestPlayer( delegate : self ) }
+                self.player = GuestPlayer( delegate : self )
                 
                 return
             }
 
-            DispatchQueue.main.async { self.player = SignedInPlayer( delegate : self, id : recordID.recordName ) }
+            self.player = SignedInPlayer( delegate : self, id : recordID )
         }
     }
-    
-    /*
-     let record = CKRecord( recordType : "Test" )
-     
-     record[ "Test" ] = "Test" as CKRecordValue
-     
-     container.publicCloudDatabase.save( record ) { _, error in
-     print( error?.localizedDescription )
-     }
-    */
     
     // Swap the play/pause button image accordingly
     func gameDidStart( _ game : Game ) { playPause.image = UIImage( named : "Pause" ) }

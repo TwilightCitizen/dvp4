@@ -9,39 +9,6 @@
 import Foundation
 import UIKit
 
-
-// String type enum constants for segue identifier strings
-enum Segue : String, CustomStringConvertible {
-    // Cases
-    
-    case gameToSettings
-    case gameToLeaderboard
-    case gameToGameOver
-    case settingsToDisplayName
-    case settingsToAvatar
-    case settingsToTrack
-    case settingsToTheme
-    
-    // Properties
-    
-    var description : String { return self.rawValue }
-}
-
-// String type enum constants for reuseable cell identifier strings
-enum ReusableCell : String, CustomStringConvertible {
-    // Cases
-    
-    case avatar
-    case leader
-    case track
-    case selectableSetting
-    case slideableSetting
-    
-    // Properties
-    
-    var description : String { return self.rawValue }
-}
-
 // Numeric constants
 
 // Uniform radius for rounded corners

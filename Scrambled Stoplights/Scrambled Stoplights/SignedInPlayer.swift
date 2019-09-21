@@ -5,6 +5,7 @@
  */
 
 import Foundation
+import CloudKit
 
 class SignedInPlayer : Player {
     // Properties
@@ -17,7 +18,13 @@ class SignedInPlayer : Player {
     private var _avatar      : Avatar? = nil
     
     // ID of the signed in player
-    private var id           : String
+    private var id           : CKRecord.ID
+    
+    // Record of signed in user cached for easier updates
+    private var record       : CKRecord! = nil
+    
+    // Top score of the signed in player
+    private var _topScore    : Int? = nil
     
     // Externally accessible display name defaults to "Anonymous" if not provided
     internal var displayName : String! {
@@ -25,9 +32,14 @@ class SignedInPlayer : Player {
         
         set {
             _displayName              = newValue
-            delegate.displayName.text = displayName
+            record[ .displayName ]    = newValue
             
-            delegate.player( self, displayNameDidChangeTo : displayName )
+            DispatchQueue.main.async {
+                self.delegate.displayName.text = self.displayName
+                self.delegate.player( self, displayNameDidChangeTo : self.displayName )
+            }
+            
+            delegate.container.publicCloudDatabase.save( record ) { _, _ in }
         }
     }
     
@@ -37,19 +49,43 @@ class SignedInPlayer : Player {
         
         set {
             _avatar               = newValue
-            delegate.avatar.image = avatar.image
+            record[ .avatar ]     = newValue.encoded
             
-            delegate.player( self, avatarDidChangeTo : avatar )
+            DispatchQueue.main.async {
+                self.delegate.avatar.image = self.avatar.image
+                self.delegate.player( self, avatarDidChangeTo : self.avatar )
+            }
+            
+            delegate.container.publicCloudDatabase.save( record ) { _, _ in }
+        }
+    }
+    
+    // Externally accessible avatar name defaults to 0 if not provided
+    internal var  topScore    : Int! {
+        get { return _topScore ?? 0 }
+        
+        set {
+            _topScore           = newValue
+            record[ .topScore ] = newValue
+            
+            delegate.container.publicCloudDatabase.save( record ) { _, _ in }
         }
     }
     
     // Initializers
     
-    init( delegate : PlayerDelegate, id : String, displayName : String? = nil, avatar : Avatar? = nil ) {
+    init( delegate : PlayerDelegate, id : CKRecord.ID ) {
         self.delegate    = delegate
         self.id          = id
-        self.displayName = displayName
-        self.avatar      = avatar
+        
+        delegate.container.publicCloudDatabase.fetch( withRecordID : id ) { record, error in
+            guard let record = record, error == nil else { return  }
+            
+            self.record      = record
+            self.avatar      = Avatar.decodeFrom( record[ .avatar ] as? Data )
+            self.displayName = record[ .displayName ] as? String
+            self.topScore    = record[ .topScore    ] as? Int
+        }
     }
     
     // Methods

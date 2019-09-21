@@ -8,12 +8,14 @@
 
 import Foundation
 import UIKit
+import CloudKit
 
 protocol PlayerDelegate {
     // Required Properties
     
     var displayName : UILabel!     { get set }
     var avatar      : UIImageView! { get set }
+    var container   : CKContainer  { get     }
     
     // Required Methods
     

@@ -15,17 +15,18 @@ protocol Codeable : CustomStringConvertible, RawRepresentable where RawValue == 
     
     // Optional Properties
     
-    var encoded    : Data   { get }
+    var encoded    : Data        { get }
     
     // Optional Methods
     
-    static func decodeFrom( _ data : Data ) -> Self?
+    static func decodeFrom( _ data : Data? ) -> Self?
 }
 
 extension Codeable {
-    var encoded    : Data   { return ( Self.key.description + description ).data( using : .utf8 )! }
+    var encoded    : Data  { return ( Self.key.description + description ).data( using : .utf8 )! }
     
-    static func decodeFrom( _ data : Data ) -> Self? {
+    static func decodeFrom( _ data : Data? ) -> Self? {
+        guard let data     = data                                               else { return nil }
         guard let decoded  = String( bytes : data, encoding : .utf8 )           else { return nil }
         
         guard String( decoded.prefix( key.length ) ) == key.description         else { return nil }
