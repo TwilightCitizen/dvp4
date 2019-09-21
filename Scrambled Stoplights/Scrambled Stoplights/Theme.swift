@@ -12,7 +12,7 @@ import UIKit
 // Themes used throughout the game.  Themes concatenated with
 // bulb type and bulb weight correspond to a specific bulb image
 // for drawing to the game screen.
-enum Theme : String, CustomStringConvertible {
+enum Theme : String, CustomStringConvertible, CaseIterable, Specifiable {
     // Cases
     
     case classic
@@ -24,8 +24,14 @@ enum Theme : String, CustomStringConvertible {
     
     // Properties
     
-    // Current theme starts with sane default of classic
-    static var current : Theme = .classic
+    // Specified theme is provided externally
+    static var specified : Theme? = nil
     
-    var description : String  { return self.rawValue }
+    // Fallback theme is first one, or classic
+    static var fallback  : Theme { return self.allCases.first! }
+    
+    // Current theme is specified or fallback
+    static var current   : Theme { return specified ?? fallback }
+    
+    var description      : String  { return self.rawValue }
 }

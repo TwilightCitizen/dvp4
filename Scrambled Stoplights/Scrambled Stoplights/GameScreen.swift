@@ -60,7 +60,6 @@ class GameScreen : UIViewController, GameDelegate {
         roundCorners()
         setupGame()
         
-        
         /* CKContainer.default().fetchUserRecordID { recordID, error in
             guard let recordID = recordID, error == nil else {
                 print( error?.localizedDescription )
