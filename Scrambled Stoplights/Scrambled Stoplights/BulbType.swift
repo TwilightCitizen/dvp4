@@ -8,13 +8,18 @@
 
 import Foundation
 
+// Types that a Bulb can be
 enum BulbType : String, CustomStringConvertible {
+    // Cases
+    
     case stop
     case slow
     case go
     case empty
     case clear
     case ghost
+    
+    // Properties
     
     var description : String  { return self.rawValue }
 }

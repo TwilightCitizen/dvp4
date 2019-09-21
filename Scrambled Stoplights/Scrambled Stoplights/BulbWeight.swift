@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Weights that a Bulb can have
 enum BulbWeight : Int, CustomStringConvertible {
     // Cases
     
@@ -17,8 +18,11 @@ enum BulbWeight : Int, CustomStringConvertible {
     
     // Properties
     
+    // Convert from zero-based integer case to one-based numeric string
     var description   : String     { return ( self.rawValue + 1 ).description }
     
+    // Random bulb weight has high probability for one, medium probability for
+    // two, and low probability for three
     static var random : BulbWeight {
         switch ( 0...99 ).randomElement()! {
             case  0...49 : return .one
