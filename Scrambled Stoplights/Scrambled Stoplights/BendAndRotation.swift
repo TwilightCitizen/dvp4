@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Bends and/or rotations change the orientation of 3 primary bulbs within
+// a 3x3 grid, filling out the rest with empty bulbs
 enum BendAndRotation : String, CustomStringConvertible, CaseIterable {
     // Cases
     
@@ -24,6 +26,8 @@ enum BendAndRotation : String, CustomStringConvertible, CaseIterable {
     
     var description : String          { return self.rawValue }
     
+    // Next bend and/or rotation after the current one, or the
+    // first one in the case of the last one
     var next        : BendAndRotation {
         let cases = BendAndRotation.allCases
         let index = cases.firstIndex( of : self )! + 1
@@ -33,6 +37,8 @@ enum BendAndRotation : String, CustomStringConvertible, CaseIterable {
         return cases[ index ]
     }
     
+    // Previous bend and/or rotation before the current one, or
+    // the last one in the cast of the first one
     var previous    : BendAndRotation {
         let cases = BendAndRotation.allCases
         let index = cases.firstIndex( of : self )! - 1
@@ -44,12 +50,18 @@ enum BendAndRotation : String, CustomStringConvertible, CaseIterable {
     
     // Methods
     
+    // Orient the 3 primary bulbs in the 3x3 grid according to
+    // the currently selected bend and/or rotation
     func ofBulbs( _ bulbs : [ Bulb ] ) -> [ [ Bulb ] ] {
+        // Constant for empty bulb
         let empty = Bulb( ofType : .empty )
+        
+        // Constants for primary bulbs
         let first = bulbs[ 0 ]
         let secnd = bulbs[ 1 ]
         let third = bulbs[ 2 ]
         
+        // 3x3 grids corresponding to current bend and/or rotation
         switch self {
             case .topToBottom   :
                 return [ [ empty, first, empty ]
