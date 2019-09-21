@@ -40,7 +40,7 @@ extension Codeable {
 enum CodeableKey : String, CustomStringConvertible {
     // Cases
     
-    case theme, avatar
+    case theme, displayName, avatar
     
     // Properties
     

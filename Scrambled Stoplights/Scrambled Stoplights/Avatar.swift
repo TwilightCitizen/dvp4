@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-enum Avatar : String, CaseIterable, Specifiable, Codeable {
+enum Avatar : String, CaseIterable, Codeable {
     // Cases
     
     case eye, lips, shades, angel, grin, army, nerd, champ, zombie, knight
@@ -15,12 +15,6 @@ enum Avatar : String, CaseIterable, Specifiable, Codeable {
     // Properties
     
     static let key       = CodeableKey.avatar
-    
-    // Specified theme is provided externally
-    static var specified : Avatar? = nil
-    
-    // Fallback theme is first one, or classic
-    static var fallback  : Avatar { return self.allCases.first! }
     
     var description      : String  { return self.rawValue }
     

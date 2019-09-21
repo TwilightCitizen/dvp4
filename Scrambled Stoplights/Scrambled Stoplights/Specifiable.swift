@@ -20,5 +20,5 @@ protocol Specifiable {
 }
 
 extension Specifiable {
-    static var current   : Self  { return specified ?? fallback }
+    static var current   : Self  { return Self.specified ?? fallback }
 }
