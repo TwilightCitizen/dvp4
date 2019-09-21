@@ -63,7 +63,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NF-Ne-keb" userLabel="SeeLeaderboard">
                                         <rect key="frame" x="332.5" y="10" width="71.5" height="71.5"/>
                                         <connections>
-                                            <action selector="seeLeaderboardTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DB8-Sp-SyF"/>
                                             <segue destination="fUb-KV-gDS" kind="show" identifier="gameToLeaderboard" id="YuY-aL-62K"/>
                                         </connections>
                                     </button>
@@ -160,7 +159,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8Z-Zg-C1x" userLabel="SeeSettings">
                                         <rect key="frame" x="298.5" y="10" width="48" height="48"/>
                                         <connections>
-                                            <action selector="seeSettingsTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RQ8-W7-h0T"/>
                                             <segue destination="UDu-2u-xZB" kind="show" identifier="gameToSettings" id="3gD-03-ZTy"/>
                                         </connections>
                                     </button>
