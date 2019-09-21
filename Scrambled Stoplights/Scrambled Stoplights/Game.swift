@@ -12,16 +12,22 @@ import UIKit
 class Game : WellDelegate, ForecastDelegate {
     // Properties
     
+    // Delegate responsible for functionality dependent on the game
     internal       var delegate : GameDelegate
     
+    // Well managed by the game
     private        var well     : Well! = nil
     
+    // Forecast of stoplights required by the well, 7 stoplights out
     internal  lazy var forecast = { return StopLightForecast( delegate : self, length : 7 ) {
         return StopLight( top  : -3, left : ( self.well.contents.first!.count - 3 ) / 2 )
     } }()
     
+    // Repeater for dropping stoplights in the well
     private( set ) var repeater : SimpleRepeater!
+    // Game's running state
     private( set ) var running  = false
+    // Statistics for the game
     private( set ) var score    = 0
     private( set ) var clears   = 0
     private( set ) var bestRun  = 0
@@ -34,15 +40,21 @@ class Game : WellDelegate, ForecastDelegate {
     }
     
     // Methods
+    
+    // Start a game
     func start() {
+        // Either start from a cold start or a paused game
         if well.stopLight == nil {
+            // Starting cold means the well needs a stoplight
             well.addStopLight()
             
+            // Repeater to drop it now that its added
             repeater              = SimpleRepeater( every : slowInterval ) {
                 self.well.dropDown()
                 self.well.drawTo( well : self.delegate.well )
             }
             
+            // Setup fresh game statistics
             score                 = 0
             clears                = 0
             bestRun               = 0
@@ -50,11 +62,14 @@ class Game : WellDelegate, ForecastDelegate {
             delegate.clears.text  = 0.withCommas
             delegate.bestRun.text = 0.withCommas
             
+            // Start dropping the stoplight
             repeater.start()
         } else {
+            // Start dropping the stoplight at last obtained speed
             increaseSpeed()
         }
         
+        // Show and hide various panels and elements accordingly
         delegate.gameDidStart( self )
         delegate.forecast.forEach { $0.isHidden  = false }
         delegate.controls.forEach { $0.isEnabled = true }
@@ -65,8 +80,12 @@ class Game : WellDelegate, ForecastDelegate {
         delegate.well.isHidden   = false
     }
     
+    // Stop a running game
     func stop()  {
+        // Stop the repeater from dropping the stoplight
         repeater.stop()
+        
+        // Show and hide various panels and elements accordingly
         delegate.gameDidStop( self )
         delegate.controls.forEach { $0.isEnabled = false }
         delegate.forecast.forEach { $0.isHidden  = true }
@@ -77,17 +96,22 @@ class Game : WellDelegate, ForecastDelegate {
         running                  = false
     }
     
+    // Quit a paused game or a running game that overflowed the well
     func reset() {
+        // Setup for game over conditions
         delegate.gameDidStop( self )
         delegate.game( self, didEndWithScore : score, clears : clears, andBestRun : bestRun )
         delegate.forecast.forEach { $0.isHidden  = true }
         
+        // Setup sample game statistics
         score                    = 123_456
         clears                   = 123
         bestRun                  = 123
         delegate.score.text      = score.withCommas
         delegate.clears.text     = clears.withCommas
         delegate.bestRun.text    = bestRun.withCommas
+        
+        // Show and hide various panels and elements accordingly
         running                  = false
         self.well                = Well( delegate : self )
         delegate.well.isHidden   = true
@@ -95,34 +119,48 @@ class Game : WellDelegate, ForecastDelegate {
         delegate.nogame.isHidden = false
     }
     
+    // Bulbs in the well cleared out
     func well(_ well: Well, didClearBulbs bulbs: Int) {
+        // Add 100 points to the score for each bulb cleared
         score                += 100 * bulbs
+        // Add the clears
         clears               += bulbs
+        // Replace the best run if bulbs cleare this go are greater
+        bestRun               = bulbs > bestRun ? bulbs : bestRun
+        
+        // Update the statistics on the game screen
         delegate.score.text   = score.withCommas
         delegate.clears.text  = clears.withCommas
-        bestRun               = bulbs > bestRun ? bulbs : bestRun
         delegate.bestRun.text = bestRun.withCommas
         
+        // Increase the drop speed (possibly)
         increaseSpeed()
     }
     
+    // Increase the rate at which stoplights drop inside the well
     func increaseSpeed() {
+        // Basically, every 10 clears, increase the speed, starting from
+        // the slow interval, by as much as the fast interval, capping out
+        // at the fast interval as the top speed
         let tenClears = clears / 10
         let interval  = slowInterval - ( Double( tenClears ) * fastInterval )
         let capped    = interval < fastInterval ? fastInterval : interval
         
+        // Replace the current repeater with the possibly faster one
         repeater      = SimpleRepeater( every : capped ) {
             self.well.dropDown()
             self.well.drawTo( well : self.delegate.well )
         }
         
+        // And start it
         repeater.start()
     }
     
-    func wellDidOverflow( _ well : Well ) {
-        reset()
-    }
+    // Game over when the well overflows
+    func wellDidOverflow( _ well : Well ) { reset() }
     
+    // As stoplights are manifest from the forecast and added to the well,
+    // replace the on-screen forecast accordingly
     func forecastDidChange( forecast : StopLightForecast ) {
         func draw( light : StopLight, to view : UIView ) {
             light.contents.enumerated().forEach { row in
@@ -138,6 +176,10 @@ class Game : WellDelegate, ForecastDelegate {
             draw( light: light.element, to: delegate.forecast[ light.offset ] )
         }
     }
+    
+    // Manipulations to pass to the well to apply to the currently dropping stoplight, if any
+    // Manipulations cost 10 points each, except for drops which just hasten what the game will
+    // do automatically anyway
     
     func cycleUp()       { well.cycleUp();       score -= 10; well.drawTo( well: delegate.well ) }
     func cycleDown()     { well.cycleDown();     score -= 10; well.drawTo( well: delegate.well ) }
