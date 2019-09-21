@@ -14,7 +14,7 @@
 		308DFF4D2329B963001567B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF4C2329B963001567B1 /* Assets.xcassets */; };
 		308DFF502329B963001567B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF4E2329B963001567B1 /* LaunchScreen.storyboard */; };
 		308DFF582329BC07001567B1 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF572329BC07001567B1 /* GlobalConstants.swift */; };
-		30F80276232C482C00B90894 /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80275232C482C00B90894 /* RoundedCornerView.swift */; };
+		30F80276232C482C00B90894 /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80275232C482C00B90894 /* ViewExt.swift */; };
 		30F80278232C612800B90894 /* SimpleRepeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80277232C612800B90894 /* SimpleRepeater.swift */; };
 		30F8027A232C730C00B90894 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80279232C730C00B90894 /* SettingsScreen.swift */; };
 		30F8027C232C737A00B90894 /* LeaderboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8027B232C737A00B90894 /* LeaderboardScreen.swift */; };
@@ -48,7 +48,7 @@
 		308DFF4F2329B963001567B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		308DFF512329B963001567B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		308DFF572329BC07001567B1 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
-		30F80275232C482C00B90894 /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
+		30F80275232C482C00B90894 /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		30F80277232C612800B90894 /* SimpleRepeater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRepeater.swift; sourceTree = "<group>"; };
 		30F80279232C730C00B90894 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		30F8027B232C737A00B90894 /* LeaderboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardScreen.swift; sourceTree = "<group>"; };
@@ -124,7 +124,6 @@
 				30F8027D232C771300B90894 /* AvatarScreen.swift */,
 				30F8027F232C77EB00B90894 /* TrackScreen.swift */,
 				30F8027B232C737A00B90894 /* LeaderboardScreen.swift */,
-				30F80275232C482C00B90894 /* RoundedCornerView.swift */,
 				30F80285232D5F4F00B90894 /* BulbType.swift */,
 				30F8028F232D658100B90894 /* BulbWeight.swift */,
 				30F8028B232D640A00B90894 /* ThemeEngine.swift */,
@@ -139,6 +138,7 @@
 				30F8029B23306F8C00B90894 /* ForecastDelegate.swift */,
 				30F802A5233447FA00B90894 /* StopLightForecast.swift */,
 				30F80277232C612800B90894 /* SimpleRepeater.swift */,
+				30F80275232C482C00B90894 /* ViewExt.swift */,
 				30F8029D233192A000B90894 /* IntExt.swift */,
 				308DFF4C2329B963001567B1 /* Assets.xcassets */,
 				308DFF4E2329B963001567B1 /* LaunchScreen.storyboard */,
@@ -233,7 +233,7 @@
 				30F80296232EE7E600B90894 /* GameDelegate.swift in Sources */,
 				30F8029C23306F8C00B90894 /* ForecastDelegate.swift in Sources */,
 				30F80282232C7B0900B90894 /* DisplayNameScreen.swift in Sources */,
-				30F80276232C482C00B90894 /* RoundedCornerView.swift in Sources */,
+				30F80276232C482C00B90894 /* ViewExt.swift in Sources */,
 				30F8027E232C771300B90894 /* AvatarScreen.swift in Sources */,
 				30F8027A232C730C00B90894 /* SettingsScreen.swift in Sources */,
 				30F80280232C77EB00B90894 /* TrackScreen.swift in Sources */,

@@ -12,6 +12,7 @@ import UIKit
 struct Corners {
     // Properties
     
+    // Expose Corner Mask constants in a less verbose manner
     static let topLeft     = CACornerMask.layerMinXMinYCorner
     static let topRight    = CACornerMask.layerMaxXMinYCorner
     static let bottomLeft  = CACornerMask.layerMinXMaxYCorner
@@ -23,6 +24,7 @@ struct Corners {
 extension UIView {
     // Methods
     
+    // Apply the provided corner mask and radius to the view
     func round(
         corners         : CACornerMask = CACornerMask( Corners.allCorners ),
         toRadius radius : CGFloat      = cornerRadius
