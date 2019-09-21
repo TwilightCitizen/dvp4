@@ -9,17 +9,9 @@
 import Foundation
 import UIKit
 
-enum CoreData     : String, CustomStringConvertible {
-    // Cases
-    
-    case scrambledStoplights
-    
-    // Properties
-    
-    var description : String { return self.rawValue }
-}
 
-enum Segue        : String, CustomStringConvertible {
+// String type enum constants for segue identifier strings
+enum Segue : String, CustomStringConvertible {
     // Cases
     
     case gameToSettings
@@ -35,6 +27,7 @@ enum Segue        : String, CustomStringConvertible {
     var description : String { return self.rawValue }
 }
 
+// String type enum constants for reuseable cell identifier strings
 enum ReusableCell : String, CustomStringConvertible {
     // Cases
     
@@ -49,7 +42,14 @@ enum ReusableCell : String, CustomStringConvertible {
     var description : String { return self.rawValue }
 }
 
+// Numeric constants
+
+// Uniform radius for rounded corners
 let cornerRadius     : CGFloat      = 10
+
+// Slowest timing interval for game loop
 let slowInterval     : TimeInterval =  1.0
+
+// Fastest timing interval for game loop and
+// interval for held down control repeat
 let fastInterval     : TimeInterval =  0.025
-let fortyFiveDegrees : CGFloat      =  0.785
