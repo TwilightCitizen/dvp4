@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scrambled Stoplights/GameScreen.swift"
-            timestampString = "590793870.971462"
+            timestampString = "590795045.210567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -112,6 +112,22 @@
             startingLineNumber = "33"
             endingLineNumber = "33"
             landmarkName = "applicationWillResignActive(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Scrambled Stoplights/GameScreen.swift"
+            timestampString = "590795045.211077"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "setupPlayer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
