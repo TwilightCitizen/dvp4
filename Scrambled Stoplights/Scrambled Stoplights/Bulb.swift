@@ -9,13 +9,17 @@
 import Foundation
 import UIKit
 
+// Bulbs are the primary component that comprise StopLights and/or the game's Well
 class Bulb {
     // Properties
     
     let bulbType   : BulbType
     let bulbWeight : BulbWeight?
+    
+    // For mark/sweep clearing from the Well
     var clearable  = false
     
+    // Bulb image comprised of Theme, Bulb Type, and Bulb Weight concatentated
     var image      : UIImage { return UIImage( named :
         Theme.current.description + bulbType.description + ( bulbWeight?.description ?? "" )
     )! }
