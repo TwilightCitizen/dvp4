@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+// Themes used throughout the game.  Themes concatenated with
+// bulb type and bulb weight correspond to a specific bulb image
+// for drawing to the game screen.
 enum Theme : String, CustomStringConvertible {
     // Cases
     
@@ -21,6 +24,7 @@ enum Theme : String, CustomStringConvertible {
     
     // Properties
     
+    // Current theme starts with sane default of classic
     static var current : Theme = .classic
     
     var description : String  { return self.rawValue }
