@@ -8,7 +8,9 @@
 
 import Foundation
 
-// Types that a Bulb can be
+// Types that a Bulb can be.  This is much differentiated from the typical colors
+// red, yellow, and green because the theme engine can provide different colors
+// depending on the selected theme.
 enum BulbType : String, CustomStringConvertible {
     // Cases
     
