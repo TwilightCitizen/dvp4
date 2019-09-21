@@ -11,6 +11,7 @@ import Foundation
 protocol ForecastDelegate {
     // Associated Types
     
+    // The forecast of a particular type that the delegate of this kind can manage
     associatedtype T where T : Forecast
     
     // Required Properties
