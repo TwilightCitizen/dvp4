@@ -35,15 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground( _ application : UIApplication ) {
         // Pause Game
-        // Save Game State
-        // Invalidate Timers
-        // Release Resources
+        // Future Functionality: Save Game State
         if game.running { game.stop() }
     }
 
     func applicationWillEnterForeground( _ application : UIApplication ) {
-        // Restore Game State
-        // Restore Timers
+        // Future Functionality: Restore Game State
         // Leave Game Paused
     }
 
@@ -52,7 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate( _ application : UIApplication ) {
-        game.stop()
+        // Pause Game - Likely Unnecessary 
+        if game.running { game.stop() }
     }
 }
 
