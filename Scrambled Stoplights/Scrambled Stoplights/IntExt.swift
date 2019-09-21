@@ -9,6 +9,7 @@
 import Foundation
 
 extension Int {
+    // Convert to a string formatted with commas between groups of 3 digits
     var withCommas : String {
         let formatter = NumberFormatter()
         
