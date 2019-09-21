@@ -11,6 +11,10 @@
 		3035CFEF2336A749003EFA46 /* Specifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035CFEE2336A749003EFA46 /* Specifiable.swift */; };
 		3035CFF12336AAB1003EFA46 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035CFF02336AAB1003EFA46 /* Avatar.swift */; };
 		3035CFF32336AC0E003EFA46 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035CFF22336AC0E003EFA46 /* Codable.swift */; };
+		3076C6842336BE4F00B85D1F /* SignedInPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C6832336BE4F00B85D1F /* SignedInPlayer.swift */; };
+		3076C6862336C20900B85D1F /* PlayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C6852336C20900B85D1F /* PlayerDelegate.swift */; };
+		3076C6882336CA4C00B85D1F /* GuestPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C6872336CA4C00B85D1F /* GuestPlayer.swift */; };
+		3076C68A2336CB1800B85D1F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C6892336CB1800B85D1F /* Player.swift */; };
 		308DFF432329B962001567B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF422329B962001567B1 /* AppDelegate.swift */; };
 		308DFF452329B962001567B1 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF442329B962001567B1 /* GameScreen.swift */; };
 		308DFF482329B962001567B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF462329B962001567B1 /* Main.storyboard */; };
@@ -46,6 +50,10 @@
 		3035CFEE2336A749003EFA46 /* Specifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specifiable.swift; sourceTree = "<group>"; };
 		3035CFF02336AAB1003EFA46 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		3035CFF22336AC0E003EFA46 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
+		3076C6832336BE4F00B85D1F /* SignedInPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInPlayer.swift; sourceTree = "<group>"; };
+		3076C6852336C20900B85D1F /* PlayerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDelegate.swift; sourceTree = "<group>"; };
+		3076C6872336CA4C00B85D1F /* GuestPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestPlayer.swift; sourceTree = "<group>"; };
+		3076C6892336CB1800B85D1F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		308DFF3F2329B962001567B1 /* Scrambled Stoplights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrambled Stoplights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		308DFF422329B962001567B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		308DFF442329B962001567B1 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
@@ -136,6 +144,10 @@
 				3035CFF22336AC0E003EFA46 /* Codable.swift */,
 				30F8028B232D640A00B90894 /* Theme.swift */,
 				3035CFF02336AAB1003EFA46 /* Avatar.swift */,
+				3076C6892336CB1800B85D1F /* Player.swift */,
+				3076C6832336BE4F00B85D1F /* SignedInPlayer.swift */,
+				3076C6872336CA4C00B85D1F /* GuestPlayer.swift */,
+				3076C6852336C20900B85D1F /* PlayerDelegate.swift */,
 				30F80289232D63D200B90894 /* Bulb.swift */,
 				30F80287232D5FA400B90894 /* StopLight.swift */,
 				30F80291232D83EA00B90894 /* BendAndRotation.swift */,
@@ -236,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30F8028A232D63D200B90894 /* Bulb.swift in Sources */,
+				3076C6882336CA4C00B85D1F /* GuestPlayer.swift in Sources */,
 				30F80298232EF6C000B90894 /* WellDelegate.swift in Sources */,
 				30F80288232D5FA400B90894 /* StopLight.swift in Sources */,
 				3035CFF12336AAB1003EFA46 /* Avatar.swift in Sources */,
@@ -246,6 +259,7 @@
 				30F80276232C482C00B90894 /* ViewExt.swift in Sources */,
 				30F8027E232C771300B90894 /* AvatarScreen.swift in Sources */,
 				3035CFEF2336A749003EFA46 /* Specifiable.swift in Sources */,
+				3076C6842336BE4F00B85D1F /* SignedInPlayer.swift in Sources */,
 				30F8027A232C730C00B90894 /* SettingsScreen.swift in Sources */,
 				30F80280232C77EB00B90894 /* TrackScreen.swift in Sources */,
 				308DFF452329B962001567B1 /* GameScreen.swift in Sources */,
@@ -253,10 +267,12 @@
 				308DFF432329B962001567B1 /* AppDelegate.swift in Sources */,
 				30F80290232D658100B90894 /* BulbWeight.swift in Sources */,
 				30F802A6233447FA00B90894 /* StopLightForecast.swift in Sources */,
+				3076C68A2336CB1800B85D1F /* Player.swift in Sources */,
 				3035CFF32336AC0E003EFA46 /* Codable.swift in Sources */,
 				30F8028C232D640A00B90894 /* Theme.swift in Sources */,
 				30F80284232D5EF800B90894 /* Well.swift in Sources */,
 				308DFF582329BC07001567B1 /* GlobalConstants.swift in Sources */,
+				3076C6862336C20900B85D1F /* PlayerDelegate.swift in Sources */,
 				30F80294232EE79B00B90894 /* Game.swift in Sources */,
 				30F80292232D83EA00B90894 /* BendAndRotation.swift in Sources */,
 				30F80278232C612800B90894 /* SimpleRepeater.swift in Sources */,

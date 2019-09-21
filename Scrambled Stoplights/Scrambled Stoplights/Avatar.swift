@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-enum Avatar : String, CaseIterable, Codeable {
+enum Avatar : String, CaseIterable, Codeable, Specifiable {
     // Cases
     
     case eye, lips, shades, angel, grin, army, nerd, champ, zombie, knight
@@ -15,6 +15,10 @@ enum Avatar : String, CaseIterable, Codeable {
     // Properties
     
     static let key       = CodeableKey.avatar
+    
+    // Avatar is not globally specified, but all instances fallback to Grin
+    static var specified : Avatar? = nil
+    static var fallback  : Avatar  { return .grin }
     
     var description      : String  { return self.rawValue }
     

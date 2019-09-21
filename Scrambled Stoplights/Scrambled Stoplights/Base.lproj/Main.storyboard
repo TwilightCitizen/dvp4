@@ -3416,8 +3416,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rpr-vW-2HN"/>
                     <connections>
+                        <outlet property="avatar" destination="OAf-M9-juO" id="eLJ-pD-Fk9"/>
                         <outlet property="bestRun" destination="goX-Tf-4mH" id="StP-kC-lNa"/>
                         <outlet property="clears" destination="eGi-Ql-Aup" id="85A-Iy-P4a"/>
+                        <outlet property="displayName" destination="V7a-36-fmA" id="80e-K1-hIp"/>
                         <outlet property="nogame" destination="mAr-6C-e9C" id="HK8-aM-HWv"/>
                         <outlet property="paused" destination="qtR-L7-tft" id="nGl-SB-Oga"/>
                         <outlet property="playPause" destination="aDV-lH-gXW" id="oyE-cC-G1A"/>

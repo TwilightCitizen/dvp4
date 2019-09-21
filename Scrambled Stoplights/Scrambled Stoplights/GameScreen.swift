@@ -9,7 +9,7 @@
 import UIKit
 import CloudKit
 
-class GameScreen : UIViewController, GameDelegate {
+class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
     // Outlets
     
     // Elements that need corners rounded
@@ -40,6 +40,12 @@ class GameScreen : UIViewController, GameDelegate {
     @IBOutlet weak var clears             : UILabel!
     @IBOutlet weak var bestRun            : UILabel!
     
+    // Required by PlayerDelegate for reporting player
+    // display name and avatar
+    @IBOutlet weak var displayName        : UILabel!
+    @IBOutlet weak var avatar             : UIImageView!
+    
+    
     // Properties
     
     // The Game of Scrambled Stoplights - Could offer saving to
@@ -49,6 +55,8 @@ class GameScreen : UIViewController, GameDelegate {
     // Repeater for controls that are held down instead of tapped
     private        var repeater           : SimpleRepeater!
     
+    // Player of the game
+    private        var player             : Player!
     
     private        var container          = CKContainer.default()
     
@@ -59,6 +67,8 @@ class GameScreen : UIViewController, GameDelegate {
         
         roundCorners()
         setupGame()
+        
+        player = SignedInPlayer( delegate : self, id : "someid" )
         
         /* CKContainer.default().fetchUserRecordID { recordID, error in
             guard let recordID = recordID, error == nil else {
