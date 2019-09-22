@@ -26,6 +26,7 @@ class GuestPlayer : Player {
         DispatchQueue.main.async {
             self.delegate.displayName.text = self.displayName
             self.delegate.avatar.image     = self.avatar.image
+            self.delegate.placing.image    = Placing.current.image
             
             delegate.playerDidLoad( self )
         }

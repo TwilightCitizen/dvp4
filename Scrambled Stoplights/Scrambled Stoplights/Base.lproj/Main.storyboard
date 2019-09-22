@@ -3446,6 +3446,7 @@
                         <outlet property="displayName" destination="V7a-36-fmA" id="80e-K1-hIp"/>
                         <outlet property="nogame" destination="mAr-6C-e9C" id="HK8-aM-HWv"/>
                         <outlet property="paused" destination="qtR-L7-tft" id="nGl-SB-Oga"/>
+                        <outlet property="placing" destination="TOI-7t-rIu" id="pZu-41-efp"/>
                         <outlet property="playPause" destination="aDV-lH-gXW" id="oyE-cC-G1A"/>
                         <outlet property="score" destination="ogZ-8W-4Z7" id="42G-gx-xTT"/>
                         <outlet property="well" destination="3cU-ho-UOl" id="hoM-oI-6ff"/>

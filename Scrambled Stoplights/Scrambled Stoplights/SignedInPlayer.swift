@@ -57,8 +57,8 @@ class SignedInPlayer : Player {
         }
     }
     
-    // Externally accessible avatar name defaults to 0 if not provided
-    internal var  topScore    : Int! {
+    // Externally accessible avatar name, defaults to 0 if not provided
+    internal var topScore    : Int! {
         get { return player[ .topScore    ] as? Int ?? 0 }
         
         set {
@@ -67,13 +67,33 @@ class SignedInPlayer : Player {
             
             delegate.container.publicCloudDatabase.save( player ) { _, _ in }
             delegate.container.publicCloudDatabase.save( leader ) { _, _ in }
+            
+            // Query for leaderboard entry for the player
+            let pred  = NSPredicate( value : true )
+            let sort  = NSSortDescriptor( key : CloudKitRecord.topScore.description, ascending : false )
+            let query = CKQuery( recordType : CloudKitRecord.Leaders.description, predicate : pred )
+            
+            query.sortDescriptors = [ sort ]
+            
+            // Retrieve the player's leaderboard entry, if any
+            delegate.container.publicCloudDatabase.perform( query, inZoneWith: nil ) { records, error in
+                guard let records = records, error == nil else { return }
+                
+                let matching = records.enumerated().filter {
+                    $0.element[ CloudKitRecord.playerID.description ] == self.player.recordID.recordName
+                }.first
+                
+                DispatchQueue.main.async {
+                    self.delegate.placing.image = Placing.forPositionOf( matching?.offset ?? -1 ).image
+                }
+            }
         }
     }
     
     // Initializers
     
     init( delegate : PlayerDelegate, id : CKRecord.ID ) {
-        self.delegate    = delegate
+        self.delegate = delegate
         
         // Retrieve the user record with the provided ID
         delegate.container.publicCloudDatabase.fetch( withRecordID : id ) { record, error in
@@ -93,15 +113,22 @@ class SignedInPlayer : Player {
             }
             
             // Query for leaderboard entry for the player
-            let pred = NSPredicate( format : "playerID == %@", self.player.recordID.recordName )
+            let pred  = NSPredicate( value : true )
+            let sort  = NSSortDescriptor( key : CloudKitRecord.topScore.description, ascending : false )
             let query = CKQuery( recordType : CloudKitRecord.Leaders.description, predicate : pred )
+            
+            query.sortDescriptors = [ sort ]
             
             // Retrieve the player's leaderboard entry, if any
             delegate.container.publicCloudDatabase.perform( query, inZoneWith: nil ) { records, error in
                 guard let records = records, error == nil else { return }
                 
+                let matching = records.enumerated().filter {
+                    $0.element[ CloudKitRecord.playerID.description ] == self.player.recordID.recordName
+                }.first
+                
                 // Create a new leaderboard entry if none was found
-                self.leader = records.first ?? {
+                self.leader = matching?.element ?? {
                     let newleader = CKRecord( recordType : CloudKitRecord.Leaders.description )
                     
                     newleader[ .playerID    ] = self.player.recordID.recordName
@@ -113,6 +140,10 @@ class SignedInPlayer : Player {
                     
                     return newleader
                 }()
+                
+                DispatchQueue.main.async {
+                    delegate.placing.image = Placing.forPositionOf( matching?.offset ?? -1 ).image
+                }
             }
         }
     }

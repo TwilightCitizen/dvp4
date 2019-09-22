@@ -41,6 +41,7 @@ class LeaderboardScreen : UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView( _ tableView : UITableView, numberOfRowsInSection section : Int ) -> Int {
+        // One row for each leader, but none until loaded from iCloud
         return leaders?.count ?? 0
     }
     

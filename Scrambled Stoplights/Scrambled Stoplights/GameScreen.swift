@@ -47,6 +47,7 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
     // display name and avatar
     @IBOutlet weak var displayName        : UILabel!
     @IBOutlet weak var avatar             : UIImageView!
+    @IBOutlet weak var placing            : UIImageView!
     
     
     // Properties

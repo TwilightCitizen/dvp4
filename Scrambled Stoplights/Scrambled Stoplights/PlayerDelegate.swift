@@ -15,6 +15,7 @@ protocol PlayerDelegate {
     
     var displayName : UILabel!     { get set }
     var avatar      : UIImageView! { get set }
+    var placing     : UIImageView! { get set }
     var container   : CKContainer  { get     }
     
     // Required Methods
@@ -23,6 +24,7 @@ protocol PlayerDelegate {
     
     func player( _ player : Player, displayNameDidChangeTo newName   : String )
     func player( _ player : Player, avatarDidChangeTo      newAvatar : Avatar )
+    func player( _ player : Player, topScoreDidChangeTo    newScore  : Int    )
     
     func playerDidLoad(    _ player : Player )
     func playerDidNotLoad( _ player : Player )
@@ -31,6 +33,7 @@ protocol PlayerDelegate {
 extension PlayerDelegate {
     func player( _ player : Player, displayNameDidChangeTo newName   : String ) {}
     func player( _ player : Player, avatarDidChangeTo      newAvatar : Avatar ) {}
+    func player( _ player : Player, topScoreDidChangeTo    newScore  : Int    ) {}
     
     func playerDidLoad(    _ player : Player ) {}
     func playerDidNotLoad( _ player : Player ) {}
