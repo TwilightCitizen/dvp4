@@ -7,6 +7,7 @@
  */
 
 import UIKit
+import CloudKit
 
 class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Outlets
@@ -15,7 +16,8 @@ class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSou
     private let sections = [ "Profile", "Sound", "Visuals" ]
     private let profile  = [ "Display Name", "Avatar"      ]
     
-    internal var player  : Player!
+    internal var player    : Player!
+    internal var container : CKContainer!
     
     // Methods
     

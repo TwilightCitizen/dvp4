@@ -99,7 +99,8 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
             
             case Segue.gameToSettings.description :
                 if let dest = segue.destination as? SettingsScreen {
-                    dest.player = player
+                    dest.player    = player
+                    dest.container = container
                 }
             
             case Segue.gameToGameOver.description :
@@ -163,10 +164,13 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
             if score > signedIn.topScore {
                 message           = "You bested your old top score of \( signedIn.topScore.withCommas ) points! " +
                                     "Your new top score is \( score.withCommas )! "
+                
                 signedIn.topScore = score
+                
             } else {
                 message = "You missed your top score, finishing with \( score.withCommas ) points! "
             }
+            
         } else {
             message = "You finished with \( score.withCommas ) points! "
         }

@@ -12,9 +12,13 @@ import Foundation
 enum CloudKitRecord : String, CustomStringConvertible {
     // Cases
     
+    case Leaders
+    
     case avatar
     case displayName
     case topScore
+    case playerID
+    case recordName
     
     // Properties
     

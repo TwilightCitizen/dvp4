@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scrambled Stoplights/GameScreen.swift"
-            timestampString = "590860540.164776"
+            timestampString = "590866728.938332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scrambled Stoplights/SignedInPlayer.swift"
-            timestampString = "590860540.164992"
+            timestampString = "590866728.938696"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "displayName"
             landmarkType = "24">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scrambled Stoplights/SignedInPlayer.swift"
-            timestampString = "590860540.165043"
+            timestampString = "590866728.939363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "init(delegate:id:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,13 +154,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scrambled Stoplights/SignedInPlayer.swift"
-            timestampString = "590860540.165092"
+            timestampString = "590866728.939706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "displayName"
-            landmarkType = "24">
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "init(delegate:id:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Scrambled Stoplights/SignedInPlayer.swift"
+            timestampString = "590866728.940022"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "init(delegate:id:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Scrambled Stoplights/SignedInPlayer.swift"
+            timestampString = "590866728.940329"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "init(delegate:id:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Optional&lt;Swift.Array&lt;__C.CKRecord&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.CKRecord&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Scrambled_Stoplights.SignedInPlayer.init(delegate: Scrambled_Stoplights.PlayerDelegate, id: __C.CKRecordID) -&gt; Scrambled_Stoplights.SignedInPlayer"
+                  moduleName = "Scrambled Stoplights"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/twilightcitizen/Desktop/dvp4/Scrambled%20Stoplights/Scrambled%20Stoplights/SignedInPlayer.swift"
+                  timestampString = "590866441.579779"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "379">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; Swift.Optional&lt;__C.CKRecord&gt; in implicit closure #1 () throws -&gt; Swift.Optional&lt;__C.CKRecord&gt; in closure #3 (Swift.Optional&lt;Swift.Array&lt;__C.CKRecord&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.CKRecord&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Scrambled_Stoplights.SignedInPlayer.init(delegate: Scrambled_Stoplights.PlayerDelegate, id: __C.CKRecordID) -&gt; Scrambled_Stoplights.SignedInPlayer"
+                  moduleName = "Scrambled Stoplights"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/twilightcitizen/Desktop/dvp4/Scrambled%20Stoplights/Scrambled%20Stoplights/SignedInPlayer.swift"
+                  timestampString = "590866441.582486"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "125">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

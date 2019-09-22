@@ -14,14 +14,16 @@ class SignedInPlayer : Player {
     internal var delegate     : PlayerDelegate
     
     // Record of signed in user cached for easier updates
-    private var record       : CKRecord! = nil
+    private var player       : CKRecord! = nil
+    private var leader       : CKRecord! = nil
     
     // Externally accessible display name defaults to "Anonymous" if not provided
     internal var displayName : String! {
-        get { return record[ .displayName ] as? String ?? "Anonymous" }
+        get { return player[ .displayName ] as? String ?? "Anonymous" }
         
         set {
-            record[ .displayName ] = newValue
+            player[ .displayName ] = newValue
+            leader[ .displayName ] = newValue
             
             // Since this can be set from within another thread, dispatch
             // updates on the main thread
@@ -30,16 +32,18 @@ class SignedInPlayer : Player {
                 self.delegate.player( self, displayNameDidChangeTo : self.displayName )
             }
             
-            delegate.container.publicCloudDatabase.save( record ) { _, _ in }
+            delegate.container.publicCloudDatabase.save( player ) { _, _ in }
+            delegate.container.publicCloudDatabase.save( leader ) { _, _ in }
         }
     }
     
     // Externally accessible avatar name defaults to global fallback if not provided
     internal var  avatar      : Avatar! {
-        get { return ( Avatar.decodeFrom( record[ .avatar ] as? Data ) ?? Avatar.current ) }
+        get { return ( Avatar.decodeFrom( player[ .avatar ] as? Data ) ?? Avatar.current ) }
         
         set {
-            record[ .avatar ] = newValue.encoded
+            player[ .avatar ] = newValue.encoded
+            leader[ .avatar ] = newValue.encoded
             
             // Since this can be set from within another thread, dispatch
             // updates on the main thread
@@ -48,18 +52,21 @@ class SignedInPlayer : Player {
                 self.delegate.player( self, avatarDidChangeTo : self.avatar )
             }
             
-            delegate.container.publicCloudDatabase.save( record ) { _, _ in }
+            delegate.container.publicCloudDatabase.save( player ) { _, _ in }
+            delegate.container.publicCloudDatabase.save( leader ) { _, _ in }
         }
     }
     
     // Externally accessible avatar name defaults to 0 if not provided
     internal var  topScore    : Int! {
-        get { return record[ .topScore    ] as? Int ?? 0 }
+        get { return player[ .topScore    ] as? Int ?? 0 }
         
         set {
-            record[ .topScore ] = newValue
+            player[ .topScore ] = newValue
+            leader[ .topScore ] = newValue
             
-            delegate.container.publicCloudDatabase.save( record ) { _, _ in }
+            delegate.container.publicCloudDatabase.save( player ) { _, _ in }
+            delegate.container.publicCloudDatabase.save( leader ) { _, _ in }
         }
     }
     
@@ -74,15 +81,40 @@ class SignedInPlayer : Player {
                 DispatchQueue.main.async { delegate.playerDidNotLoad( self ) }
                 
                 return
-           }
+            }
             
-            self.record               = record
+            self.player               = record
             
             DispatchQueue.main.async {
                 delegate.displayName.text = self.displayName
                 delegate.avatar.image     = self.avatar.image
                 
                 delegate.playerDidLoad( self )
+            }
+            
+            // Query for leaderboard entry for the player
+            let pred = NSPredicate( format : "playerID == %@", self.player.recordID.recordName )
+            let query = CKQuery( recordType : CloudKitRecord.Leaders.description, predicate : pred )
+            
+            // Retrieve the player's leaderboard entry, if any
+            delegate.container.publicCloudDatabase.perform( query, inZoneWith: nil ) { records, error in
+                guard let records = records, error == nil else { return }
+                
+                // Create a new leaderboard entry if none was found
+                self.leader = records.first ?? {
+                    let newleader = CKRecord( recordType : CloudKitRecord.Leaders.description )
+                    
+                    newleader[ .playerID    ] = self.player.recordID.recordName
+                    newleader[ .displayName ] = self.displayName
+                    newleader[ .avatar      ] = self.avatar.encoded
+                    newleader[ .topScore    ] = self.topScore
+                    
+                    delegate.container.publicCloudDatabase.save( newleader ) { _, error in
+                        print( error )
+                    }
+                    
+                    return newleader
+                }()
             }
         }
     }
