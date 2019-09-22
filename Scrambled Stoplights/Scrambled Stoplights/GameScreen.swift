@@ -18,6 +18,9 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
     @IBOutlet      var roundBottomCorners : [ UIView ]!
     @IBOutlet      var roundOuterCorners  : [ UIImageView ]!
     
+    @IBOutlet var goldBorders             : [ UIView ]!
+    
+    
     // Panels required by GameDelegate for certain game states
     @IBOutlet weak var well               : UIView!
     @IBOutlet weak var paused             : UIView!
@@ -66,6 +69,7 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
         super.viewDidLoad()
         
         roundCorners()
+        colorBorders()
         setupGame()
         setupPlayer()
     }
@@ -118,6 +122,10 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
         // adding each view to its own collection like "topLeftCorners"
         zip( roundOuterCorners,
              Corners.allCorners ).forEach { ( view, corner ) in view.round( corners: [ corner ] ) }
+    }
+    
+    func colorBorders() {
+        goldBorders.forEach { $0.layer.borderWidth = 1; $0.layer.borderColor = UIColor.yellow.cgColor }
     }
     
     func setupGame() {
