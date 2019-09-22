@@ -109,9 +109,7 @@ class SignedInPlayer : Player {
                     newleader[ .avatar      ] = self.avatar.encoded
                     newleader[ .topScore    ] = self.topScore
                     
-                    delegate.container.publicCloudDatabase.save( newleader ) { _, error in
-                        print( error )
-                    }
+                    delegate.container.publicCloudDatabase.save( newleader ) { _, _ in }
                     
                     return newleader
                 }()

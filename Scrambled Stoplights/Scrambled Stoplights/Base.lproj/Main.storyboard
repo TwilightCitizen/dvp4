@@ -3611,8 +3611,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="fUb-KV-gDS" id="qPS-tU-atk"/>
-                                    <outlet property="delegate" destination="fUb-KV-gDS" id="0BA-MA-n0S"/>
+                                    <outlet property="dataSource" destination="fUb-KV-gDS" id="fWn-9v-DKK"/>
+                                    <outlet property="delegate" destination="fUb-KV-gDS" id="vFt-Ur-tbs"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -3625,6 +3625,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Ws-h5-38K"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="3ik-Zm-k7R" id="Ps8-Vn-OdJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0MN-IX-pW2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

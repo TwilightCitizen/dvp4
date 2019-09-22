@@ -105,8 +105,13 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
             
             case Segue.gameToGameOver.description :
                 if let dest = segue.destination as? GameOverScreen {
-                    dest.player = player
-            }
+                    dest.player    = player
+                }
+            
+            case Segue.gameToLeaderboard.description :
+                if let dest = segue.destination as? LeaderboardScreen {
+                    dest.container = container
+                }
             
             default : ()
         }
