@@ -23,12 +23,11 @@ class GuestPlayer : Player {
     init( delegate : PlayerDelegate ) {
         self.delegate = delegate
         
-        delegate.player( self, displayNameDidChangeTo : displayName )
-        delegate.player( self, avatarDidChangeTo      : avatar      )
-        
         DispatchQueue.main.async {
             self.delegate.displayName.text = self.displayName
             self.delegate.avatar.image     = self.avatar.image
+            
+            delegate.playerDidLoad( self )
         }
     }
     

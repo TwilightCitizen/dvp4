@@ -97,6 +97,12 @@ class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSou
                 }
                 
                 alert.addAction( cancel )
+                
+                if let popover = alert.popoverPresentationController {
+                    popover.sourceView = tableView.cellForRow( at : indexPath )
+                    popover.sourceRect = tableView.cellForRow( at : indexPath )!.bounds
+                }
+                
                 self.present( alert, animated : true, completion : nil )
             }
         }

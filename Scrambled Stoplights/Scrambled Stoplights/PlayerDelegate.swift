@@ -23,9 +23,15 @@ protocol PlayerDelegate {
     
     func player( _ player : Player, displayNameDidChangeTo newName   : String )
     func player( _ player : Player, avatarDidChangeTo      newAvatar : Avatar )
+    
+    func playerDidLoad(    _ player : Player )
+    func playerDidNotLoad( _ player : Player )
 }
 
 extension PlayerDelegate {
     func player( _ player : Player, displayNameDidChangeTo newName   : String ) {}
     func player( _ player : Player, avatarDidChangeTo      newAvatar : Avatar ) {}
+    
+    func playerDidLoad(    _ player : Player ) {}
+    func playerDidNotLoad( _ player : Player ) {}
 }

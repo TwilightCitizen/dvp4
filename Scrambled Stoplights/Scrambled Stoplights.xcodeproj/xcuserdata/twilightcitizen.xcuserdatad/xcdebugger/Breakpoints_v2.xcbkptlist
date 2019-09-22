@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scrambled Stoplights/GameScreen.swift"
-            timestampString = "590858436.873795"
+            timestampString = "590860540.164776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scrambled Stoplights/AppDelegate.swift"
-            timestampString = "590857827.043835"
+            timestampString = "590860540.164902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scrambled Stoplights/AppDelegate.swift"
-            timestampString = "590857827.043887"
+            timestampString = "590860540.16495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scrambled Stoplights/SignedInPlayer.swift"
-            timestampString = "590858436.87464"
+            timestampString = "590860540.164992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "displayName"
             landmarkType = "24">
          </BreakpointContent>
@@ -138,13 +138,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scrambled Stoplights/SignedInPlayer.swift"
-            timestampString = "590858436.874698"
+            timestampString = "590860540.165043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "init(delegate:id:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Scrambled Stoplights/SignedInPlayer.swift"
+            timestampString = "590860540.165092"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "displayName"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
