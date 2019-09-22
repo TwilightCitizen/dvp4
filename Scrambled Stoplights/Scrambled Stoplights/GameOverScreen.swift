@@ -21,11 +21,13 @@ class GameOverScreen : UIViewController {
     
     // Properties
     
-    // Game statistics passed in during segue from game screen
-    var score   : Int!
-    var clears  : Int!
-    var bestRun : Int!
+    internal var player             : Player!
     
+    // Game statistics passed in during segue from game screen
+    var score                       : Int!
+    var clears                      : Int!
+    var bestRun                     : Int!
+        
     // Methods
     
     override func viewDidLoad() {

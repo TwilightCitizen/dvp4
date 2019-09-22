@@ -98,6 +98,11 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
                     dest.player = player
                 }
             
+            case Segue.gameToGameOver.description :
+                if let dest = segue.destination as? GameOverScreen {
+                    dest.player = player
+            }
+            
             default : ()
         }
     }
@@ -142,7 +147,40 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
     
     func game( _ game : Game, didEndWithScore score : Int, clears : Int, andBestRun best : Int ) {
         // Switch to game over screen when its... over
-        performSegue( withIdentifier : Segue.gameToGameOver.description, sender : self )
+        // performSegue( withIdentifier : Segue.gameToGameOver.description, sender : self )
+        
+        var message : String
+        
+        if let signedIn = player as? SignedInPlayer {
+            if score > signedIn.topScore {
+                message           = "You bested your old top score of \( signedIn.topScore.withCommas ) points! " +
+                                    "Your new top score is \( score.withCommas )! "
+                signedIn.topScore = score
+            } else {
+                message = "You missed your top score, finishing with \( score.withCommas ) points! "
+            }
+        } else {
+            message = "You finished with \( score.withCommas ) points! "
+        }
+        
+        message += "You cleared \( clears.withCommas ) bulbs and " +
+                   "your best run was \( best.withCommas ) clears in a row!"
+        
+        let alert = UIAlertController(
+            title          : "Game Over!",
+            message        : message,
+            preferredStyle : .alert
+        )
+        
+        let close        = UIAlertAction( title : "Close",             style : .cancel  ) { _ in }
+        
+        let leaderboard  = UIAlertAction( title : "View Leaderboard",  style : .default ) { _ in
+            self.performSegue( withIdentifier : Segue.gameToLeaderboard.description, sender : self )
+        }
+        
+        alert.addAction( close        )
+        alert.addAction( leaderboard  )
+        self.present( alert, animated : true, completion : nil )
     }
     
     // Subsequent actions mate game controls and gesture recognizers to
