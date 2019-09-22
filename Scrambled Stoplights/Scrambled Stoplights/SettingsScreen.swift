@@ -12,6 +12,10 @@ class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSou
     // Outlets
     
     // Properties
+    private let sections = [ "Profile", "Sound", "Visuals" ]
+    private let profile  = [ "Display Name", "Avatar"      ]
+    
+    internal var player  : Player!
     
     // Methods
     
@@ -19,11 +23,82 @@ class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewDidLoad()
     }
     
+    func tableView( _ tableView : UITableView, titleForHeaderInSection section : Int ) -> String? {
+        return sections[ section ]
+    }
+    
     func tableView( _ tableView : UITableView, numberOfRowsInSection section : Int ) -> Int {
-        return 1
+        switch section {
+            case 0  : return profile.count
+            default : return 1
+        }
     }
     
     func tableView( _ tableView : UITableView, cellForRowAt indexPath : IndexPath ) -> UITableViewCell {
+        if indexPath.section == 0,
+            let cell    = tableView.dequeueReusableCell( withIdentifier : ReusableCell.selectableSetting.description ) {
+                
+            let row  = indexPath.row
+            
+            cell.textLabel?.text       = profile[ row ]
+            
+            cell.detailTextLabel?.text = { switch row {
+                case 0  : return player.displayName
+                default : return player.avatar.description.capitalized
+            } }()
+            
+            return cell
+        }
+        
         return UITableViewCell()
+    }
+    
+    func tableView(_  tableView : UITableView, didSelectRowAt indexPath : IndexPath ) {
+        if indexPath.section == 0, let signedIn = player as? SignedInPlayer {
+            if indexPath.row == 0 {
+                let alert = UIAlertController(
+                    title          : "Display Name",
+                    message        : "Enter a new display name.  Blank entries will be ignored.",
+                    preferredStyle : .alert
+                )
+                
+                alert.addTextField { field in field.placeholder = "Display Name" }
+                
+                let cancel = UIAlertAction( title : "Cancel", style : .cancel  ) { _ in }
+                
+                let apply  = UIAlertAction( title : "Apply",  style : .default ) { _ in
+                    let field = alert.textFields!.first
+                    
+                    if field?.text != "" {
+                        signedIn.displayName = field?.text
+                        tableView.reloadData()
+                    }
+                }
+                
+                alert.addAction( cancel )
+                alert.addAction( apply  )
+                self.present( alert, animated : true, completion : nil )
+            } else {
+                let alert = UIAlertController(
+                    title          : nil,
+                    message        : "Choose an Avatar",
+                    preferredStyle : .actionSheet
+                )
+                
+                let cancel = UIAlertAction( title : "Cancel", style : .cancel )
+                
+                Avatar.allCases.forEach { avatar in
+                    let action = UIAlertAction( title : avatar.rawValue.capitalized, style : .default ) { _ in
+                        signedIn.avatar = avatar
+                        tableView.reloadData()
+                    }
+                    
+                    alert.addAction( action )
+                }
+                
+                alert.addAction( cancel )
+                self.present( alert, animated : true, completion : nil )
+            }
+        }
     }
 }

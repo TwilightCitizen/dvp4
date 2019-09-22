@@ -68,13 +68,6 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
         roundCorners()
         setupGame()
         setupPlayer()
-        
-        /*DispatchQueue.main.asyncAfter( deadline : .now() + 1 ) {
-            if let signedIn = self.player as? SignedInPlayer {
-                signedIn.displayName = "David"
-                signedIn.avatar      = .shades
-            }
-        }*/
     }
     
     override func viewWillAppear( _ animated : Bool ) {
@@ -83,22 +76,29 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
     }
     
     override func prepare( for segue : UIStoryboardSegue, sender : Any? ) {
+        // Pause any running game first
+        if game.running { game.stop() }
+        
+        // Show navigation bar by default, presently on the
+        // leaderboard and settings screens
+        navigationController?.navigationBar.isHidden = false
+        
         switch segue.identifier {
             // Pass game statistics to game over screen on segue
             case Segue.gameToGameOver.description :
                 if let dest = segue.destination as? GameOverScreen {
-                    dest.score   = game.score
-                    dest.clears  = game.clears
-                    dest.bestRun = game.bestRun
+                    navigationController?.navigationBar.isHidden = true
+                    dest.score                                   = game.score
+                    dest.clears                                  = game.clears
+                    dest.bestRun                                 = game.bestRun
                 }
             
-            default :
-                // Show navigation bar by default, presently on the
-                // leaderboard and settings screens
-                navigationController?.navigationBar.isHidden = false
-                
-                // Pause any running game first
-                if game.running { game.stop() }
+            case Segue.gameToSettings.description :
+                if let dest = segue.destination as? SettingsScreen {
+                    dest.player = player
+                }
+            
+            default : ()
         }
     }
     

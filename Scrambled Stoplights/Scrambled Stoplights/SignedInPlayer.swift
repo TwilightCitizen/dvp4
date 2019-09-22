@@ -34,6 +34,8 @@ class SignedInPlayer : Player {
             _displayName              = newValue
             record[ .displayName ]    = newValue
             
+            // Since this can be set from within another thread, dispatch
+            // updates on the main thread
             DispatchQueue.main.async {
                 self.delegate.displayName.text = self.displayName
                 self.delegate.player( self, displayNameDidChangeTo : self.displayName )
@@ -51,6 +53,8 @@ class SignedInPlayer : Player {
             _avatar               = newValue
             record[ .avatar ]     = newValue.encoded
             
+            // Since this can be set from within another thread, dispatch
+            // updates on the main thread
             DispatchQueue.main.async {
                 self.delegate.avatar.image = self.avatar.image
                 self.delegate.player( self, avatarDidChangeTo : self.avatar )
@@ -78,6 +82,7 @@ class SignedInPlayer : Player {
         self.delegate    = delegate
         self.id          = id
         
+        // Retrieve the user record with the provided ID
         delegate.container.publicCloudDatabase.fetch( withRecordID : id ) { record, error in
             guard let record = record, error == nil else { return  }
             
