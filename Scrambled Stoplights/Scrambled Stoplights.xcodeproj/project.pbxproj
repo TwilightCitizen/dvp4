@@ -20,6 +20,7 @@
 		3076C6902336D80600B85D1F /* CloudKitRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C68F2336D80600B85D1F /* CloudKitRecord.swift */; };
 		3076C6922336D90900B85D1F /* CKRecordExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C6912336D90900B85D1F /* CKRecordExt.swift */; };
 		3076C69423381DC200B85D1F /* Placing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C69323381DC200B85D1F /* Placing.swift */; };
+		3076C6962338287500B85D1F /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C6952338287500B85D1F /* LeaderboardCell.swift */; };
 		308DFF432329B962001567B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF422329B962001567B1 /* AppDelegate.swift */; };
 		308DFF452329B962001567B1 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF442329B962001567B1 /* GameScreen.swift */; };
 		308DFF482329B962001567B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF462329B962001567B1 /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 		3076C68F2336D80600B85D1F /* CloudKitRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitRecord.swift; sourceTree = "<group>"; };
 		3076C6912336D90900B85D1F /* CKRecordExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKRecordExt.swift; sourceTree = "<group>"; };
 		3076C69323381DC200B85D1F /* Placing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placing.swift; sourceTree = "<group>"; };
+		3076C6952338287500B85D1F /* LeaderboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
 		308DFF3F2329B962001567B1 /* Scrambled Stoplights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrambled Stoplights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		308DFF422329B962001567B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		308DFF442329B962001567B1 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				30F8027D232C771300B90894 /* AvatarScreen.swift */,
 				30F8027F232C77EB00B90894 /* TrackScreen.swift */,
 				30F8027B232C737A00B90894 /* LeaderboardScreen.swift */,
+				3076C6952338287500B85D1F /* LeaderboardCell.swift */,
 				30F80285232D5F4F00B90894 /* BulbType.swift */,
 				30F8028F232D658100B90894 /* BulbWeight.swift */,
 				3035CFEE2336A749003EFA46 /* Specifiable.swift */,
@@ -275,6 +278,7 @@
 				30F80276232C482C00B90894 /* ViewExt.swift in Sources */,
 				30F8027E232C771300B90894 /* AvatarScreen.swift in Sources */,
 				3035CFEF2336A749003EFA46 /* Specifiable.swift in Sources */,
+				3076C6962338287500B85D1F /* LeaderboardCell.swift in Sources */,
 				3076C6842336BE4F00B85D1F /* SignedInPlayer.swift in Sources */,
 				3076C68E2336D3A200B85D1F /* Segue.swift in Sources */,
 				30F8027A232C730C00B90894 /* SettingsScreen.swift in Sources */,

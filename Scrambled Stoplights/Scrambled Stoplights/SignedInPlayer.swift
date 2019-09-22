@@ -14,8 +14,8 @@ class SignedInPlayer : Player {
     internal var delegate     : PlayerDelegate
     
     // Record of signed in user cached for easier updates
-    private var player       : CKRecord! = nil
-    private var leader       : CKRecord! = nil
+    private( set ) var player : CKRecord! = nil
+    private( set ) var leader : CKRecord! = nil
     
     // Externally accessible display name defaults to "Anonymous" if not provided
     internal var displayName : String! {

@@ -14,12 +14,17 @@ Scrambled Stoplights is a falling/descending block styled puzzle game by David C
 
 - Login Requirements:
 
-  - None Presently
+  - Login Not Required for Guest Use
+
+  - To obtain placement on leaderboard or use other functions, must be signed into iCloud.  Any valid iCloud account will work.  For testing without exposing your own credentials, sign into iCloud with the following testing account:
+
+    - Username: twilighttester@yandex.com
+    - Password: TwilightTester1234
 
 - Known Bugs:
 
-  - None Presently Known with Completed Functionality
-  - Bugs Likely Exist Despite this Knowledge
+  - Scrambled Stoplights currently does not detect changes to the user's logged in or logged out status while the app is in use.
+  - Other Bugs Likely Exist Despite this Knowledge
 
 - Special Requirements:
 

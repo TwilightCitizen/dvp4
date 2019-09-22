@@ -14,13 +14,18 @@ class LeaderboardScreen : UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView : UITableView!
     
     // Properties
+    
     internal var container : CKContainer!
+    internal var player    : Player!
     private  var leaders   : [ CKRecord ]!
+    private  var placing   : Int?
     
     // Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.backgroundColor = .darkGray
         
         // Query for leaderboard entries
         let pred  = NSPredicate( format: "topScore > \( 0 )" )
@@ -36,7 +41,22 @@ class LeaderboardScreen : UIViewController, UITableViewDelegate, UITableViewData
             // Hook up to the table.
             self.leaders = records
             
-            DispatchQueue.main.async { self.tableView.reloadData() }
+            // See if the player is placed for selection
+            if let signedIn = self.player as? SignedInPlayer {
+                let matched = records.enumerated().filter {
+                    $0.element[ CloudKitRecord.playerID.description ] == signedIn.player.recordID.recordName
+                }.first
+                
+                self.placing = matched?.offset
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                
+                if let placing = self.placing { self.tableView.selectRow(
+                    at : IndexPath( row : placing, section : 0 ), animated : true, scrollPosition : .middle
+                ) }
+            }
         }
     }
     
@@ -45,16 +65,30 @@ class LeaderboardScreen : UIViewController, UITableViewDelegate, UITableViewData
         return leaders?.count ?? 0
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
     func tableView( _ tableView : UITableView, cellForRowAt indexPath : IndexPath ) -> UITableViewCell {
-        if let cell    = tableView.dequeueReusableCell( withIdentifier : ReusableCell.leader.description ) {
+        if let cell    = tableView.dequeueReusableCell( withIdentifier : ReusableCell.leader.description ) as? LeaderboardCell {
             let leader = leaders[ indexPath.row ]
             
-            cell.textLabel?.text       = leader[ .displayName ] as? String
-            cell.detailTextLabel?.text = ( leader[ .topScore ] as? Int )?.withCommas
+            cell.placing.text     = ( indexPath.row + 1 ).withCommas
+            cell.displayName.text = leader[ .displayName ] as? String
+            cell.topScore.text    = ( leader[ .topScore ] as? Int )?.withCommas
             
             return cell
         }
         
         return UITableViewCell()
+    }
+    
+    func tableView( _ tableView : UITableView, willDisplay cell : UITableViewCell, forRowAt indexPath : IndexPath ) {
+        if let cell = cell as? LeaderboardCell, indexPath.row == placing {
+            cell.contentView.backgroundColor = .yellow
+            cell.placing.textColor           = .darkGray
+            cell.displayName.textColor       = .darkGray
+            cell.topScore.textColor          = .darkGray
+        }
     }
 }

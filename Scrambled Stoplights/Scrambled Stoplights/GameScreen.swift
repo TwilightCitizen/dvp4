@@ -73,11 +73,31 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
         colorBorders()
         setupGame()
         setupPlayer()
+        
+        NotificationCenter.default.addObserver( self,
+            selector : #selector( userChanged ),
+            name     : Notification.Name.CKAccountChanged,
+            object   : nil
+        )
     }
     
+    @objc func userChanged() { DispatchQueue.main.async { self.game.reset(); self.setupPlayer() } }
+    
     override func viewWillAppear( _ animated : Bool ) {
+        let navbar = navigationController!.navigationBar
+        
+        // Format navigation bar
+        navbar.barTintColor        = .darkGray
+        
+        navbar.titleTextAttributes = [
+            .foregroundColor : UIColor.yellow,
+            .font : UIFont( name : "Menlo", size : 16 )!
+        ]
+        
+        navbar.tintColor          = UIColor.white
+        
         // Hide navigation bar on the game screen
-        navigationController?.navigationBar.isHidden = true
+        navbar.isHidden            = true
     }
     
     override func prepare( for segue : UIStoryboardSegue, sender : Any? ) {
@@ -111,6 +131,7 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
             
             case Segue.gameToLeaderboard.description :
                 if let dest = segue.destination as? LeaderboardScreen {
+                    dest.player    = player
                     dest.container = container
                 }
             
