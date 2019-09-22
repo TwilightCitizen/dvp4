@@ -23,7 +23,7 @@ class LeaderboardScreen : UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         // Query for leaderboard entries
-        let pred  = NSPredicate( value: true )
+        let pred  = NSPredicate( format: "topScore > \( 0 )" )
         let sort  = NSSortDescriptor( key : CloudKitRecord.topScore.description, ascending : false )
         let query = CKQuery( recordType : CloudKitRecord.Leaders.description, predicate : pred )
         
