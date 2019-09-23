@@ -21,6 +21,10 @@
 		3076C6922336D90900B85D1F /* CKRecordExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C6912336D90900B85D1F /* CKRecordExt.swift */; };
 		3076C69423381DC200B85D1F /* Placing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C69323381DC200B85D1F /* Placing.swift */; };
 		3076C6962338287500B85D1F /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C6952338287500B85D1F /* LeaderboardCell.swift */; };
+		3076C69823386C1E00B85D1F /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C69723386C1E00B85D1F /* AudioEngine.swift */; };
+		3076C69A23386C2D00B85D1F /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C69923386C2D00B85D1F /* Audio.swift */; };
+		3076C69C23386C3800B85D1F /* SoundFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C69B23386C3800B85D1F /* SoundFX.swift */; };
+		3076C69E23386C4100B85D1F /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C69D23386C4000B85D1F /* Music.swift */; };
 		308DFF432329B962001567B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF422329B962001567B1 /* AppDelegate.swift */; };
 		308DFF452329B962001567B1 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF442329B962001567B1 /* GameScreen.swift */; };
 		308DFF482329B962001567B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF462329B962001567B1 /* Main.storyboard */; };
@@ -66,6 +70,10 @@
 		3076C6912336D90900B85D1F /* CKRecordExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKRecordExt.swift; sourceTree = "<group>"; };
 		3076C69323381DC200B85D1F /* Placing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placing.swift; sourceTree = "<group>"; };
 		3076C6952338287500B85D1F /* LeaderboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
+		3076C69723386C1E00B85D1F /* AudioEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
+		3076C69923386C2D00B85D1F /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		3076C69B23386C3800B85D1F /* SoundFX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundFX.swift; sourceTree = "<group>"; };
+		3076C69D23386C4000B85D1F /* Music.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		308DFF3F2329B962001567B1 /* Scrambled Stoplights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrambled Stoplights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		308DFF422329B962001567B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		308DFF442329B962001567B1 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
@@ -179,6 +187,10 @@
 				30F80275232C482C00B90894 /* ViewExt.swift */,
 				30F8029D233192A000B90894 /* IntExt.swift */,
 				3076C6912336D90900B85D1F /* CKRecordExt.swift */,
+				3076C69723386C1E00B85D1F /* AudioEngine.swift */,
+				3076C69923386C2D00B85D1F /* Audio.swift */,
+				3076C69B23386C3800B85D1F /* SoundFX.swift */,
+				3076C69D23386C4000B85D1F /* Music.swift */,
 				308DFF4C2329B963001567B1 /* Assets.xcassets */,
 				308DFF4E2329B963001567B1 /* LaunchScreen.storyboard */,
 				308DFF512329B963001567B1 /* Info.plist */,
@@ -284,6 +296,7 @@
 				30F8027A232C730C00B90894 /* SettingsScreen.swift in Sources */,
 				30F80280232C77EB00B90894 /* TrackScreen.swift in Sources */,
 				308DFF452329B962001567B1 /* GameScreen.swift in Sources */,
+				3076C69823386C1E00B85D1F /* AudioEngine.swift in Sources */,
 				30F8029E233192A000B90894 /* IntExt.swift in Sources */,
 				308DFF432329B962001567B1 /* AppDelegate.swift in Sources */,
 				30F80290232D658100B90894 /* BulbWeight.swift in Sources */,
@@ -301,7 +314,10 @@
 				30F80292232D83EA00B90894 /* BendAndRotation.swift in Sources */,
 				30F80278232C612800B90894 /* SimpleRepeater.swift in Sources */,
 				30F80286232D5F4F00B90894 /* BulbType.swift in Sources */,
+				3076C69E23386C4100B85D1F /* Music.swift in Sources */,
 				30F8029A2330637100B90894 /* Forecast.swift in Sources */,
+				3076C69C23386C3800B85D1F /* SoundFX.swift in Sources */,
+				3076C69A23386C2D00B85D1F /* Audio.swift in Sources */,
 				30F8027C232C737A00B90894 /* LeaderboardScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
