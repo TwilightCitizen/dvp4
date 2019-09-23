@@ -9,18 +9,33 @@
 
 import Foundation
 
-enum Music : String, CaseIterable, Audio {
+// All music is royalty free, courtesy of Eric Matyas at Soundimage.org,
+// free to use with credit attribution
+enum Music : String, CaseIterable, Audio, Specifiable, Codable {
     // Cases
     
-    case one, two, three
+    case puzzleDreams, mindBender, bubbleGumPuzzler
     
     // Properties
     
-    var name : String { return rawValue }
+    static let key       =  CodeableKey.music
+    
+    // Specified track is provided externally
+    static var specified : Music? = nil
+    
+    // Fallback track is first one, or puzzle dreams
+    static var fallback  : Music  { return self.allCases.first! }
+    
+    var name             : String { return rawValue     }
+    
+    // Volume defaults to global music volume
+    var volume           : Float  { return Music.volume }
+    static var volume    : Float  = 0.5
     
     // Methods
     
     // Music repeats on loop, so should be stoppable after playing.
-    func play() {AudioEngine.playAudio( self ) }
-    func stop() { AudioEngine.stopMusic() }
+    func play()        { AudioEngine.playAudio( self ) }
+    func stop()        { AudioEngine.stopMusic()       }
+    static func stop() { AudioEngine.stopMusic()       }
 }

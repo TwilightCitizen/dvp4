@@ -14,7 +14,9 @@ import Foundation
 protocol Audio {
     // Properties
     
-    var  name : String { get }
+    var name          : String { get     }
+    var volume        : Float  { get     }
+    static var volume : Float  { get set }
     
     // Methods
     

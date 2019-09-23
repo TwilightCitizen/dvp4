@@ -78,6 +78,10 @@ class Game : WellDelegate, ForecastDelegate {
         delegate.paused.isHidden = true
         delegate.nogame.isHidden = true
         delegate.well.isHidden   = false
+        
+        
+        Music.current.play()
+        Sound.tick.play()
     }
     
     // Stop a running game
@@ -94,6 +98,9 @@ class Game : WellDelegate, ForecastDelegate {
         delegate.paused.isHidden = false
         delegate.nogame.isHidden = true
         running                  = false
+        
+        Music.stop()
+        Sound.tick.play()
     }
     
     // Quit a paused game or a running game that overflowed the well
@@ -117,6 +124,9 @@ class Game : WellDelegate, ForecastDelegate {
         delegate.well.isHidden   = true
         delegate.paused.isHidden = true
         delegate.nogame.isHidden = false
+        
+        Music.stop()
+        Sound.rasp.play()
     }
     
     // Bulbs in the well cleared out

@@ -192,6 +192,8 @@ class Well {
             
             // Check if any bulbs were cleared
             if cleared > 0 {
+                Sound.chirp.play()
+                
                 // If there were, change them to empty ones
                 for row in contents.enumerated() { for col in row.element.enumerated() {
                     if col.element.bulbType == .clear {
@@ -290,18 +292,21 @@ class Well {
         guard let light = stopLight else { return }
         
         light.cycleUp()
+        Sound.swish.play()
     }
     
     func cycleDown() {
         guard let light = stopLight else { return }
         
         light.cycleDown()
+        Sound.swish.play()
     }
     
     func rotateCounter() {
         guard let light = stopLight else { return }
         
         if !willCollide( stopLight: light, fromAction: StopLight.rotateCounter ) {
+            Sound.swish.play()
             light.rotateCounter()
         }
     }
@@ -310,6 +315,7 @@ class Well {
         guard let light = stopLight else { return }
         
         if !willCollide( stopLight: light, fromAction: StopLight.rotateClock ) {
+            Sound.swish.play()
             light.rotateClock()
         }
     }
@@ -318,6 +324,7 @@ class Well {
         guard let light = stopLight else { return }
         
         if !willCollide( stopLight: light, fromAction: StopLight.moveLeft ) {
+            Sound.swish.play()
             light.moveLeft()
         }
     }
@@ -326,6 +333,7 @@ class Well {
         guard let light = stopLight else { return }
         
         if !willCollide( stopLight: light, fromAction: StopLight.moveRight ) {
+            Sound.swish.play()
             light.moveRight()
         }
     }
@@ -338,6 +346,7 @@ class Well {
         guard let stopLight = stopLight else { return }
         
         if willCollide( stopLight: stopLight, fromAction: StopLight.dropDown ) {
+            Sound.tap.play()
             land( stopLight )
             settle()
             clear()

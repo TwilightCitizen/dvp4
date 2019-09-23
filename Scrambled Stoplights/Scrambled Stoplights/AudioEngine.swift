@@ -27,10 +27,6 @@ class AudioEngine {
             withExtension : "mp3"//,
         ) else { return }
         
-        // Music repeats and plays at lower volume to sounds.
-        let loops          = audio is Music ? -1   : 0
-        let volume : Float = audio is Music ? 0.25 : 1.0
-        
         func playAudioOn( _ player : inout AVAudioPlayer ) {
             // Prepare to Access Audio Device
             do {
@@ -39,8 +35,8 @@ class AudioEngine {
                 
                 player = try AVAudioPlayer( contentsOf : url, fileTypeHint : AVFileType.mp3.rawValue )
                 
-                player.numberOfLoops = loops
-                player.volume        = volume
+                player.numberOfLoops = audio is Music ? -1 : 0
+                player.volume        = audio.volume
                 
                 player.play()
             } catch { /* Boo... No sound! :( */ }
@@ -52,5 +48,4 @@ class AudioEngine {
     
     // Not sure how to hide this from everywhere except GameMusic.
     static func stopMusic()   { music.stop() }
-    static func toggleMusic() { music.volume = music.volume == 0 ? 0.25 : 0 }
 }

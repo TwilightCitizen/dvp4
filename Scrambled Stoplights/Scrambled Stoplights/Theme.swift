@@ -30,7 +30,7 @@ enum Theme : String, CaseIterable, Specifiable, Codeable {
     static var specified : Theme? = nil
     
     // Fallback theme is first one, or classic
-    static var fallback  : Theme { return self.allCases.first! }
+    static var fallback  : Theme  { return self.allCases.first! }
     
-    var description      : String  { return self.rawValue }
+    var description      : String { return self.rawValue        }
 }
