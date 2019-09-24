@@ -9,15 +9,19 @@
 import UIKit
 import CloudKit
 
-class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingsScreen : UITableViewController {
     // Outlets
-    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var displayName : UILabel!
+    @IBOutlet weak var avatar      : UILabel!
+    @IBOutlet weak var track       : UILabel!
+    @IBOutlet weak var theme       : UILabel!
+    
+    @IBOutlet weak var music       : UISlider!
+    @IBOutlet weak var sounds      : UISlider!
+    
     
     // Properties
-    private let sections = [ "Profile", "Sound", "Visuals", "Credits" ]
-    private let profile  = [ "Display Name", "Avatar"                 ]
-    private let sound    = [ "Track"]
-    
+
     internal var player    : Player!
     internal var container : CKContainer!
     
@@ -25,18 +29,14 @@ class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadFromSettings()
         
         // Look out for iCloud sign in and out while app is in use
-        NotificationCenter.default.addObserver( self,
+        NotificationCenter.default.addObserver(
+            self,
             selector : #selector( userChanged ),
             name     : Notification.Name.CKAccountChanged,
             object   : nil
-        )
-        
-        // Register SettingsHeader.xib as a reusable header
-        tableView.register(
-            UINib.init( nibName : ReusableCell.SettingsHeader.description, bundle : nil ),
-            forHeaderFooterViewReuseIdentifier : ReusableCell.settingsHeader.description
         )
     }
     
@@ -52,106 +52,142 @@ class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    func tableView( _ tableView : UITableView, numberOfRowsInSection section : Int ) -> Int {
-        switch section {
-            case 0  : return profile.count
-            default : return 1
-        }
+    func loadFromSettings() {
+        displayName.text = player.displayName
+        avatar.text      = player.avatar.description.capitalized
+        track.text       = Music.current.name.capitalized
+        theme.text       = Theme.current.description.capitalized
+        music.value      = Music.volume
+        sounds.value     = Sound.volume
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
-    
-    func tableView( _ tableView : UITableView, estimatedHeightForHeaderInSection section : Int ) -> CGFloat {
-        return 44
-    }
-    
-    func tableView( _ tableView : UITableView, viewForHeaderInSection section : Int ) -> UIView? {
-        if let header = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier : ReusableCell.settingsHeader.description ) as? SettingsHeader {
-            
-            header.label.text = sections[ section ]
-            
-            return header
-        }
+    @IBAction func displayNameTapped( _ sender : UITapGestureRecognizer ) {
+        if let signedIn = player as? SignedInPlayer {
+            let alert = UIAlertController(
+                title          : "Display Name",
+                message        : "Enter a new display name.  Blank entries will be ignored.",
+                preferredStyle : .alert
+            )
         
-        return nil
-    }
-    
-    func tableView( _ tableView : UITableView, cellForRowAt indexPath : IndexPath ) -> UITableViewCell {
-        if indexPath.section == 0,
-            let cell    = tableView.dequeueReusableCell( withIdentifier : ReusableCell.selectableSetting.description ) {
-                
-            let row  = indexPath.row
-            
-            cell.textLabel?.text       = profile[ row ]
-            
-            cell.detailTextLabel?.text = { switch row {
-                case 0  : return player.displayName
-                default : return player.avatar.description.capitalized
-            } }()
-            
-            if player is GuestPlayer { cell.accessoryType = .none }
-            
-            return cell
-        }
+            alert.addTextField { field in field.placeholder = "Display Name" }
         
-        return UITableViewCell()
-    }
-    
-    func tableView(_  tableView : UITableView, didSelectRowAt indexPath : IndexPath ) {
-        if indexPath.section == 0, let signedIn = player as? SignedInPlayer {
-            if indexPath.row == 0 {
-                let alert = UIAlertController(
-                    title          : "Display Name",
-                    message        : "Enter a new display name.  Blank entries will be ignored.",
-                    preferredStyle : .alert
-                )
+            let cancel = UIAlertAction( title : "Cancel", style : .cancel  ) { _ in }
+        
+            let apply  = UIAlertAction( title : "Apply",  style : .default ) { _ in
+                let field = alert.textFields!.first
                 
-                alert.addTextField { field in field.placeholder = "Display Name" }
-                
-                let cancel = UIAlertAction( title : "Cancel", style : .cancel  ) { _ in }
-                
-                let apply  = UIAlertAction( title : "Apply",  style : .default ) { _ in
-                    let field = alert.textFields!.first
-                    
-                    if field?.text != "" {
-                        signedIn.displayName = field?.text
-                        tableView.reloadData()
-                    }
+                if field?.text != "" {
+                    signedIn.displayName  = field?.text
+                    self.displayName.text = field?.text
                 }
-                
-                alert.addAction( cancel )
-                alert.addAction( apply  )
-                self.present( alert, animated : true, completion : nil )
-            } else {
-                let alert = UIAlertController(
-                    title          : nil,
-                    message        : "Choose an Avatar",
-                    preferredStyle : .actionSheet
-                )
-                
-                let cancel = UIAlertAction( title : "Cancel", style : .cancel )
-                
-                Avatar.allCases.forEach { avatar in
-                    let action = UIAlertAction( title : avatar.rawValue.capitalized, style : .default ) { _ in
-                        signedIn.avatar = avatar
-                        tableView.reloadData()
-                    }
-                    
-                    alert.addAction( action )
-                }
-                
-                alert.addAction( cancel )
-                
-                if let popover = alert.popoverPresentationController {
-                    popover.sourceView = tableView.cellForRow( at : indexPath )
-                    popover.sourceRect = tableView.cellForRow( at : indexPath )!.bounds
-                }
-                
-                self.present( alert, animated : true, completion : nil )
             }
+        
+            alert.addAction( cancel )
+            alert.addAction( apply  )
+            self.present( alert, animated : true, completion : nil )
         }
     }
+    
+    @IBAction func avatarTapped( _ sender : UITapGestureRecognizer ) {
+        if let signedIn = player as? SignedInPlayer {
+            let alert = UIAlertController(
+                title          : nil,
+                message        : "Choose an Avatar",
+                preferredStyle : .actionSheet
+            )
+            
+            let cancel = UIAlertAction( title : "Cancel", style : .cancel )
+            
+            Avatar.allCases.forEach { avatar in
+                let action = UIAlertAction( title : avatar.rawValue.capitalized, style : .default ) { _ in
+                    signedIn.avatar  = avatar
+                    self.avatar.text = avatar.description.capitalized
+                }
+                
+                alert.addAction( action )
+            }
+            
+            alert.addAction( cancel )
+            
+            if let popover = alert.popoverPresentationController {
+                popover.sourceView = avatar
+                popover.sourceRect = avatar.bounds
+            }
+            
+            self.present( alert, animated : true, completion : nil )
+        }
+    }
+    
+    @IBAction func trackTapped( _ sender : UITapGestureRecognizer ) {
+        let alert = UIAlertController(
+            title          : nil,
+            message        : "Choose a Music Track",
+            preferredStyle : .actionSheet
+        )
+        
+        let cancel = UIAlertAction( title : "Cancel", style : .cancel )
+        
+        Music.allCases.forEach { track in
+            let action = UIAlertAction( title : track.rawValue.capitalized, style : .default ) { _ in
+                Music.specified  = track
+                self.track.text = Music.current.name.capitalized
+            }
+            
+            alert.addAction( action )
+        }
+        
+        alert.addAction( cancel )
+        
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = track
+            popover.sourceRect = track.bounds
+        }
+        
+        self.present( alert, animated : true, completion : nil )
+    }
+    
+    @IBAction func themeTapped( _ sender : UITapGestureRecognizer ) {
+        let alert = UIAlertController(
+            title          : nil,
+            message        : "Choose a Stoplight Theme",
+            preferredStyle : .actionSheet
+        )
+        
+        let cancel = UIAlertAction( title : "Cancel", style : .cancel )
+        
+        Theme.allCases.forEach { theme in
+            let action = UIAlertAction( title : theme.rawValue.capitalized, style : .default ) { _ in
+                Theme.specified  = theme
+                self.theme.text = Theme.current.description.capitalized
+            }
+            
+            alert.addAction( action )
+        }
+        
+        alert.addAction( cancel )
+        
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = theme
+            popover.sourceRect = theme.bounds
+        }
+        
+        self.present( alert, animated : true, completion : nil )
+    }
+    
+    @IBAction func creditsTapped( _ sender : UITapGestureRecognizer ) {
+        let alert = UIAlertController(
+            title          : "About Scrambled Stoplights",
+            message        : "Game Design by David Clark, Copyright 2019.\n\n"
+                           + "Avatar Artwork provided by Full Sail University.\n\n"
+                           + "Background Music by Eric Matyas at Soundimage.org.\n\n"
+                           + "Sound Effects by ZAPSPLAT at zapsplat.com and Sound Jay at soundjay.com.",
+            preferredStyle : .alert
+        )
+        
+        alert.addAction( UIAlertAction( title : "Okay", style : .cancel  ) { _ in } )
+        self.present( alert, animated : true, completion : nil )
+    }
+    
+    @IBAction func musicVolumeChanged( _ sender : UISlider ) { Music.volume = sender.value }
+    @IBAction func soundVolumeChanged( _ sender : UISlider ) { Sound.volume = sender.value }
 }

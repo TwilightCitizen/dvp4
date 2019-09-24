@@ -14,11 +14,6 @@ enum Segue : String, CustomStringConvertible {
     
     case gameToSettings
     case gameToLeaderboard
-    case gameToGameOver
-    case settingsToDisplayName
-    case settingsToAvatar
-    case settingsToTrack
-    case settingsToTheme
     
     // Properties
     

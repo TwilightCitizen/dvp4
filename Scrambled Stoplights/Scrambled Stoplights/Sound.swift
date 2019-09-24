@@ -9,7 +9,7 @@
 
 import Foundation
 
-// All sounds are royalty free, courtesy of ZAPSPLAT at zapsplat.com
+// All sounds are royalty free, courtesy of ZapSplat at zapsplat.com
 // and Sound Jay and soundjay.com free to use with credit attribution.
 
 enum Sound : String, CaseIterable, Audio {

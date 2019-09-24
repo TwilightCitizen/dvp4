@@ -33,8 +33,7 @@
 		3076C6AF233988C400B85D1F /* tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3076C6AD233988C300B85D1F /* tap.mp3 */; };
 		3076C6B0233988C400B85D1F /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3076C6AE233988C400B85D1F /* tick.mp3 */; };
 		3076C6B223398A1000B85D1F /* swish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3076C6B123398A1000B85D1F /* swish.mp3 */; };
-		3076C6B42339AA2700B85D1F /* SettingsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3076C6B32339AA2700B85D1F /* SettingsHeader.xib */; };
-		3076C6B62339AAFE00B85D1F /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C6B52339AAFE00B85D1F /* SettingsHeader.swift */; };
+		3076C6B8233AD72600B85D1F /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C6B7233AD72600B85D1F /* SettingsScreen.swift */; };
 		308DFF432329B962001567B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF422329B962001567B1 /* AppDelegate.swift */; };
 		308DFF452329B962001567B1 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF442329B962001567B1 /* GameScreen.swift */; };
 		308DFF482329B962001567B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF462329B962001567B1 /* Main.storyboard */; };
@@ -43,7 +42,6 @@
 		308DFF582329BC07001567B1 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF572329BC07001567B1 /* GlobalConstants.swift */; };
 		30F80276232C482C00B90894 /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80275232C482C00B90894 /* ViewExt.swift */; };
 		30F80278232C612800B90894 /* SimpleRepeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80277232C612800B90894 /* SimpleRepeater.swift */; };
-		30F8027A232C730C00B90894 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F80279232C730C00B90894 /* SettingsScreen.swift */; };
 		30F8027C232C737A00B90894 /* LeaderboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8027B232C737A00B90894 /* LeaderboardScreen.swift */; };
 		30F8027E232C771300B90894 /* AvatarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8027D232C771300B90894 /* AvatarScreen.swift */; };
 		30F80280232C77EB00B90894 /* TrackScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8027F232C77EB00B90894 /* TrackScreen.swift */; };
@@ -92,8 +90,7 @@
 		3076C6AD233988C300B85D1F /* tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tap.mp3; sourceTree = "<group>"; };
 		3076C6AE233988C400B85D1F /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		3076C6B123398A1000B85D1F /* swish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swish.mp3; sourceTree = "<group>"; };
-		3076C6B32339AA2700B85D1F /* SettingsHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsHeader.xib; sourceTree = "<group>"; };
-		3076C6B52339AAFE00B85D1F /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
+		3076C6B7233AD72600B85D1F /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		308DFF3F2329B962001567B1 /* Scrambled Stoplights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrambled Stoplights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		308DFF422329B962001567B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		308DFF442329B962001567B1 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
@@ -104,7 +101,6 @@
 		308DFF572329BC07001567B1 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		30F80275232C482C00B90894 /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		30F80277232C612800B90894 /* SimpleRepeater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRepeater.swift; sourceTree = "<group>"; };
-		30F80279232C730C00B90894 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		30F8027B232C737A00B90894 /* LeaderboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardScreen.swift; sourceTree = "<group>"; };
 		30F8027D232C771300B90894 /* AvatarScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarScreen.swift; sourceTree = "<group>"; };
 		30F8027F232C77EB00B90894 /* TrackScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackScreen.swift; sourceTree = "<group>"; };
@@ -200,9 +196,7 @@
 				308DFF422329B962001567B1 /* AppDelegate.swift */,
 				308DFF442329B962001567B1 /* GameScreen.swift */,
 				30F802A7233549D500B90894 /* GameOverScreen.swift */,
-				30F80279232C730C00B90894 /* SettingsScreen.swift */,
-				3076C6B32339AA2700B85D1F /* SettingsHeader.xib */,
-				3076C6B52339AAFE00B85D1F /* SettingsHeader.swift */,
+				3076C6B7233AD72600B85D1F /* SettingsScreen.swift */,
 				30F80281232C7B0900B90894 /* DisplayNameScreen.swift */,
 				30F8027D232C771300B90894 /* AvatarScreen.swift */,
 				30F8027F232C77EB00B90894 /* TrackScreen.swift */,
@@ -311,7 +305,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3076C6A423397BA100B85D1F /* mindBender.mp3 in Resources */,
-				3076C6B42339AA2700B85D1F /* SettingsHeader.xib in Resources */,
 				3076C6B0233988C400B85D1F /* tick.mp3 in Resources */,
 				308DFF502329B963001567B1 /* LaunchScreen.storyboard in Resources */,
 				308DFF4D2329B963001567B1 /* Assets.xcassets in Resources */,
@@ -340,7 +333,6 @@
 				3035CFF12336AAB1003EFA46 /* Avatar.swift in Sources */,
 				30F802A8233549D500B90894 /* GameOverScreen.swift in Sources */,
 				30F80296232EE7E600B90894 /* GameDelegate.swift in Sources */,
-				3076C6B62339AAFE00B85D1F /* SettingsHeader.swift in Sources */,
 				30F8029C23306F8C00B90894 /* ForecastDelegate.swift in Sources */,
 				30F80282232C7B0900B90894 /* DisplayNameScreen.swift in Sources */,
 				30F80276232C482C00B90894 /* ViewExt.swift in Sources */,
@@ -349,7 +341,6 @@
 				3076C6962338287500B85D1F /* LeaderboardCell.swift in Sources */,
 				3076C6842336BE4F00B85D1F /* SignedInPlayer.swift in Sources */,
 				3076C68E2336D3A200B85D1F /* Segue.swift in Sources */,
-				30F8027A232C730C00B90894 /* SettingsScreen.swift in Sources */,
 				30F80280232C77EB00B90894 /* TrackScreen.swift in Sources */,
 				308DFF452329B962001567B1 /* GameScreen.swift in Sources */,
 				3076C69823386C1E00B85D1F /* AudioEngine.swift in Sources */,
@@ -370,6 +361,7 @@
 				30F80292232D83EA00B90894 /* BendAndRotation.swift in Sources */,
 				30F80278232C612800B90894 /* SimpleRepeater.swift in Sources */,
 				30F80286232D5F4F00B90894 /* BulbType.swift in Sources */,
+				3076C6B8233AD72600B85D1F /* SettingsScreen.swift in Sources */,
 				3076C69E23386C4100B85D1F /* Music.swift in Sources */,
 				30F8029A2330637100B90894 /* Forecast.swift in Sources */,
 				3076C69C23386C3800B85D1F /* Sound.swift in Sources */,

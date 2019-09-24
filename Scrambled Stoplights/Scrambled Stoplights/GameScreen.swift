@@ -117,23 +117,10 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
         
         switch segue.identifier {
             // Pass game statistics to game over screen on segue
-            case Segue.gameToGameOver.description :
-                if let dest = segue.destination as? GameOverScreen {
-                    navigationController?.navigationBar.isHidden = true
-                    dest.score                                   = game.score
-                    dest.clears                                  = game.clears
-                    dest.bestRun                                 = game.bestRun
-                }
-            
             case Segue.gameToSettings.description :
                 if let dest = segue.destination as? SettingsScreen {
                     dest.player    = player
                     dest.container = container
-                }
-            
-            case Segue.gameToGameOver.description :
-                if let dest = segue.destination as? GameOverScreen {
-                    dest.player    = player
                 }
             
             case Segue.gameToLeaderboard.description :
