@@ -33,6 +33,8 @@
 		3076C6AF233988C400B85D1F /* tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3076C6AD233988C300B85D1F /* tap.mp3 */; };
 		3076C6B0233988C400B85D1F /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3076C6AE233988C400B85D1F /* tick.mp3 */; };
 		3076C6B223398A1000B85D1F /* swish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3076C6B123398A1000B85D1F /* swish.mp3 */; };
+		3076C6B42339AA2700B85D1F /* SettingsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3076C6B32339AA2700B85D1F /* SettingsHeader.xib */; };
+		3076C6B62339AAFE00B85D1F /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076C6B52339AAFE00B85D1F /* SettingsHeader.swift */; };
 		308DFF432329B962001567B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF422329B962001567B1 /* AppDelegate.swift */; };
 		308DFF452329B962001567B1 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFF442329B962001567B1 /* GameScreen.swift */; };
 		308DFF482329B962001567B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308DFF462329B962001567B1 /* Main.storyboard */; };
@@ -90,6 +92,8 @@
 		3076C6AD233988C300B85D1F /* tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tap.mp3; sourceTree = "<group>"; };
 		3076C6AE233988C400B85D1F /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		3076C6B123398A1000B85D1F /* swish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swish.mp3; sourceTree = "<group>"; };
+		3076C6B32339AA2700B85D1F /* SettingsHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsHeader.xib; sourceTree = "<group>"; };
+		3076C6B52339AAFE00B85D1F /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
 		308DFF3F2329B962001567B1 /* Scrambled Stoplights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrambled Stoplights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		308DFF422329B962001567B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		308DFF442329B962001567B1 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 				308DFF442329B962001567B1 /* GameScreen.swift */,
 				30F802A7233549D500B90894 /* GameOverScreen.swift */,
 				30F80279232C730C00B90894 /* SettingsScreen.swift */,
+				3076C6B32339AA2700B85D1F /* SettingsHeader.xib */,
+				3076C6B52339AAFE00B85D1F /* SettingsHeader.swift */,
 				30F80281232C7B0900B90894 /* DisplayNameScreen.swift */,
 				30F8027D232C771300B90894 /* AvatarScreen.swift */,
 				30F8027F232C77EB00B90894 /* TrackScreen.swift */,
@@ -305,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3076C6A423397BA100B85D1F /* mindBender.mp3 in Resources */,
+				3076C6B42339AA2700B85D1F /* SettingsHeader.xib in Resources */,
 				3076C6B0233988C400B85D1F /* tick.mp3 in Resources */,
 				308DFF502329B963001567B1 /* LaunchScreen.storyboard in Resources */,
 				308DFF4D2329B963001567B1 /* Assets.xcassets in Resources */,
@@ -333,6 +340,7 @@
 				3035CFF12336AAB1003EFA46 /* Avatar.swift in Sources */,
 				30F802A8233549D500B90894 /* GameOverScreen.swift in Sources */,
 				30F80296232EE7E600B90894 /* GameDelegate.swift in Sources */,
+				3076C6B62339AAFE00B85D1F /* SettingsHeader.swift in Sources */,
 				30F8029C23306F8C00B90894 /* ForecastDelegate.swift in Sources */,
 				30F80282232C7B0900B90894 /* DisplayNameScreen.swift in Sources */,
 				30F80276232C482C00B90894 /* ViewExt.swift in Sources */,

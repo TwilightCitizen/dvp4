@@ -14,8 +14,9 @@ class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var tableView : UITableView!
     
     // Properties
-    private let sections = [ "Profile", "Sound", "Visuals" ]
-    private let profile  = [ "Display Name", "Avatar"      ]
+    private let sections = [ "Profile", "Sound", "Visuals", "Credits" ]
+    private let profile  = [ "Display Name", "Avatar"                 ]
+    private let sound    = [ "Track"]
     
     internal var player    : Player!
     internal var container : CKContainer!
@@ -31,6 +32,12 @@ class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSou
             name     : Notification.Name.CKAccountChanged,
             object   : nil
         )
+        
+        // Register SettingsHeader.xib as a reusable header
+        tableView.register(
+            UINib.init( nibName : ReusableCell.SettingsHeader.description, bundle : nil ),
+            forHeaderFooterViewReuseIdentifier : ReusableCell.settingsHeader.description
+        )
     }
     
     // Handle iCloud sign in and out by dismissing alerts and this screen
@@ -45,15 +52,31 @@ class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    func tableView( _ tableView : UITableView, titleForHeaderInSection section : Int ) -> String? {
-        return sections[ section ]
-    }
-    
     func tableView( _ tableView : UITableView, numberOfRowsInSection section : Int ) -> Int {
         switch section {
             case 0  : return profile.count
             default : return 1
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView( _ tableView : UITableView, estimatedHeightForHeaderInSection section : Int ) -> CGFloat {
+        return 44
+    }
+    
+    func tableView( _ tableView : UITableView, viewForHeaderInSection section : Int ) -> UIView? {
+        if let header = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier : ReusableCell.settingsHeader.description ) as? SettingsHeader {
+            
+            header.label.text = sections[ section ]
+            
+            return header
+        }
+        
+        return nil
     }
     
     func tableView( _ tableView : UITableView, cellForRowAt indexPath : IndexPath ) -> UITableViewCell {
@@ -68,6 +91,8 @@ class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSou
                 case 0  : return player.displayName
                 default : return player.avatar.description.capitalized
             } }()
+            
+            if player is GuestPlayer { cell.accessoryType = .none }
             
             return cell
         }

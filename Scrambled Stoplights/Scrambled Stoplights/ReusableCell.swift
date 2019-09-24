@@ -18,6 +18,9 @@ enum ReusableCell : String, CustomStringConvertible {
     case selectableSetting
     case slideableSetting
     
+    case SettingsHeader
+    case settingsHeader
+    
     // Properties
     
     var description : String { return self.rawValue }
