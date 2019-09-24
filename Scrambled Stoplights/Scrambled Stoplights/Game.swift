@@ -104,10 +104,10 @@ class Game : WellDelegate, ForecastDelegate {
     }
     
     // Quit a paused game or a running game that overflowed the well
-    func reset() {
+    func reset( silent : Bool = false ) {
         // Setup for game over conditions
         delegate.gameDidStop( self )
-        delegate.game( self, didEndWithScore : score, clears : clears, andBestRun : bestRun )
+        if !silent { delegate.game( self, didEndWithScore : score, clears : clears, andBestRun : bestRun ) }
         delegate.forecast.forEach { $0.isHidden  = true }
         
         // Setup sample game statistics

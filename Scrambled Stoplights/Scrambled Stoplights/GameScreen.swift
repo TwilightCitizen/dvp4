@@ -81,7 +81,12 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
         )
     }
     
-    @objc func userChanged() { DispatchQueue.main.async { self.game.reset(); self.setupPlayer() } }
+    @objc func userChanged() {
+        DispatchQueue.main.async {
+            self.game.reset( silent : true )
+            self.setupPlayer()
+        }
+    }
     
     override func viewWillAppear( _ animated : Bool ) {
         let navbar = navigationController!.navigationBar

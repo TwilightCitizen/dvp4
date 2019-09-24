@@ -47,5 +47,5 @@ class AudioEngine {
     }
     
     // Not sure how to hide this from everywhere except GameMusic.
-    static func stopMusic()   { music.stop() }
+    static func stopMusic() { music.stop() }
 }
