@@ -132,7 +132,12 @@ class Game : WellDelegate, ForecastDelegate {
     // Bulbs in the well cleared out
     func well(_ well: Well, didClearBulbs bulbs: Int) {
         // Add 100 points to the score for each bulb cleared
-        score                += 100 * bulbs
+        let newScore          = score + 100 * bulbs
+        
+        delegate.game( self, scoreDidChangeFrom : score, to : newScore )
+        
+        score                 = newScore
+        
         // Add the clears
         clears               += bulbs
         // Replace the best run if bulbs cleare this go are greater

@@ -19,7 +19,6 @@ enum Theme : String, CaseIterable, Specifiable, Codeable {
     case protanopia
     case deuteranopia
     case tritanopia
-    case monochromatic
     case ps4controller
     
     // Properties
