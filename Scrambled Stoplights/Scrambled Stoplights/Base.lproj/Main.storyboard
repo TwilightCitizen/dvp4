@@ -3960,6 +3960,7 @@
                         <viewLayoutGuide key="safeArea" id="cU1-B6-7WO"/>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="LAI-pf-pJU" id="50S-8L-rBl"/>
                         <segue destination="GAt-t1-xCd" kind="show" identifier="settingsToAvatar" id="VyT-6a-TyW"/>
                         <segue destination="ix4-YO-4Oc" kind="show" identifier="settingsToTrack" id="IDz-hB-dM1"/>
                         <segue destination="6Gt-tW-pdE" kind="show" identifier="settingsToTheme" id="Pk6-Pb-Ylm"/>

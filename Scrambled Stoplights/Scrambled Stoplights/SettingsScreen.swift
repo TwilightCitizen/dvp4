@@ -11,6 +11,7 @@ import CloudKit
 
 class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Outlets
+    @IBOutlet weak var tableView : UITableView!
     
     // Properties
     private let sections = [ "Profile", "Sound", "Visuals" ]
@@ -23,6 +24,25 @@ class SettingsScreen : UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Look out for iCloud sign in and out while app is in use
+        NotificationCenter.default.addObserver( self,
+            selector : #selector( userChanged ),
+            name     : Notification.Name.CKAccountChanged,
+            object   : nil
+        )
+    }
+    
+    // Handle iCloud sign in and out by dismissing alerts and this screen
+    @objc func userChanged() {
+        DispatchQueue.main.async {
+            if let vc = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController,
+                vc.isKind( of : UIAlertController.self ) {
+                vc.dismiss( animated : true, completion : nil )
+            }
+            
+            self.navigationController?.popViewController( animated : true )
+        }
     }
     
     func tableView( _ tableView : UITableView, titleForHeaderInSection section : Int ) -> String? {

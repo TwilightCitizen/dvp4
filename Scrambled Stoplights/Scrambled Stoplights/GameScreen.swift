@@ -60,7 +60,7 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
     private        var repeater           : SimpleRepeater!
     
     // Player of the game
-    private        var player             : Player!
+    internal       var player             : Player!
     
     internal       var container          = CKContainer.default()
     
@@ -74,6 +74,7 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
         setupGame()
         setupPlayer()
         
+        // Look out for iCloud sign in and out while app is in use
         NotificationCenter.default.addObserver( self,
             selector : #selector( userChanged ),
             name     : Notification.Name.CKAccountChanged,
@@ -81,6 +82,7 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
         )
     }
     
+    // Handle iCloud sign in and out by resetting game and user
     @objc func userChanged() {
         DispatchQueue.main.async {
             self.game.reset( silent : true )

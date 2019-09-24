@@ -125,7 +125,7 @@ class Game : WellDelegate, ForecastDelegate {
         delegate.paused.isHidden = true
         delegate.nogame.isHidden = false
         
-        Music.stop()
+        if !silent{ Music.stop() }
         Sound.rasp.play()
     }
     
