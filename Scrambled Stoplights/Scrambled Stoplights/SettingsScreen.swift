@@ -19,16 +19,28 @@ class SettingsScreen : UITableViewController {
     @IBOutlet weak var music       : UISlider!
     @IBOutlet weak var sounds      : UISlider!
     
+    @IBOutlet      var preview     : [ UIImageView ]!
+    
     // Properties
 
     internal var player    : Player!
     internal var container : CKContainer!
+    
+    private  var bulbs     = [
+        Bulb( ofType : .stop, withWeight : .one   ),
+        Bulb( ofType : .slow, withWeight : .two   ),
+        Bulb( ofType : .go,   withWeight : .three ),
+        Bulb( ofType : .empty ),
+        Bulb( ofType : .clear ),
+        Bulb( ofType : .ghost )
+    ]
     
     // Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadFromSettings()
+        previewBulbs()
         
         // Look out for iCloud sign in and out while app is in use
         NotificationCenter.default.addObserver(
@@ -71,6 +83,8 @@ class SettingsScreen : UITableViewController {
         music.value      = Music.volume
         sounds.value     = Sound.volume
     }
+    
+    func previewBulbs() { for bulb in preview.enumerated() { bulb.element.image = bulbs[ bulb.offset ].image } }
     
     @IBAction func displayNameTapped( _ sender : UITapGestureRecognizer ) {
         if let signedIn = player as? SignedInPlayer {
@@ -177,6 +191,8 @@ class SettingsScreen : UITableViewController {
             let action = UIAlertAction( title : theme.rawValue.capitalized, style : .default ) { _ in
                 Theme.specified = theme
                 self.theme.text = Theme.current.description.capitalized
+                
+                self.previewBulbs()
             }
             
             alert.addAction( action )
@@ -216,5 +232,9 @@ class SettingsScreen : UITableViewController {
             forMode : .default
         )
     }
-    @IBAction func soundVolumeChanged( _ sender : UISlider ) { Sound.volume = sender.value }
+    @IBAction func soundVolumeChanged( _ sender : UISlider ) {
+        Sound.volume = sender.value
+        
+        Sound.chirp.play()
+    }
 }
