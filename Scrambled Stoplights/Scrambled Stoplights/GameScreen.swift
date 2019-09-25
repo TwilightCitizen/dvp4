@@ -91,6 +91,9 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
     }
     
     override func viewWillAppear( _ animated : Bool ) {
+        UIDevice.current.setValue( UIInterfaceOrientation.portrait.rawValue, forKey : "orientation" )
+        (  UIApplication.shared.delegate as! AppDelegate ).orientation = .portrait
+        
         let navbar = navigationController!.navigationBar
         
         // Format navigation bar
@@ -105,6 +108,10 @@ class GameScreen : UIViewController, GameDelegate, PlayerDelegate {
         
         // Hide navigation bar on the game screen
         navbar.isHidden            = true
+    }
+    
+    override func viewWillDisappear( _ animated : Bool ) {
+        (  UIApplication.shared.delegate as! AppDelegate ).orientation = .portrait
     }
     
     override func prepare( for segue : UIStoryboardSegue, sender : Any? ) {

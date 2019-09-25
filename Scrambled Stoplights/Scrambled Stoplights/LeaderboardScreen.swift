@@ -60,6 +60,16 @@ class LeaderboardScreen : UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    override func viewWillAppear( _ animated : Bool ) {
+        super.viewWillAppear( animated )
+        
+        (  UIApplication.shared.delegate as! AppDelegate ).orientation = .all
+    }
+    
+    override func viewWillDisappear( _ animated : Bool ) {
+        (  UIApplication.shared.delegate as! AppDelegate ).orientation = .portrait
+    }
+    
     func tableView( _ tableView : UITableView, numberOfRowsInSection section : Int ) -> Int {
         // One row for each leader, but none until loaded from iCloud
         return leaders?.count ?? 0

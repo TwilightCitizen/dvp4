@@ -10,14 +10,15 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    internal var window    : UIWindow?
-    internal var game      : Game!
-    
+    internal var window      : UIWindow?
+    internal var game        : Game!
+    internal var orientation : UIInterfaceOrientationMask = .portrait
+        
     func application(
         _                                 application : UIApplication,
         supportedInterfaceOrientationsFor window      : UIWindow?
     ) -> UIInterfaceOrientationMask {
-        return .portrait
+        return orientation
     }
     
     func application(

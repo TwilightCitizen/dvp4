@@ -51,6 +51,16 @@ class SettingsScreen : UITableViewController {
         )
     }
     
+    override func viewWillAppear( _ animated : Bool ) {
+        super.viewWillAppear( animated )
+        
+        (  UIApplication.shared.delegate as! AppDelegate ).orientation = .all
+    }
+    
+    override func viewWillDisappear( _ animated : Bool ) {
+        (  UIApplication.shared.delegate as! AppDelegate ).orientation = .portrait
+    }
+    
     override func tableView( _ tableView : UITableView, heightForRowAt indexPath : IndexPath ) -> CGFloat {
         if indexPath.section == 0 && player is GuestPlayer { return 0 }
         
