@@ -206,6 +206,15 @@ class SettingsScreen : UITableViewController {
         self.present( alert, animated : true, completion : nil )
     }
     
-    @IBAction func musicVolumeChanged( _ sender : UISlider ) { Music.volume = sender.value }
+    @IBAction func musicVolumeChanged( _ sender : UISlider ) {
+        Music.volume = sender.value
+        
+        Music.current.play()
+        
+        RunLoop.main.add(
+            Timer( timeInterval : 2, repeats : false, block : { _ in Music.stop() } ),
+            forMode : .default
+        )
+    }
     @IBAction func soundVolumeChanged( _ sender : UISlider ) { Sound.volume = sender.value }
 }
