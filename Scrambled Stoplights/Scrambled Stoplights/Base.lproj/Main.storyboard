@@ -3594,10 +3594,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMS-EQ-64p" userLabel="Place">
-                                                    <rect key="frame" x="0.0" y="0.0" width="83" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="161.5" height="43.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="NWY-F1-cLV">
-                                                            <rect key="frame" x="10" y="5" width="63" height="33.5"/>
+                                                            <rect key="frame" x="10" y="5" width="141.5" height="33.5"/>
                                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="24"/>
                                                             <color key="textColor" red="1" green="1" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -3612,10 +3612,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3Y-bc-PmO" userLabel="DisplayName">
-                                                    <rect key="frame" x="83" y="0.0" width="165.5" height="43.5"/>
+                                                    <rect key="frame" x="161.5" y="0.0" width="323.5" height="43.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="fCD-ay-ytA">
-                                                            <rect key="frame" x="0.0" y="5" width="165.5" height="33.5"/>
+                                                            <rect key="frame" x="0.0" y="5" width="323.5" height="33.5"/>
                                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="24"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -3630,10 +3630,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EUp-zn-32W" userLabel="TopScore">
-                                                    <rect key="frame" x="248.5" y="0.0" width="165.5" height="43.5"/>
+                                                    <rect key="frame" x="485" y="0.0" width="323" height="43.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123,456" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="4DO-cb-cew">
-                                                            <rect key="frame" x="10" y="5" width="145.5" height="33.5"/>
+                                                            <rect key="frame" x="10" y="5" width="303" height="33.5"/>
                                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="24"/>
                                                             <color key="textColor" red="1" green="1" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>

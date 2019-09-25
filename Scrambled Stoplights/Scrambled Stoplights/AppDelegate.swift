@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     internal var window    : UIWindow?
     internal var game      : Game!
-
+    
     func application(
         _                                 application : UIApplication,
         supportedInterfaceOrientationsFor window      : UIWindow?
