@@ -41,7 +41,7 @@ extension Codeable {
 enum CodeableKey : String, CustomStringConvertible {
     // Cases
     
-    case theme, displayName, avatar, placing, music
+    case theme, displayName, avatar, placing, music, sound, volume
     
     // Properties
     

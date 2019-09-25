@@ -157,7 +157,7 @@ class SettingsScreen : UITableViewController {
         
         Theme.allCases.forEach { theme in
             let action = UIAlertAction( title : theme.rawValue.capitalized, style : .default ) { _ in
-                Theme.specified  = theme
+                Theme.specified = theme
                 self.theme.text = Theme.current.description.capitalized
             }
             
@@ -173,6 +173,9 @@ class SettingsScreen : UITableViewController {
         
         self.present( alert, animated : true, completion : nil )
     }
+    
+    // Would really like to refactor the action sheet methods above to call into a funtion that takes
+    // the enums Theme, Music, and etc. as the Specifiable paramater, but it doesn't seem possible now.
     
     @IBAction func creditsTapped( _ sender : UITapGestureRecognizer ) {
         let alert = UIAlertController(

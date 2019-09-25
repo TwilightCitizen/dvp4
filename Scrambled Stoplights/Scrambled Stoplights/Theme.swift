@@ -26,7 +26,15 @@ enum Theme : String, CaseIterable, Specifiable, Codeable {
     static let key       =  CodeableKey.theme
     
     // Specified theme is provided externally
-    static var specified : Theme? = nil
+    static var specified : Theme? {
+        get {
+            guard let rawValue = UserDefaults.standard.string( forKey : key.description ) else { return nil }
+            
+            return Theme.init( rawValue : rawValue )
+        }
+        
+        set { UserDefaults.standard.set( newValue!.rawValue, forKey : key.description ) }
+    }
     
     // Fallback theme is first one, or classic
     static var fallback  : Theme  { return self.allCases.first! }

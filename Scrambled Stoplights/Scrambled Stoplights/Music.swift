@@ -20,8 +20,16 @@ enum Music : String, CaseIterable, Audio, Specifiable, Codable {
     
     static let key       =  CodeableKey.music
     
-    // Specified track is provided externally
-    static var specified : Music? = nil
+    // Specified theme is provided externally
+    static var specified : Music? {
+        get {
+            guard let rawValue = UserDefaults.standard.string( forKey : key.description ) else { return nil }
+            
+            return Music.init( rawValue : rawValue )
+        }
+        
+        set { UserDefaults.standard.set( newValue!.rawValue, forKey : key.description ) }
+    }
     
     // Fallback track is first one, or puzzle dreams
     static var fallback  : Music  { return self.allCases.first! }
@@ -30,8 +38,16 @@ enum Music : String, CaseIterable, Audio, Specifiable, Codable {
     
     // Volume defaults to global music volume
     var volume           : Float  { return Music.volume }
-    static var volume    : Float  = 0.5
     
+    static var volume    : Float  {
+        get {
+            guard UserDefaults.standard.object( forKey : key.description + CodeableKey.volume.description ) != nil else { return 0.5 }
+            return UserDefaults.standard.float( forKey : key.description + CodeableKey.volume.description )
+        }
+        
+        set { UserDefaults.standard.set( newValue, forKey : key.description + CodeableKey.volume.description ) }
+    }
+        
     // Methods
     
     // Music repeats on loop, so should be stoppable after playing.

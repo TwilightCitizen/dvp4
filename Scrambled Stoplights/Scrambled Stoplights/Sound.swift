@@ -22,7 +22,17 @@ enum Sound : String, CaseIterable, Audio {
     var name          : String { return rawValue     }
     var volume        : Float  { return Sound.volume }
     
-    static var volume : Float  = 1.0
+    static var volume    : Float  {
+        get {
+            guard UserDefaults.standard.object(
+                forKey : CodeableKey.sound.description + CodeableKey.volume.description
+            ) != nil else { return 1.0 }
+            
+            return UserDefaults.standard.float( forKey : CodeableKey.sound.description + CodeableKey.volume.description )
+        }
+        
+        set { UserDefaults.standard.set( newValue, forKey : CodeableKey.sound.description + CodeableKey.volume.description ) }
+    }
     
     // Methods
     
