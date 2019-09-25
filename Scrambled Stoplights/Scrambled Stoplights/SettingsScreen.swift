@@ -19,7 +19,6 @@ class SettingsScreen : UITableViewController {
     @IBOutlet weak var music       : UISlider!
     @IBOutlet weak var sounds      : UISlider!
     
-    
     // Properties
 
     internal var player    : Player!
@@ -38,6 +37,18 @@ class SettingsScreen : UITableViewController {
             name     : Notification.Name.CKAccountChanged,
             object   : nil
         )
+    }
+    
+    override func tableView( _ tableView : UITableView, heightForRowAt indexPath : IndexPath ) -> CGFloat {
+        if indexPath.section == 0 && player is GuestPlayer { return 0 }
+        
+        return 44
+    }
+    
+    override func tableView( _ tableView : UITableView, heightForHeaderInSection section : Int ) -> CGFloat {
+        if section == 0 && player is GuestPlayer { return 0 }
+        
+        return 24
     }
     
     // Handle iCloud sign in and out by dismissing alerts and this screen
