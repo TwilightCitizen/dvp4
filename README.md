@@ -23,8 +23,8 @@ Scrambled Stoplights is a falling/descending block styled puzzle game by David C
 
 - Known Bugs:
 
-  - Scrambled Stoplights currently does not detect changes to the user's logged in or logged out status while the app is in use.
-  - Other Bugs Likely Exist Despite this Knowledge
+  - No Known Bugs
+  - Bugs Likely Exist Despite this Knowledge
 
 - Special Requirements:
 
